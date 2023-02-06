@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# # Notebooks with MyST Markdown
+# # Woche 2: Grundlagen der Numerik mit Python
 # 
 # Jupyter Book also lets you write text-based notebooks using MyST Markdown.
 # See [the Notebooks with MyST Markdown documentation](https://jupyterbook.org/file-types/myst-notebooks.html) for more detailed instructions.

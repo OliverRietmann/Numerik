@@ -1,4 +1,4 @@
-# Here's my sample title
+# Woche 3: Polynome, Potenzreihen und Taylor-Approximation
 
 This is some sample text.
 

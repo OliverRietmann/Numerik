@@ -1,3 +1,18 @@
+---
+jupytext:
+  cell_metadata_filter: -all
+  formats: md:myst
+  text_representation:
+    extension: .md
+    format_name: myst
+    format_version: 0.13
+    jupytext_version: 1.11.5
+kernelspec:
+  display_name: Python 3
+  language: python
+  name: python3
+---
+
 # Woche 1: Einführung in Python
 
 Lernziele:
@@ -7,6 +22,13 @@ Lernziele:
 3. Ich kenne den Unterschied zwischen `numpy.sqrt` und `math.sqrt` (analog für weitere Funktionen).
 4. Ich kann mit dem Package `matplotlib` die Funktion `numpy.sin` plotten.
 5. Ich kann in Python eigene Funktionen definieren und diese ausführen.
+
+
+
+```{code-cell}
+print(1+1)
+```
+
 
 Whether you write your book's content in Jupyter Notebooks (`.ipynb`) or
 in regular markdown files (`.md`), you'll write in the same flavor of markdown
@@ -39,7 +61,7 @@ Here is a note
 
 It will be rendered in a special box when you build your book.
 
-Here is an inline directive to refer to a document: {doc}`markdown-notebooks`.
+Here is an inline directive to refer to a document: {doc}`woche2`.
 
 
 ## Citations

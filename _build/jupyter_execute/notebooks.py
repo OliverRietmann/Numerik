@@ -30,10 +30,6 @@ import matplotlib.pyplot as plt
 import numpy as np
 plt.ion()
 
-
-# In[2]:
-
-
 # Fixing random state for reproducibility
 np.random.seed(19680801)
 
@@ -56,7 +52,7 @@ ax.legend(custom_lines, ['Cold', 'Medium', 'Hot']);
 
 # Note that the image above is captured and displayed in your site.
 
-# In[3]:
+# In[2]:
 
 
 # Fixing random state for reproducibility
@@ -85,7 +81,7 @@ ax.set(title="Smoother linez")
 # You can also remove some content before publishing your book to the web. 
 # For reference, {download}`you can download the notebook content for this page <notebooks.ipynb>`.
 
-# In[4]:
+# In[3]:
 
 
 import numpy as np
@@ -102,7 +98,7 @@ ax.set_axis_off()
 
 # You can **remove only the code** so that images and other output still show up.
 
-# In[5]:
+# In[4]:
 
 
 thisvariable = "this plot *will* show up in the textbook."
@@ -118,7 +114,7 @@ ax.set_axis_off()
 # Which works well if you'd like to quickly display cell output without cluttering your content with code.
 # This works for any cell output, like a Pandas DataFrame.
 
-# In[6]:
+# In[5]:
 
 
 import pandas as pd
@@ -131,7 +127,7 @@ pd.DataFrame([['hi', 'there'], ['this', 'is'], ['a', 'DataFrame']], columns=['Wo
 # your Jupyter Book as well! For example, here is the command line help
 # menu, see how it is nicely formatted.
 
-# In[7]:
+# In[6]:
 
 
 get_ipython().system('jupyter-book build --help')
@@ -140,7 +136,7 @@ get_ipython().system('jupyter-book build --help')
 # And here is an error. You can mark notebook cells as "expected to error" by adding a
 # `raises-exception` tag to them.
 
-# In[8]:
+# In[7]:
 
 
 this_will_error

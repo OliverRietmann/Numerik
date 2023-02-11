@@ -10,12 +10,12 @@
 # ```{margin}
 # If you'd like to write in plain-text files, but still keep a notebook structure, you can write
 # Jupyter notebooks with MyST Markdown, which are then automatically converted to notebooks.
-# See [](./myst-notebooks.md) for more details.
+# See [](./woche3.md) for more details.
 # ```
 # 
 # Jupyter Book supports all Markdown that is supported by Jupyter Notebook.
 # This is mostly a flavour of Markdown called [CommonMark Markdown](https://commonmark.org/) with minor modifications.
-# For more information about writing Jupyter-flavoured Markdown in Jupyter Book, see [](./markdown.md).
+# For more information about writing Jupyter-flavoured Markdown in Jupyter Book, see [](./woche2.md).
 # 
 # ## Code blocks and image outputs
 # 
@@ -80,11 +80,6 @@ ax.legend(custom_lines, ['Cold', 'Medium', 'Hot'])
 ax.set(title="Smoother linez")
 
 
-# ```{margin} **You can also pop out content to the side!**
-# For more information on how to do this,
-# check out the {ref}`layout/sidebar` section.
-# ```
-
 # ## Removing content before publishing
 # 
 # You can also remove some content before publishing your book to the web. 
@@ -93,6 +88,8 @@ ax.set(title="Smoother linez")
 # In[4]:
 
 
+import numpy as np
+import matplotlib.pyplot as plt
 thisvariable = "none of this should show up in the textbook"
 
 fig, ax = plt.subplots()
@@ -128,8 +125,6 @@ import pandas as pd
 pd.DataFrame([['hi', 'there'], ['this', 'is'], ['a', 'DataFrame']], columns=['Word A', 'Word B'])
 
 
-# See {ref}`hiding/remove-content` for more information about hiding and removing content.
-
 # ## Rich outputs from notebook cells
 
 # Because notebooks have rich text outputs, you can store these in
@@ -150,9 +145,3 @@ get_ipython().system('jupyter-book build --help')
 
 this_will_error
 
-
-# ## More features with Jupyter notebooks
-# 
-# There are many other features of Jupyter notebooks to take advantage of,
-# such as automatically generating Binder links for notebooks or connecting your content with a kernel in the cloud.
-# For more information browse the pages in this site, and [](content:code-outputs) in particular.

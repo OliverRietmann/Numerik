@@ -4,7 +4,8 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>Woche 1: Einführung in Python &#8212; My sample book</title>
     
   <!-- Loaded before other Sphinx assets -->
@@ -375,6 +376,16 @@ title="Print to PDF"
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#variablen-zeichenketten-strings-listen-und-schleifen">
+   Variablen, Zeichenketten (Strings), Listen und Schleifen
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#python-als-taschenrechner">
+   Python als Taschenrechner
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#what-is-myst">
    What is MyST?
   </a>
@@ -414,6 +425,16 @@ title="Print to PDF"
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#variablen-zeichenketten-strings-listen-und-schleifen">
+   Variablen, Zeichenketten (Strings), Listen und Schleifen
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#python-als-taschenrechner">
+   Python als Taschenrechner
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#what-is-myst">
    What is MyST?
   </a>
@@ -443,7 +464,7 @@ title="Print to PDF"
                 
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="woche-1-einfuhrung-in-python">
+  <section class="tex2jax_ignore mathjax_ignore" id="woche-1-einfuhrung-in-python">
 <h1>Woche 1: Einführung in Python<a class="headerlink" href="#woche-1-einfuhrung-in-python" title="Permalink to this headline">#</a></h1>
 <p>Lernziele:</p>
 <ol class="simple">
@@ -453,14 +474,91 @@ title="Print to PDF"
 <li><p>Ich kann mit dem Package <code class="docutils literal notranslate"><span class="pre">matplotlib</span></code> die Funktion <code class="docutils literal notranslate"><span class="pre">numpy.sin</span></code> plotten.</p></li>
 <li><p>Ich kann in Python eigene Funktionen definieren und diese ausführen.</p></li>
 </ol>
+<section id="variablen-zeichenketten-strings-listen-und-schleifen">
+<h2>Variablen, Zeichenketten (Strings), Listen und Schleifen<a class="headerlink" href="#variablen-zeichenketten-strings-listen-und-schleifen" title="Permalink to this headline">#</a></h2>
+<p>Was ist der Output des folgenden Codes?</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="mi">1</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;x&quot;</span><span class="p">)</span>
+
+<span class="n">var</span> <span class="o">=</span> <span class="s2">&quot;I am a string.&quot;</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">var</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3
+x
+I am a string.
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">l</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">l</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">l</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">l</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+
+<span class="n">l</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;two&quot;</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">l</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">l</span><span class="p">:</span>
+  <span class="nb">print</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+  <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Within the loop.&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Outside of the loop.&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1, 2, 3]
+2
+3
+[1, &#39;two&#39;, 3]
+1
+Within the loop.
+two
+Within the loop.
+3
+Within the loop.
+Outside of the loop.
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span>
+  <span class="k">if</span> <span class="n">i</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0
+2
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="python-als-taschenrechner">
+<h2>Python als Taschenrechner<a class="headerlink" href="#python-als-taschenrechner" title="Permalink to this headline">#</a></h2>
+<p>Was ist der Output des folgenden Codes?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="mi">2</span> <span class="o">+</span> <span class="mi">3</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="mi">3</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="mi">2</span><span class="o">**</span><span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>5
+6
+8
 </pre></div>
 </div>
 </div>
@@ -469,15 +567,16 @@ title="Print to PDF"
 in regular markdown files (<code class="docutils literal notranslate"><span class="pre">.md</span></code>), you’ll write in the same flavor of markdown
 called <strong>MyST Markdown</strong>.
 This is a simple file to help you get started and show off some syntax.</p>
-<div class="section" id="what-is-myst">
+</section>
+<section id="what-is-myst">
 <h2>What is MyST?<a class="headerlink" href="#what-is-myst" title="Permalink to this headline">#</a></h2>
 <p>MyST stands for “Markedly Structured Text”. It
 is a slight variation on a flavor of markdown called “CommonMark” markdown,
 with small syntax extensions to allow you to write <strong>roles</strong> and <strong>directives</strong>
 in the Sphinx ecosystem.</p>
 <p>For more about MyST, see <a class="reference external" href="https://jupyterbook.org/content/myst.html">the MyST Markdown Overview</a>.</p>
-</div>
-<div class="section" id="sample-roles-and-directives">
+</section>
+<section id="sample-roles-and-directives">
 <h2>Sample Roles and Directives<a class="headerlink" href="#sample-roles-and-directives" title="Permalink to this headline">#</a></h2>
 <p>Roles and directives are two of the most powerful tools in Jupyter Book. They
 are kind of like functions, but written in a markup language. They both
@@ -492,8 +591,8 @@ that is being called.</p>
 </div>
 <p>It will be rendered in a special box when you build your book.</p>
 <p>Here is an inline directive to refer to a document: <a class="reference internal" href="woche2.html"><span class="doc">Woche 2: Grundlagen der Numerik mit Python</span></a>.</p>
-</div>
-<div class="section" id="citations">
+</section>
+<section id="citations">
 <h2>Citations<a class="headerlink" href="#citations" title="Permalink to this headline">#</a></h2>
 <p>You can also cite references that are stored in a <code class="docutils literal notranslate"><span class="pre">bibtex</span></code> file. For example,
 the following syntax: <code class="docutils literal notranslate"><span class="pre">{cite}`holdgraf_evidence_2014`</span></code> will render like
@@ -510,13 +609,13 @@ then the bibliography is inserted with:</p>
 </dd>
 </dl>
 </div>
-</div>
-<div class="section" id="learn-more">
+</section>
+<section id="learn-more">
 <h2>Learn more<a class="headerlink" href="#learn-more" title="Permalink to this headline">#</a></h2>
 <p>This is just a simple starter to get you started.
 You can learn a lot more at <a class="reference external" href="https://jupyterbook.org">jupyterbook.org</a>.</p>
-</div>
-</div>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -530,7 +629,7 @@ You can learn a lot more at <a class="reference external" href="https://jupyterb
             mode: "python"
         },
         kernelOptions: {
-            kernelName: "python3",
+            name: "python3",
             path: "./."
         },
         predefinedOutput: true

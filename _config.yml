@@ -31,5 +31,9 @@ html:
   use_issues_button: true
   use_repository_button: true
 
+html_theme_options:
+  extra_css: 
+    - custom.css
+
 launch_buttons:
   thebe: true

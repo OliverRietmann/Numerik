@@ -23,10 +23,48 @@ Lernziele:
 4. Ich kann mit dem Package `matplotlib` die Funktion `numpy.sin` plotten.
 5. Ich kann in Python eigene Funktionen definieren und diese ausführen.
 
+## Variablen, Zeichenketten (Strings), Listen und Schleifen
 
+Was ist der Output des folgenden Codes?
 
 ```{code-cell}
-print(1+1)
+x = 3
+print(x)
+print("x")
+
+var = "I am a string."
+print(var)
+```
+
+```{code-cell}
+l = [1, 2, 3]
+print(l)
+print(l[1])
+print(l[-1])
+
+l = [1, "two", 3]
+print(l)
+for n in l:
+  print(n)
+  print("Within the loop.")
+print("Outside of the loop.")
+```
+
+```{code-cell}
+for i in range(3):
+  if i % 2 == 0:
+    print(i)
+
+```
+
+## Python als Taschenrechner
+
+Was ist der Output des folgenden Codes?
+
+```{code-cell}
+print(2 + 3)
+print(2 * 3)
+print(2**3)
 ```
 
 

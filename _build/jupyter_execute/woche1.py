@@ -10,11 +10,56 @@
 # 3. Ich kenne den Unterschied zwischen `numpy.sqrt` und `math.sqrt` (analog für weitere Funktionen).
 # 4. Ich kann mit dem Package `matplotlib` die Funktion `numpy.sin` plotten.
 # 5. Ich kann in Python eigene Funktionen definieren und diese ausführen.
+# 
+# ## Variablen, Zeichenketten (Strings), Listen und Schleifen
+# 
+# Was ist der Output des folgenden Codes?
 
 # In[1]:
 
 
-print(1+1)
+x = 3
+print(x)
+print("x")
+
+var = "I am a string."
+print(var)
+
+
+# In[2]:
+
+
+l = [1, 2, 3]
+print(l)
+print(l[1])
+print(l[-1])
+
+l = [1, "two", 3]
+print(l)
+for n in l:
+  print(n)
+  print("Within the loop.")
+print("Outside of the loop.")
+
+
+# In[3]:
+
+
+for i in range(3):
+  if i % 2 == 0:
+    print(i)
+
+
+# ## Python als Taschenrechner
+# 
+# Was ist der Output des folgenden Codes?
+
+# In[4]:
+
+
+print(2 + 3)
+print(2 * 3)
+print(2**3)
 
 
 # Whether you write your book's content in Jupyter Notebooks (`.ipynb`) or

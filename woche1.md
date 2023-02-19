@@ -40,8 +40,11 @@ print(var)
 l = [1, 2, 3]
 print(l)
 print(l[1])
+print(l[2])
 print(l[-1])
+```
 
+```{code-cell}
 l = [1, "two", 3]
 print(l)
 for n in l:
@@ -65,6 +68,7 @@ Was ist der Output des folgenden Codes?
 print(2 + 3)
 print(2 * 3)
 print(2**3)
+print(2^3)
 ```
 
 

@@ -26,7 +26,6 @@
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="_static/custom.css" />
     <link rel="stylesheet" type="text/css" href="_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
     
   <!-- Pre-loaded scripts that we'll load fully later -->
@@ -462,18 +461,9 @@ For example, here’s some sample Matplotlib code:</p>
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<img alt="_images/notebooks_1_0.png" src="_images/notebooks_1_0.png" />
-</div>
 </div>
 <p>Note that the image above is captured and displayed in your site.</p>
 <div class="cell tag_popout tag_remove-input tag_remove-stdout docutils container">
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[Text(0.5, 1.0, &#39;Smoother linez&#39;)]
-</pre></div>
-</div>
-<img alt="_images/notebooks_3_1.png" src="_images/notebooks_3_1.png" />
-</div>
 </div>
 </section>
 <section id="removing-content-before-publishing">
@@ -494,9 +484,6 @@ For reference, <a class="reference download internal" download="" href="_downloa
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<img alt="_images/notebooks_7_0.png" src="_images/notebooks_7_0.png" />
-</div>
 </div>
 <p>Which works well if you’d like to quickly display cell output without cluttering your content with code.
 This works for any cell output, like a Pandas DataFrame.</p>
@@ -507,48 +494,6 @@ This works for any cell output, like a Pandas DataFrame.</p>
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>Word A</th>
-      <th>Word B</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>hi</td>
-      <td>there</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>this</td>
-      <td>is</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>a</td>
-      <td>DataFrame</td>
-    </tr>
-  </tbody>
-</table>
-</div></div></div>
 </div>
 </section>
 <section id="rich-outputs-from-notebook-cells">
@@ -562,57 +507,12 @@ menu, see how it is nicely formatted.</p>
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Usage: jupyter-book build [OPTIONS] PATH_SOURCE
-
-  Convert your book&#39;s or page&#39;s content to HTML or a PDF.
-
-Options:
-  --path-output TEXT              Path to the output artifacts
-  --config TEXT                   Path to the YAML configuration file
-                                  (default: PATH_SOURCE/_config.yml)
-  --toc TEXT                      Path to the Table of Contents YAML file
-                                  (default: PATH_SOURCE/_toc.yml)
-  -W, --warningiserror            Error on warnings.
-  -n, --nitpick                   Run in nit-picky mode, to generates warnings
-                                  for all missing references.
-  --keep-going                    With -W, do not stop the build on the first
-                                  warning, instead error on build completion
-  --all                           Re-build all pages. The default is to only
-                                  re-build pages that are new/changed since
-                                  the last run.
-  --builder [html|dirhtml|singlehtml|pdfhtml|latex|pdflatex|linkcheck|custom]
-                                  Which builder to use.
-  --custom-builder TEXT           Specify alternative builder provided by
-                                  Sphinx, including text and epub. This can
-                                  only be used with --builder=custom. Valid
-                                  options listed at https://www.sphinx-
-                                  doc.org/en/master/man/sphinx-build.html
-  -v, --verbose                   increase verbosity (can be repeated)
-  -q, --quiet                     -q means no sphinx status, -qq also turns
-                                  off warnings
-  --individualpages               [pdflatex] Enable build of PDF files for
-                                  each individual page
-  -h, --help                      Show this message and exit.
-</pre></div>
-</div>
-</div>
 </div>
 <p>And here is an error. You can mark notebook cells as “expected to error” by adding a
 <code class="docutils literal notranslate"><span class="pre">raises-exception</span></code> tag to them.</p>
 <div class="cell tag_raises-exception docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">this_will_error</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span> <span class="p">[</span><span class="mi">7</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">this_will_error</span>
-
-<span class="ne">NameError</span>: name &#39;this_will_error&#39; is not defined
 </pre></div>
 </div>
 </div>

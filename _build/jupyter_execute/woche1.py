@@ -14,19 +14,6 @@
 # ## Variablen, Zeichenketten (Strings), Listen und Schleifen
 # 
 # Was ist der Output des folgenden Codes?
-# 
-# ipython3
-# ---
-# render:
-#   image:
-#     width: 200px
-#     alt: fun-fish
-#     classes: shadow bg-primary
-#   figure:
-#     caption: |
-#       Hey everyone its **party** time!
-#     name: fun-fish
-# ---
 
 # In[1]:
 

@@ -34,6 +34,8 @@ html:
 html_theme_options:
   extra_css: 
     - custom.css
+  thebe:
+    - hide_output: true
 
 launch_buttons:
   thebe: true

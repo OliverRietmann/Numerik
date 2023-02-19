@@ -1,0 +1,27 @@
+x = 3
+print(x)
+print("x")
+
+var = "I am a string."
+print(var)
+
+l = [1, 2, 3]
+print(l)
+print(l[1])
+print(l[-1])
+
+l = [1, "two", 3]
+print(l)
+for n in l:
+  print(n)
+  print("Within the loop.")
+print("Outside of the loop.")
+
+for i in range(3):
+  if i % 2 == 0:
+    print(i)
+
+
+print(2 + 3)
+print(2 * 3)
+print(2**3)

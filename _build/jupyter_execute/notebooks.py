@@ -22,7 +22,7 @@
 # Jupyter Book will also embed your code blocks and output in your book.
 # For example, here's some sample Matplotlib code:
 
-# In[1]:
+# In[ ]:
 
 
 from matplotlib import rcParams, cycler
@@ -52,7 +52,7 @@ ax.legend(custom_lines, ['Cold', 'Medium', 'Hot']);
 
 # Note that the image above is captured and displayed in your site.
 
-# In[2]:
+# In[ ]:
 
 
 # Fixing random state for reproducibility
@@ -98,7 +98,7 @@ ax.set_axis_off()
 
 # You can **remove only the code** so that images and other output still show up.
 
-# In[4]:
+# In[ ]:
 
 
 thisvariable = "this plot *will* show up in the textbook."
@@ -114,7 +114,7 @@ ax.set_axis_off()
 # Which works well if you'd like to quickly display cell output without cluttering your content with code.
 # This works for any cell output, like a Pandas DataFrame.
 
-# In[5]:
+# In[ ]:
 
 
 import pandas as pd
@@ -127,7 +127,7 @@ pd.DataFrame([['hi', 'there'], ['this', 'is'], ['a', 'DataFrame']], columns=['Wo
 # your Jupyter Book as well! For example, here is the command line help
 # menu, see how it is nicely formatted.
 
-# In[6]:
+# In[ ]:
 
 
 get_ipython().system('jupyter-book build --help')
@@ -136,7 +136,7 @@ get_ipython().system('jupyter-book build --help')
 # And here is an error. You can mark notebook cells as "expected to error" by adding a
 # `raises-exception` tag to them.
 
-# In[7]:
+# In[ ]:
 
 
 this_will_error

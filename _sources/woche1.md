@@ -228,7 +228,7 @@ import numpy as np
 # Ihr Code kommt hier hin.
 ```
 
-# Graphische Darstellungen
+## Graphische Darstellungen
 
 Um Funktionen zu plotten müssen wir sie an vielen verschiedenen Positionen auf der x-Achse auswerten.
 Dazu gibt es die Funktion `numpy.linspace`.
@@ -239,7 +239,8 @@ x = np.linspace(1, 5, 4)
 print(x)
 ```
 :::{admonition} Aufgabe
-Beschreiben Sie in Worten, was der Aufruf `numpy.linspace(start, stop, num)` macht, wobei `start < stop` und `num` eine ganze Zahl ist.
+Seien `start < stop` und sei `num` eine ganze Zahl.
+Beschreiben Sie in Worten, was der Aufruf `numpy.linspace(start, stop, num)` macht.
 :::
 
 Zum Plotten verwenden wir das Modul `matplotlib.pyplot`.
@@ -260,7 +261,7 @@ plt.show()
 :::{admonition} Aufgabe
 Ändern Sie obigen Code, so dass er das Polynom
 
-$$ p(x)=x^2+x+17 $$
+$$ p(x)=x^2 + x + 17 $$
 
 plottet.
 :::
@@ -273,13 +274,13 @@ Ergänzen Sie folgenden Code, so dass er die drei Funktionen im selben Koordinat
 import numpy as np
 import matplotlib.pyplot as plt
 
-x = np.linspace(0, 20 ,100)
+x = np.linspace(0, 20, 100)
 y1 = np.sin(x) / np.sqrt(x + 1)
 y2 = np.sin(x / 2) / np.sqrt(x + 1)
 y3 = np.sin(x / 3) / np.sqrt(x + 1)
 
 plt.figure()
-plt.xlabel(’x’)
+plt.xlabel("x")
 # Ihr Code kommt hier hin
 # ...
 plt.show()
@@ -290,15 +291,44 @@ Oder man mach separate Plots.
 import numpy as np
 import matplotlib.pyplot as plt
 
-x = np.linspace(0,2*math.pi,100)
+x = np.linspace(0, 2 * np.pi, 100)
 y = np.sin(x)
 
 fig, ax = plt.subplots(2)
-fig.suptitle(’Vertically stacked subplots’)
-ax[0].plot(x,  y, color=’red’ )
-ax[1].plot(x, -y, color=’blue’)
+fig.suptitle("Vertically stacked subplots")
+ax[0].plot(x,  y, color="red" )
+ax[1].plot(x, -y, color="blue")
 plt.show()
 ```
 :::{admonition} Aufgabe
 Was müssen Sie ändern, damit die Plots nebeneinander stehen?
+:::
+
+
+## Weitere Aufgaben
+
+:::{admonition} Aufgabe 1
+Schreiben Sie ein Skript, das die Funktionen $x = \cos(t)$ und $y = \sin(t)$ mit $t$ im Intervall $[0, 2\pi]$ auswertet und mittels `matplotlib.pyplot.plot(x, y)` darstellt.
+(Hilfestellung: Sie brauchen geeignete Stützstellen $t$ im Intervall.)
+:::
+
+:::{admonition} Aufgabe 2
+Modifizieren Sie das vorangegangene Programm zu einer Python-Funktion, die als Argumente die linke und rechte Intervallgrenze $a$ und $b$ des $t$-Intervalls entgegennimmt.
+:::
+
+:::{admonition} Aufgabe 3
+Schreiben Sie eine Python-Funktion, die die Funktionen $x = \sin(At+a)$ und $y = \sin(Bt+b)$ für $t$ im Intervall $[0, 2\pi]$ auswertet und mittels `matplotlib.pyplot.plot(x, y)` darstellt.
+Dabei sollen A, a und B, b die Argumente der Funktion sein.
+:::
+
+:::{admonition} Aufgabe 4
+Experimentieren Sie mit folgenden Werten:
+
+$$ A = 2, a = \pi / 4, B = 1, b = 0 $$
+$$ A = 3, a = \pi / 2, B = 1, b = 0 $$
+$$ A = 1, a = 0, B = 1, b = 0 $$
+
+Variieren Sie dann weiter A, a, B und b.
+Was stellen Sie fest? Beschreiben Sie ihre Beobachtungen in Worten.
+Welche Bedeutung haben a, b sowie A, B? Recherchieren Sie asserdem im Internet das Thema ”Lissajous Figuren”.
 :::

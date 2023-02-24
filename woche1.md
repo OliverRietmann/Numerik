@@ -170,8 +170,8 @@ print(np.dot(A, B))
 ```
 
 Es gibt effiziente Funktionen um spezielle Matrizen zu erstellen.
-| `numpy` Funktion | Beschreibung   |
-|------------------|:--------------:|
+| Funktion | Beschreibung           |
+|------------------|:---------------|
 | `eye`            | Einheitsmatrix |
 | `zeros`          | Nullmatrix     |
 | `ones`           | Alles Einsen   |

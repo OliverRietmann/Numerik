@@ -26,27 +26,22 @@ import math
 print(math.sqrt(45))
 print(math.pow(23, 1 / 5))
 
+def log17(x):
+  y = math.log(x) / math.log(17)
+  return y
+
 l1 = [1, 2, 3]
 l2 = [4, 5, 6]
 
-print(l1 + l2)
-
 def sum_lists(v, w):
-  assert len(v) == len(w)
-  y = []
-  for i in range(len(v)):
-    y += [v[i] + w[i]]
-  return y
+  return v + w
 
 print(sum_lists(l1, l2))
 
 l = [1, 2, 3]
 
-print(3 * l)
-
 def skalar_mult(s, v):
-  w = []
-  return w
+  return s * v
 
 print(skalar_mult(3, l))
 
@@ -54,10 +49,7 @@ import numpy as np
 
 l = [1, 2, 3]
 x = np.array(l)
-print(x)
-
 y = np.array([4, 5, 6])
-print(y)
 
 print(x + y)
 print(3 * x)

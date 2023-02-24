@@ -61,8 +61,9 @@ n = 3
 
 ## Python als Taschenrechner
 
-Was ist der Output der folgenden Codes?
-
+:::{admonition} Aufgabe
+Was ist der Output des folgenden Codes?
+:::
 ```{code-cell}
 print(2 + 3)
 print(2 * 3)
@@ -71,6 +72,7 @@ print(2**3)
 print(2^3)
 ```
 
+Das Modul (engl. module) `math` enthält diverse Funktionen aus der Mathematik.
 ```{code-cell}
 import math
 
@@ -80,45 +82,54 @@ print(math.pow(23, 1 / 5))
 
 ## Funktionen
 
+Wir können auch unsere eigenen Funktionen definieren.
+```{code-cell}
+def log17(x):
+  y = math.log(x) / math.log(17)
+  return y
+```
+:::{admonition} Aufgabe
+Welchen Wert haben `log17(17)` und `log17(17**2)`?
+:::
+
+Eine Funktion kann auch mehrere Argumente haben.
+:::{admonition} Aufgabe
+Folgende Funktion soll zwei gleich lange Listen elementweise addieren. Korrigieren Sie die Funktion.
+:::
 ```{code-cell}
 l1 = [1, 2, 3]
 l2 = [4, 5, 6]
 
-print(l1 + l2)
-
 def sum_lists(v, w):
-  assert len(v) == len(w)
-  y = []
-  for i in range(len(v)):
-    y += [v[i] + w[i]]
-  return y
+  return v + w
 
 print(sum_lists(l1, l2))
 ```
 
+Eine Funktion kann auch mehrere Argumente haben.
+:::{admonition} Aufgabe
+Folgende Funktion soll eine Skalar-Vektor Multiplikation machen. Korrigieren Sie die Funktion.
+:::
 ```{code-cell}
 l = [1, 2, 3]
 
-print(3 * l)
-
 def skalar_mult(s, v):
-  w = []
-  return w
+  return s * v
 
 print(skalar_mult(3, l))
 ```
 
 ## Vektoren und Matrizen
 
+Das Packet (engl. package) `numpy` enthält die wichtigsten Funktionen aus der linearen Algebra.
+Es kann Listen in `numpy.arrays` umwandeln.
+Diese verhalten sich wie Vektoren und Matrizen.
 ```{code-cell}
 import numpy as np
 
 l = [1, 2, 3]
 x = np.array(l)
-print(x)
-
 y = np.array([4, 5, 6])
-print(y)
 
 print(x + y)
 print(3 * x)

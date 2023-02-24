@@ -54,7 +54,6 @@ const thebe_selector_output = ".output, .cell_output"
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Woche 2: Grundlagen der Numerik mit Python" href="woche2.html" />
     <link rel="prev" title="Einführung in die Numerik" href="intro.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
@@ -119,21 +118,6 @@ const thebe_selector_output = ".output, .cell_output"
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
    Woche 1: Einführung in Python
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="woche2.html">
-   Woche 2: Grundlagen der Numerik mit Python
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="woche3.html">
-   Woche 3: Polynome, Potenzreihen und Taylor-Approximation
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="notebooks.html">
-   Jupyter Notebook files
   </a>
  </li>
 </ul>
@@ -473,7 +457,7 @@ title="Print to PDF"
 <li><p>Ich kann mit der Klasse <code class="docutils literal notranslate"><span class="pre">numpy.array</span></code> Vektoren und Matrizen erstellen diese manipulieren.</p></li>
 <li><p>Ich weiss, was die Operatoren <code class="docutils literal notranslate"><span class="pre">+,-,*,/,**</span></code> mit einem <code class="docutils literal notranslate"><span class="pre">numpy.array</span></code> machen.</p></li>
 <li><p>Ich kenne den Unterschied zwischen <code class="docutils literal notranslate"><span class="pre">numpy.sqrt</span></code> und <code class="docutils literal notranslate"><span class="pre">math.sqrt</span></code> (analog für weitere Funktionen).</p></li>
-<li><p>Ich kann mit dem Package <code class="docutils literal notranslate"><span class="pre">matplotlib</span></code> die Funktion <code class="docutils literal notranslate"><span class="pre">numpy.sin</span></code> plotten.</p></li>
+<li><p>Ich kann mit dem package <code class="docutils literal notranslate"><span class="pre">matplotlib</span></code> die Funktion <code class="docutils literal notranslate"><span class="pre">numpy.sin</span></code> plotten (analog für weitere Funktionen).</p></li>
 <li><p>Ich kann in Python eigene Funktionen definieren und diese ausführen.</p></li>
 </ol>
 <section id="variablen-zeichenketten-strings-listen-und-schleifen">
@@ -588,10 +572,10 @@ Der eingerückte Code wir dabei wiederholt.</p>
 </div>
 </div>
 </div>
-<p>Eine Funktion kann auch mehrere Argumente haben.</p>
 <div class="admonition-aufgabe admonition">
 <p class="admonition-title">Aufgabe</p>
-<p>Folgende Funktion soll eine Skalar-Vektor Multiplikation machen. Korrigieren Sie die Funktion.</p>
+<p>Folgende Funktion soll eine Skalar-Vektor Multiplikation machen.
+Korrigieren Sie die Funktion.</p>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -714,7 +698,7 @@ In diesem Fall berechnet <code class="docutils literal notranslate"><span class=
 <span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">16</span><span class="p">,</span>  <span class="mi">3</span><span class="p">],</span>
               <span class="p">[</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">],</span>
               <span class="p">[</span> <span class="mi">9</span><span class="p">,</span>  <span class="mi">6</span><span class="p">]])</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">A</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">A</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
@@ -770,7 +754,7 @@ Dazu gibt es die Funktion <code class="docutils literal notranslate"><span class
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 
-<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">9</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -922,13 +906,6 @@ Welche Bedeutung haben <span class="math notranslate nohighlight">\(a, b\)</span
             <p class="prev-next-subtitle">previous</p>
             <p class="prev-next-title">Einführung in die Numerik</p>
         </div>
-    </a>
-    <a class='right-next' id="next-link" href="woche2.html" title="next page">
-    <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Woche 2: Grundlagen der Numerik mit Python</p>
-    </div>
-    <i class="fas fa-angle-right"></i>
     </a>
 </div>
             </footer>

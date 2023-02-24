@@ -20,7 +20,7 @@ Lernziele:
 1. Ich kann mit der Klasse `numpy.array` Vektoren und Matrizen erstellen diese manipulieren.
 2. Ich weiss, was die Operatoren `+,-,*,/,**` mit einem `numpy.array` machen.
 3. Ich kenne den Unterschied zwischen `numpy.sqrt` und `math.sqrt` (analog für weitere Funktionen).
-4. Ich kann mit dem Package `matplotlib` die Funktion `numpy.sin` plotten.
+4. Ich kann mit dem package `matplotlib` die Funktion `numpy.sin` plotten (analog für weitere Funktionen).
 5. Ich kann in Python eigene Funktionen definieren und diese ausführen.
 
 ## Variablen, Zeichenketten (Strings), Listen und Schleifen
@@ -106,9 +106,9 @@ def sum_lists(v, w):
 print(sum_lists(l1, l2))
 ```
 
-Eine Funktion kann auch mehrere Argumente haben.
 :::{admonition} Aufgabe
-Folgende Funktion soll eine Skalar-Vektor Multiplikation machen. Korrigieren Sie die Funktion.
+Folgende Funktion soll eine Skalar-Vektor Multiplikation machen.
+Korrigieren Sie die Funktion.
 :::
 ```{code-cell}
 l = [1, 2, 3]
@@ -194,7 +194,7 @@ print(v[1])
 A = np.array([[16,  3],
               [ 5, 10],
               [ 9,  6]])
-print(A[1, 2])
+print(A[2, 1])
 ```
 
 Das `numpy.array` übernimmt den Datentyp der Zahlen in der Liste im Argument.
@@ -235,7 +235,7 @@ Dazu gibt es die Funktion `numpy.linspace`.
 ```{code-cell}
 import numpy as np
 
-x = np.linspace(1, 5, 4)
+x = np.linspace(1, 5, 9)
 print(x)
 ```
 :::{admonition} Aufgabe

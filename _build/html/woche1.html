@@ -50,6 +50,8 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Woche 2: Grundlagen der Numerik mit Python" href="woche2.html" />
@@ -681,6 +683,49 @@ In diesem Fall berechnet <code class="docutils literal notranslate"><span class=
 </div>
 </div>
 </div>
+<p>Mit <code class="docutils literal notranslate"><span class="pre">[...]</span></code> kann man auf die Einträge von Matrizen und Vektoren zugreifen.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="n">v</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">v</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+
+<span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">16</span><span class="p">,</span>  <span class="mi">3</span><span class="p">],</span>
+              <span class="p">[</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">],</span>
+              <span class="p">[</span> <span class="mi">9</span><span class="p">,</span>  <span class="mi">6</span><span class="p">]])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">A</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Das <code class="docutils literal notranslate"><span class="pre">numpy.array</span></code> übernimmt den Datentyp der Zahlen in der Liste im Argument.</p>
+<div class="admonition-aufgabe admonition">
+<p class="admonition-title">Aufgabe</p>
+<p>Was ist der Output des folgenden Codes? Erklären Sie.</p>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">/</span> <span class="mi">2</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="admonition-aufgabe admonition">
+<p class="admonition-title">Aufgabe</p>
+<ol class="simple">
+<li><p>Berechnen Sie den Sinus von 30 Grad in Python.</p></li>
+<li><p>Überlegen sie sich Varianten zur Definition der Matrix</p></li>
+</ol>
+</div>
+<div class="math notranslate nohighlight">
+\[
+2^3
+\]</div>
 </section>
 </section>
 

@@ -82,3 +82,19 @@ import numpy as np
 
 R = np.random.random((2,3))
 print(R)
+
+import numpy as np
+
+v = np.array([1, 2, 3])
+print(v[1])
+
+A = np.array([[16,  3],
+              [ 5, 10],
+              [ 9,  6]])
+print(A[1, 2])
+
+import numpy as np
+
+x = np.array([1])
+x[0] = x[0] / 2
+print(x[0])

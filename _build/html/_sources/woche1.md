@@ -170,7 +170,7 @@ print(np.dot(A, B))
 ```
 
 Es gibt effiziente Funktionen um spezielle Matrizen zu erstellen.
-| Funktion | Beschreibung           |
+| Funktion         | Beschreibung   |
 |------------------|:---------------|
 | `eye`            | Einheitsmatrix |
 | `zeros`          | Nullmatrix     |
@@ -183,3 +183,35 @@ import numpy as np
 R = np.random.random((2,3))
 print(R)
 ```
+
+Mit `[...]` kann man auf die Einträge von Matrizen und Vektoren zugreifen.
+```{code-cell}
+import numpy as np
+
+v = np.array([1, 2, 3])
+print(v[1])
+
+A = np.array([[16,  3],
+              [ 5, 10],
+              [ 9,  6]])
+print(A[1, 2])
+```
+
+Das `numpy.array` übernimmt den Datentyp der Zahlen in der Liste im Argument.
+:::{admonition} Aufgabe
+Was ist der Output des folgenden Codes? Erklären Sie.
+:::
+```{code-cell}
+import numpy as np
+
+x = np.array([1])
+x[0] = x[0] / 2
+print(x[0])
+```
+:::{admonition} Aufgabe
+1. Berechnen Sie den Sinus von 30 Grad in Python.
+2. Überlegen sie sich Varianten zur Definition der Matrix
+:::
+$$
+2^3
+$$

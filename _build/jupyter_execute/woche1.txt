@@ -91,7 +91,7 @@ print(v[1])
 A = np.array([[16,  3],
               [ 5, 10],
               [ 9,  6]])
-print(A[1, 2])
+print(A[2, 1])
 
 import numpy as np
 
@@ -105,7 +105,7 @@ import numpy as np
 
 import numpy as np
 
-x = np.linspace(1, 5, 4)
+x = np.linspace(1, 5, 9)
 print(x)
 
 import numpy as np

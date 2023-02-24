@@ -211,7 +211,19 @@ print(x[0])
 :::{admonition} Aufgabe
 1. Berechnen Sie den Sinus von 30 Grad in Python.
 2. Überlegen sie sich Varianten zur Definition der Matrix
+
+$$
+\begin{pmatrix}
+  0 & 1 & 1 & 1 & 1 \\
+  1 & 0 & 1 & 1 & 1 \\
+  1 & 1 & 0 & 1 & 1 \\
+  1 & 1 & 1 & 0 & 1 \\
+  1 & 1 & 1 & 1 & 0 \\
+\end{pmatrix}.
+$$
 :::
-$$
-2^3
-$$
+```{code-cell}
+import numpy as np
+
+# Ihr Code kommt hier hin.
+```

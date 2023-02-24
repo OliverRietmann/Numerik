@@ -317,8 +317,12 @@ Modifizieren Sie das vorangegangene Programm zu einer Python-Funktion, die als A
 :::
 
 :::{admonition} Aufgabe 3
-Schreiben Sie eine Python-Funktion, die die Funktionen $x = \sin(At+a)$ und $y = \sin(Bt+b)$ für $t$ im Intervall $[0, 2\pi]$ auswertet und mittels `matplotlib.pyplot.plot(x, y)` darstellt.
-Dabei sollen A, a und B, b die Argumente der Funktion sein.
+Schreiben Sie eine Python-Funktion, die die Funktionen
+
+$$ x = \sin(At+a) \quad\text{und}\quad y = \sin(Bt+b) $$
+
+für $t$ im Intervall $[0, 2\pi]$ auswertet und mittels `matplotlib.pyplot.plot(x, y)` darstellt.
+Dabei sollen $A, a$ und $B, b$ die Argumente der Funktion sein.
 :::
 
 :::{admonition} Aufgabe 4
@@ -328,7 +332,7 @@ $$ A = 2, a = \pi / 4, B = 1, b = 0 $$
 $$ A = 3, a = \pi / 2, B = 1, b = 0 $$
 $$ A = 1, a = 0, B = 1, b = 0 $$
 
-Variieren Sie dann weiter A, a, B und b.
+Variieren Sie dann weiter $A, a$ und $B, b$.
 Was stellen Sie fest? Beschreiben Sie ihre Beobachtungen in Worten.
-Welche Bedeutung haben a, b sowie A, B? Recherchieren Sie asserdem im Internet das Thema ”Lissajous Figuren”.
+Welche Bedeutung haben $a, b$ sowie $A, B$? Recherchieren Sie asserdem im Internet das Thema ”Lissajous Figuren”.
 :::

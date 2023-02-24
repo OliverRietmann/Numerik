@@ -10,6 +10,11 @@ print(l)
 for n in l:
   print(n)
 
+n = 3
+# Ihr Code kommt hier hin:
+# ...
+# ...
+
 print(2 + 3)
 print(2 * 3)
 print(2 / 3)

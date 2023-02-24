@@ -49,17 +49,14 @@ for n in l:
 ```
 
 :::{admonition} Aufgabe
-Ergänzen Sie folgenden Code mittels einer `if` Anweisung, so dass er angibt, ob die Variable `i` gerade oder ungerade ist.
-'''{code-cell}
-i = 3
-if i % 2 == 0:
-  print(i, "ist gerade")
-else:
-  print(i, "ist ungerade")
-'''
+Ergänzen Sie folgenden Code mit einer `if` Anweisung, so dass er angibt, ob die Variable `n` gerade oder ungerade ist.
 :::
-
-Eingerückter Code nach einer `if` Anweisung wird nur dann
+```{code-cell}
+n = 3
+# Ihr Code kommt hier hin:
+# ...
+# ...
+```
 
 
 ## Python als Taschenrechner

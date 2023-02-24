@@ -505,7 +505,10 @@ Der eingerückte Code wir dabei wiederholt.</p>
 </section>
 <section id="python-als-taschenrechner">
 <h2>Python als Taschenrechner<a class="headerlink" href="#python-als-taschenrechner" title="Permalink to this headline">#</a></h2>
-<p>Was ist der Output der folgenden Codes?</p>
+<div class="admonition-aufgabe admonition">
+<p class="admonition-title">Aufgabe</p>
+<p>Was ist der Output des folgenden Codes?</p>
+</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="mi">2</span> <span class="o">+</span> <span class="mi">3</span><span class="p">)</span>
@@ -517,6 +520,7 @@ Der eingerückte Code wir dabei wiederholt.</p>
 </div>
 </div>
 </div>
+<p>Das Modul (engl. module) <code class="docutils literal notranslate"><span class="pre">math</span></code> enthält diverse Funktionen aus der Mathematik.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">math</span>
@@ -530,34 +534,49 @@ Der eingerückte Code wir dabei wiederholt.</p>
 </section>
 <section id="funktionen">
 <h2>Funktionen<a class="headerlink" href="#funktionen" title="Permalink to this headline">#</a></h2>
+<p>Wir können auch unsere eigenen Funktionen definieren.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">log17</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+  <span class="n">y</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">/</span> <span class="n">math</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mi">17</span><span class="p">)</span>
+  <span class="k">return</span> <span class="n">y</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="admonition-aufgabe admonition">
+<p class="admonition-title">Aufgabe</p>
+<p>Welchen Wert haben <code class="docutils literal notranslate"><span class="pre">log17(17)</span></code> und <code class="docutils literal notranslate"><span class="pre">log17(17**2)</span></code>?</p>
+</div>
+<p>Eine Funktion kann auch mehrere Argumente haben.</p>
+<div class="admonition-aufgabe admonition">
+<p class="admonition-title">Aufgabe</p>
+<p>Folgende Funktion soll zwei gleich lange Listen elementweise addieren. Korrigieren Sie die Funktion.</p>
+</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">l1</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
 <span class="n">l2</span> <span class="o">=</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">]</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="n">l1</span> <span class="o">+</span> <span class="n">l2</span><span class="p">)</span>
-
 <span class="k">def</span> <span class="nf">sum_lists</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">w</span><span class="p">):</span>
-  <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">v</span><span class="p">)</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="n">w</span><span class="p">)</span>
-  <span class="n">y</span> <span class="o">=</span> <span class="p">[]</span>
-  <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">v</span><span class="p">)):</span>
-    <span class="n">y</span> <span class="o">+=</span> <span class="p">[</span><span class="n">v</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+</span> <span class="n">w</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span>
-  <span class="k">return</span> <span class="n">y</span>
+  <span class="k">return</span> <span class="n">v</span> <span class="o">+</span> <span class="n">w</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="n">sum_lists</span><span class="p">(</span><span class="n">l1</span><span class="p">,</span> <span class="n">l2</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
 </div>
+<p>Eine Funktion kann auch mehrere Argumente haben.</p>
+<div class="admonition-aufgabe admonition">
+<p class="admonition-title">Aufgabe</p>
+<p>Folgende Funktion soll eine Skalar-Vektor Multiplikation machen. Korrigieren Sie die Funktion.</p>
+</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">l</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="mi">3</span> <span class="o">*</span> <span class="n">l</span><span class="p">)</span>
-
 <span class="k">def</span> <span class="nf">skalar_mult</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">v</span><span class="p">):</span>
-  <span class="n">w</span> <span class="o">=</span> <span class="p">[]</span>
-  <span class="k">return</span> <span class="n">w</span>
+  <span class="k">return</span> <span class="n">s</span> <span class="o">*</span> <span class="n">v</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="n">skalar_mult</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="n">l</span><span class="p">))</span>
 </pre></div>
@@ -567,16 +586,16 @@ Der eingerückte Code wir dabei wiederholt.</p>
 </section>
 <section id="vektoren-und-matrizen">
 <h2>Vektoren und Matrizen<a class="headerlink" href="#vektoren-und-matrizen" title="Permalink to this headline">#</a></h2>
+<p>Das Packet (engl. package) <code class="docutils literal notranslate"><span class="pre">numpy</span></code> enthält die wichtigsten Funktionen aus der linearen Algebra.
+Es kann Listen in <code class="docutils literal notranslate"><span class="pre">numpy.arrays</span></code> umwandeln.
+Diese verhalten sich wie Vektoren und Matrizen.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 
 <span class="n">l</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
 <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">l</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-
 <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">])</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="n">x</span> <span class="o">+</span> <span class="n">y</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="mi">3</span> <span class="o">*</span> <span class="n">x</span><span class="p">)</span>

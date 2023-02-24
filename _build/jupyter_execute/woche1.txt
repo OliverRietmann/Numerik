@@ -124,13 +124,13 @@ plt.show()
 import numpy as np
 import matplotlib.pyplot as plt
 
-x = np.linspace(0, 20 ,100)
+x = np.linspace(0, 20, 100)
 y1 = np.sin(x) / np.sqrt(x + 1)
 y2 = np.sin(x / 2) / np.sqrt(x + 1)
 y3 = np.sin(x / 3) / np.sqrt(x + 1)
 
 plt.figure()
-plt.xlabel(’x’)
+plt.xlabel("x")
 # Ihr Code kommt hier hin
 # ...
 plt.show()
@@ -138,11 +138,11 @@ plt.show()
 import numpy as np
 import matplotlib.pyplot as plt
 
-x = np.linspace(0,2*math.pi,100)
+x = np.linspace(0, 2 * np.pi, 100)
 y = np.sin(x)
 
 fig, ax = plt.subplots(2)
-fig.suptitle(’Vertically stacked subplots’)
-ax[0].plot(x,  y, color=’red’ )
-ax[1].plot(x, -y, color=’blue’)
+fig.suptitle("Vertically stacked subplots")
+ax[0].plot(x,  y, color="red" )
+ax[1].plot(x, -y, color="blue")
 plt.show()

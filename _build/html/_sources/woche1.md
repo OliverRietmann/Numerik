@@ -121,7 +121,7 @@ print(skalar_mult(3, l))
 
 ## Vektoren und Matrizen
 
-Das Packet (engl. package) `numpy` enthält die wichtigsten Funktionen aus der linearen Algebra.
+Das Paket (engl. package) `numpy` enthält die wichtigsten Funktionen aus der linearen Algebra.
 Es kann Listen in `numpy.arrays` umwandeln.
 Diese verhalten sich wie Vektoren und Matrizen.
 ```{code-cell}
@@ -133,4 +133,53 @@ y = np.array([4, 5, 6])
 
 print(x + y)
 print(3 * x)
+```
+
+Im Gegensatz zu `math` agieren die `numpy` Funktionen elementweise.
+```{code-cell}
+import numpy as np
+
+x = np.array([1, 2, 3])
+print(np.sqrt(x))
+```
+
+Das Skalarprodukt zweier Vektoren berechnet man mit `numpy.dot`.
+```{code-cell}
+import numpy as np
+
+v = np.array([1, 2, 3])
+w = np.array([0, 0, 1])
+print(np.dot(v, w))
+```
+
+Matrizen entstehen aus Listen von Listen.
+In diesem Fall berechnet `numpy.dot` das Matrix-Matrix Produkt.
+```{code-cell}
+import numpy as np
+
+A = np.array([[16,  3],
+              [ 5, 10],
+              [ 9,  6]])
+
+B = np.array([[1, 2, 3],
+              [4, 6, 6]])
+
+print(np.dot(A, B))
+# Gleich wie A.dot(B) und A @ B
+# Probieren Sie mal np.shape(A)
+```
+
+Es gibt effiziente Funktionen um spezielle Matrizen zu erstellen.
+| `numpy` Funktion | Beschreibung   |
+|------------------|:--------------:|
+| `eye`            | Einheitsmatrix |
+| `zeros`          | Nullmatrix     |
+| `ones`           | Alles Einsen   |
+| `diag`           | Diagonalmatrix |
+| `random.random`  | Alles Einsen   |
+```{code-cell}
+import numpy as np
+
+R = np.random.random((2,3))
+print(R)
 ```

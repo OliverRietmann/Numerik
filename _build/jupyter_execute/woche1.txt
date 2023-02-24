@@ -53,3 +53,32 @@ y = np.array([4, 5, 6])
 
 print(x + y)
 print(3 * x)
+
+import numpy as np
+
+x = np.array([1, 2, 3])
+print(np.sqrt(x))
+
+import numpy as np
+
+v = np.array([1, 2, 3])
+w = np.array([0, 0, 1])
+print(np.dot(v, w))
+
+import numpy as np
+
+A = np.array([[16,  3],
+              [ 5, 10],
+              [ 9,  6]])
+
+B = np.array([[1, 2, 3],
+              [4, 6, 6]])
+
+print(np.dot(A, B))
+# Gleich wie A.dot(B) und A @ B
+# Probieren Sie mal np.shape(A)
+
+import numpy as np
+
+R = np.random.random((2,3))
+print(R)

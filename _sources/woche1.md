@@ -210,7 +210,7 @@ print(x[0])
 ```
 :::{admonition} Aufgabe
 1. Berechnen Sie den Sinus von 30 Grad in Python.
-2. Überlegen sie sich Varianten zur Definition der Matrix
+2. Überlegen Sie sich Varianten zur Definition der Matrix
 
 $$
 \begin{pmatrix}
@@ -227,3 +227,78 @@ import numpy as np
 
 # Ihr Code kommt hier hin.
 ```
+
+# Graphische Darstellungen
+
+Um Funktionen zu plotten müssen wir sie an vielen verschiedenen Positionen auf der x-Achse auswerten.
+Dazu gibt es die Funktion `numpy.linspace`.
+```{code-cell}
+import numpy as np
+
+x = np.linspace(1, 5, 4)
+print(x)
+```
+:::{admonition} Aufgabe
+Beschreiben Sie in Worten, was der Aufruf `numpy.linspace(start, stop, num)` macht, wobei `start < stop` und `num` eine ganze Zahl ist.
+:::
+
+Zum Plotten verwenden wir das Modul `matplotlib.pyplot`.
+```{code-cell}
+import numpy as np
+import matplotlib.pyplot as plt
+
+x = np.linspace(0, 2 * np.pi, 100)
+y = np.sin(x)
+
+plt.figure()
+plt.plot(x, y, color="red")
+plt.title("Plot von sin(x)")
+plt.xlabel("x")
+plt.ylabel("sin(x)")
+plt.show()
+```
+:::{admonition} Aufgabe
+Ändern Sie obigen Code, so dass er das Polynom
+
+$$ p(x)=x^2+x+17 $$
+
+plottet.
+:::
+
+Oft will man mehrere Funktionen gleichzeitig plotten.
+:::{admonition} Aufgabe
+Ergänzen Sie folgenden Code, so dass er die drei Funktionen im selben Koordinatensystem plottet.
+:::
+```{code-cell}
+import numpy as np
+import matplotlib.pyplot as plt
+
+x = np.linspace(0, 20 ,100)
+y1 = np.sin(x) / np.sqrt(x + 1)
+y2 = np.sin(x / 2) / np.sqrt(x + 1)
+y3 = np.sin(x / 3) / np.sqrt(x + 1)
+
+plt.figure()
+plt.xlabel(’x’)
+# Ihr Code kommt hier hin
+# ...
+plt.show()
+```
+
+Oder man mach separate Plots.
+```{code-cell}
+import numpy as np
+import matplotlib.pyplot as plt
+
+x = np.linspace(0,2*math.pi,100)
+y = np.sin(x)
+
+fig, ax = plt.subplots(2)
+fig.suptitle(’Vertically stacked subplots’)
+ax[0].plot(x,  y, color=’red’ )
+ax[1].plot(x, -y, color=’blue’)
+plt.show()
+```
+:::{admonition} Aufgabe
+Was müssen Sie ändern, damit die Plots nebeneinander stehen?
+:::

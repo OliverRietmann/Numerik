@@ -102,3 +102,47 @@ print(x[0])
 import numpy as np
 
 # Ihr Code kommt hier hin.
+
+import numpy as np
+
+x = np.linspace(1, 5, 4)
+print(x)
+
+import numpy as np
+import matplotlib.pyplot as plt
+
+x = np.linspace(0, 2 * np.pi, 100)
+y = np.sin(x)
+
+plt.figure()
+plt.plot(x, y, color="red")
+plt.title("Plot von sin(x)")
+plt.xlabel("x")
+plt.ylabel("sin(x)")
+plt.show()
+
+import numpy as np
+import matplotlib.pyplot as plt
+
+x = np.linspace(0, 20 ,100)
+y1 = np.sin(x) / np.sqrt(x + 1)
+y2 = np.sin(x / 2) / np.sqrt(x + 1)
+y3 = np.sin(x / 3) / np.sqrt(x + 1)
+
+plt.figure()
+plt.xlabel(’x’)
+# Ihr Code kommt hier hin
+# ...
+plt.show()
+
+import numpy as np
+import matplotlib.pyplot as plt
+
+x = np.linspace(0,2*math.pi,100)
+y = np.sin(x)
+
+fig, ax = plt.subplots(2)
+fig.suptitle(’Vertically stacked subplots’)
+ax[0].plot(x,  y, color=’red’ )
+ax[1].plot(x, -y, color=’blue’)
+plt.show()

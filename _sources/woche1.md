@@ -319,7 +319,7 @@ Modifizieren Sie das vorangegangene Programm zu einer Python-Funktion, die als A
 :::{admonition} Aufgabe 3
 Schreiben Sie eine Python-Funktion, die die Funktionen
 
-$$ x = \cos(At+a) \quad\text{und}\quad y = \sin(Bt+b) $$
+$$ x = \sin(At+a) \quad\text{und}\quad y = \sin(Bt+b) $$
 
 für $t$ im Intervall $[0, 2\pi]$ auswertet und mittels `matplotlib.pyplot.plot(x, y)` darstellt.
 Dabei sollen $A, a$ und $B, b$ die Argumente der Funktion sein.

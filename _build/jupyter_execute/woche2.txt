@@ -21,6 +21,25 @@ for i in range(27):
   pi_approx = 0.5 * n * s
   print(n, "\t", pi_approx)
 
+import numpy as np
+
+n = 4
+s = np.sqrt(2.0)
+for i in range(27):
+  n = 2 * n
+  s = np.sqrt(2.0 - 2.0 * np.sqrt(1.0 - 0.25 * s**2))
+  pi_approx = 0.5 * n * s
+  print(n, "\t", pi_approx)
+
+def float_print(x):
+  print("{0:0.20f}".format(x))
+
+float_print(0.1)
+float_print((1.0 / 3.0)**3 - 1 / 27)
+float_print(1.0 + 1e-16)
+
+np.finfo(’float’)
+
 n = 3
 
 if n % 2 == 1:

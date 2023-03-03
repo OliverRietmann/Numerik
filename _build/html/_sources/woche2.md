@@ -78,7 +78,49 @@ for i in range(27):
   print(n, "\t", pi_approx)
 ```
 
-Bezüglich $\pi=4$ gibt es einen fun-fcat: [Indiana Pi Bill](https://de.wikipedia.org/wiki/Indiana_Pi_Bill)
+Bezüglich $\pi=4$ gibt es einen fun-fact: [Indiana Pi Bill](https://de.wikipedia.org/wiki/Indiana_Pi_Bill)
+
+Da $\pi$ eine irrationale Zahl ist, kann sie auch im Binärsystem nicht exakt dargestellt werden.
+Auch die Zahl $0.1$ kann im Binärsystem nicht exakt dargestellt werden.
+$$
+0.1=\frac{1}{10}=\frac{1}{16}+\frac{1}{32}+\frac{1}{256}+\frac{1}{512}+\cdots
+$$
+Das heisst, die Darstellung dieser Zahl auf dem Computer ist immer fehlerbehaftet.
+
+
+```{code-cell}
+import numpy as np
+
+n = 4
+s = np.sqrt(2.0)
+for i in range(27):
+  n = 2 * n
+  s = np.sqrt(2.0 - 2.0 * np.sqrt(1.0 - 0.25 * s**2))
+  pi_approx = 0.5 * n * s
+  print(n, "\t", pi_approx)
+```
+
+:::{warning}
+Seien $a$ und $b$ zwei Gleitkommazahlen.
+1. Auslöschung: Wenn $a$ und $b$ etwa gleich gross sind, dann hat das Resultat von $a-b$ einen grossen relativen Fehler
+2. Absorbtion: Wenn $a$ viel grösser is als $b$, dann hat das Resultat von $a+b$ einen grossen Fehler (es ist etwa gleich $a$).
+:::
+
+Hier sind ein paar Beispiele.
+```{code-cell}
+def float_print(x):
+  print("{0:0.20f}".format(x))
+
+float_print(0.1)
+float_print((1.0 / 3.0)**3 - 1 / 27)
+float_print(1.0 + 1e-16)
+```
+
+Die Eigenschaften eines `numpy` floats kann man abfragen.
+```{code-cell}
+np.finfo(’float’)
+```
+
 
 ## Kontrollstrukturen
 
@@ -95,7 +137,7 @@ else:
 ```
 
 :::{admonition} Aufgabe
-Ergänzen Sie folgenden Python Code, so dass er die Binärdarstellung der natürlichen Zahl `n` ausgiebt.
+Ergänzen Sie folgenden Python Code, so dass er die Binärdarstellung der natürlichen Zahl `n` ausgibt.
 :::
 ```{code-cell}
 # Zum Beispiel 6 --> 110 oder 26 --> 11010

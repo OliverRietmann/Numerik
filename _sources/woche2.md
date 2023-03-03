@@ -98,22 +98,21 @@ Gleitkommazahlen haben in der Nähe von Null die beste Auflösung.
 ```{image} images/gleitkommazahl.png
 :alt: gleitkommazahl
 :class: fig
-:width: 300px
+:width: 600px
 :align: center
 ```
 
 ```{image} images/exakt.png
 :alt: exakt
 :class: fig
-:width: 300px
+:width: 600px
 :align: center
 ```
 
 :::{warning}
 Seien $a$ und $b$ zwei Gleitkommazahlen, die aus.
-1. **Auslöschung:** Wenn $a$ und $b$ etwa gleich gross sind, dann kann das Resultat von $a-b$ einen grossen relativen Fehler haben.
-
-2. **Absorbtion:** Ist $a$ viel grösser ist $b$, so liegt das Ergebnis von $a+b$ zu nahe an $a$.
+- **Auslöschung:** Wenn $a$ und $b$ etwa gleich gross sind, dann kann das Resultat von $a-b$ einen grossen relativen Fehler haben.
+- **Absorbtion:** Ist $a$ viel grösser ist $b$, so liegt das Ergebnis von $a+b$ zu nahe an $a$.
 :::
 
 Hier sind ein paar Beispiele.

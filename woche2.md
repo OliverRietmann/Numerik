@@ -33,8 +33,6 @@ $$
 Für $f(x)=\tfrac{1}{2}x^2$ erhalten wir zum Beispiel $f^\prime(x)=x$.
 Folgender Code appriximiert also für `h` nahe bei Null die Ableitung an der Stelle `x0`.
 ```{code-cell}
-import numpy as np
-
 def derivative(g, x0, h):
   return (g(x0 + h) - g(x0)) / h
 
@@ -95,18 +93,20 @@ $$
 $$
 
 Das heisst, die Darstellung dieser Zahl auf dem Computer ist immer fehlerbehaftet.
+Gleitkommazahlen haben in der Nähe von Null die beste Auflösung.
 
+```{image} images/gleitkommazahl.png
+:alt: gleitkommazahl
+:class: fig
+:width: 300px
+:align: center
+```
 
-```{code-cell}
-import numpy as np
-
-n = 4
-s = np.sqrt(2.0)
-for i in range(27):
-  n = 2 * n
-  s = np.sqrt(2.0 - 2.0 * np.sqrt(1.0 - 0.25 * s**2))
-  pi_approx = 0.5 * n * s
-  print(n, "\t", pi_approx)
+```{image} images/exakt.png
+:alt: exakt
+:class: fig
+:width: 300px
+:align: center
 ```
 
 :::{warning}
@@ -128,6 +128,7 @@ float_print(1.0 + 1e-16)              # Absorbtion
 
 Die Eigenschaften eines `numpy` floats kann man abfragen.
 ```{code-cell}
+import numpy as np
 np.finfo(’float’)
 ```
 

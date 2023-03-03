@@ -483,7 +483,57 @@ Wir verzichten hier auf die (einfache) Herleitung dieser Formel.</p>
 </div>
 </div>
 </div>
-<p>Bezüglich <span class="math notranslate nohighlight">\(\pi=4\)</span> gibt es einen fun-fcat: <a class="reference external" href="https://de.wikipedia.org/wiki/Indiana_Pi_Bill">Indiana Pi Bill</a></p>
+<p>Bezüglich <span class="math notranslate nohighlight">\(\pi=4\)</span> gibt es einen fun-fact: <a class="reference external" href="https://de.wikipedia.org/wiki/Indiana_Pi_Bill">Indiana Pi Bill</a></p>
+<p>Da <span class="math notranslate nohighlight">\(\pi\)</span> eine irrationale Zahl ist, kann sie auch im Binärsystem nicht exakt dargestellt werden.
+Auch die Zahl <span class="math notranslate nohighlight">\(0.1\)</span> kann im Binärsystem nicht exakt dargestellt werden.
+$<span class="math notranslate nohighlight">\(
+0.1=\frac{1}{10}=\frac{1}{16}+\frac{1}{32}+\frac{1}{256}+\frac{1}{512}+\cdots
+\)</span>$
+Das heisst, die Darstellung dieser Zahl auf dem Computer ist immer fehlerbehaftet.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="n">n</span> <span class="o">=</span> <span class="mi">4</span>
+<span class="n">s</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mf">2.0</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">27</span><span class="p">):</span>
+  <span class="n">n</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">n</span>
+  <span class="n">s</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mf">2.0</span> <span class="o">-</span> <span class="mf">2.0</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mf">1.0</span> <span class="o">-</span> <span class="mf">0.25</span> <span class="o">*</span> <span class="n">s</span><span class="o">**</span><span class="mi">2</span><span class="p">))</span>
+  <span class="n">pi_approx</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">n</span> <span class="o">*</span> <span class="n">s</span>
+  <span class="nb">print</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="s2">&quot;</span><span class="se">\t</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">pi_approx</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Seien <span class="math notranslate nohighlight">\(a\)</span> und <span class="math notranslate nohighlight">\(b\)</span> zwei Gleitkommazahlen.</p>
+<ol class="simple">
+<li><p>Auslöschung: Wenn <span class="math notranslate nohighlight">\(a\)</span> und <span class="math notranslate nohighlight">\(b\)</span> etwa gleich gross sind, dann hat das Resultat von <span class="math notranslate nohighlight">\(a-b\)</span> einen grossen relativen Fehler</p></li>
+<li><p>Absorbtion: Wenn <span class="math notranslate nohighlight">\(a\)</span> viel grösser is als <span class="math notranslate nohighlight">\(b\)</span>, dann hat das Resultat von <span class="math notranslate nohighlight">\(a+b\)</span> einen grossen Fehler (es ist etwa gleich <span class="math notranslate nohighlight">\(a\)</span>).</p></li>
+</ol>
+</div>
+<p>Hier sind ein paar Beispiele.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">float_print</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+  <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{0:0.20f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+
+<span class="n">float_print</span><span class="p">(</span><span class="mf">0.1</span><span class="p">)</span>
+<span class="n">float_print</span><span class="p">((</span><span class="mf">1.0</span> <span class="o">/</span> <span class="mf">3.0</span><span class="p">)</span><span class="o">**</span><span class="mi">3</span> <span class="o">-</span> <span class="mi">1</span> <span class="o">/</span> <span class="mi">27</span><span class="p">)</span>
+<span class="n">float_print</span><span class="p">(</span><span class="mf">1.0</span> <span class="o">+</span> <span class="mf">1e-16</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Die Eigenschaften eines <code class="docutils literal notranslate"><span class="pre">numpy</span></code> floats kann man abfragen.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>np.finfo(’float’)
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="kontrollstrukturen">
 <h2>Kontrollstrukturen<a class="headerlink" href="#kontrollstrukturen" title="Permalink to this headline">#</a></h2>
@@ -504,7 +554,7 @@ Hier bezeichnet <code class="docutils literal notranslate"><span class="pre">%</
 </div>
 <div class="admonition-aufgabe admonition">
 <p class="admonition-title">Aufgabe</p>
-<p>Ergänzen Sie folgenden Python Code, so dass er die Binärdarstellung der natürlichen Zahl <code class="docutils literal notranslate"><span class="pre">n</span></code> ausgiebt.</p>
+<p>Ergänzen Sie folgenden Python Code, so dass er die Binärdarstellung der natürlichen Zahl <code class="docutils literal notranslate"><span class="pre">n</span></code> ausgibt.</p>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">

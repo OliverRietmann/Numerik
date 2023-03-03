@@ -435,9 +435,7 @@ f^\prime(x_0)= \lim\limits_{h\rightarrow 0} \frac{f(x_0+h)-f(x_0)}{h}.
 Folgender Code appriximiert also für <code class="docutils literal notranslate"><span class="pre">h</span></code> nahe bei Null die Ableitung an der Stelle <code class="docutils literal notranslate"><span class="pre">x0</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-
-<span class="k">def</span> <span class="nf">derivative</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="n">x0</span><span class="p">,</span> <span class="n">h</span><span class="p">):</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">derivative</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="n">x0</span><span class="p">,</span> <span class="n">h</span><span class="p">):</span>
   <span class="k">return</span> <span class="p">(</span><span class="n">g</span><span class="p">(</span><span class="n">x0</span> <span class="o">+</span> <span class="n">h</span><span class="p">)</span> <span class="o">-</span> <span class="n">g</span><span class="p">(</span><span class="n">x0</span><span class="p">))</span> <span class="o">/</span> <span class="n">h</span>
 
 <span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
@@ -491,22 +489,10 @@ Auch die Zahl <span class="math notranslate nohighlight">\(0.1\)</span> kann im 
 \[
 0.1=\frac{1}{10}=\frac{1}{16}+\frac{1}{32}+\frac{1}{256}+\frac{1}{512}+\cdots
 \]</div>
-<p>Das heisst, die Darstellung dieser Zahl auf dem Computer ist immer fehlerbehaftet.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-
-<span class="n">n</span> <span class="o">=</span> <span class="mi">4</span>
-<span class="n">s</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mf">2.0</span><span class="p">)</span>
-<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">27</span><span class="p">):</span>
-  <span class="n">n</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">n</span>
-  <span class="n">s</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mf">2.0</span> <span class="o">-</span> <span class="mf">2.0</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mf">1.0</span> <span class="o">-</span> <span class="mf">0.25</span> <span class="o">*</span> <span class="n">s</span><span class="o">**</span><span class="mi">2</span><span class="p">))</span>
-  <span class="n">pi_approx</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">n</span> <span class="o">*</span> <span class="n">s</span>
-  <span class="nb">print</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="s2">&quot;</span><span class="se">\t</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">pi_approx</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
+<p>Das heisst, die Darstellung dieser Zahl auf dem Computer ist immer fehlerbehaftet.
+Gleitkommazahlen haben in der Nähe von Null die beste Auflösung.</p>
+<a class="fig reference internal image-reference" href="_images/gleitkommazahl.png"><img alt="gleitkommazahl" class="fig align-center" src="_images/gleitkommazahl.png" style="width: 300px;" /></a>
+<a class="fig reference internal image-reference" href="_images/exakt.png"><img alt="exakt" class="fig align-center" src="_images/exakt.png" style="width: 300px;" /></a>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>Seien <span class="math notranslate nohighlight">\(a\)</span> und <span class="math notranslate nohighlight">\(b\)</span> zwei Gleitkommazahlen, die aus.</p>
@@ -531,7 +517,8 @@ Auch die Zahl <span class="math notranslate nohighlight">\(0.1\)</span> kann im 
 <p>Die Eigenschaften eines <code class="docutils literal notranslate"><span class="pre">numpy</span></code> floats kann man abfragen.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>np.finfo(’float’)
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>import numpy as np
+np.finfo(’float’)
 </pre></div>
 </div>
 </div>

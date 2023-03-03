@@ -22,11 +22,13 @@ Lernziele:
 
 ## Endliche Arithmetik
 
-Die Ableitung einer stetig differenzierbaren Funktion $$f$$ an der Stelle $x_0$ ist definiert als
+Die Ableitung einer stetig differenzierbaren Funktion $f$ an der Stelle $x_0$ ist definiert als
 
-$$ f^\prime(x0)= \lim\limits_{h\rightarrow 0} \frac{f(x_0+h)-f(x_0)}{h} $$.
+$$
+f^\prime(x_0)= \lim\limits_{h\rightarrow 0} \frac{f(x_0+h)-f(x_0)}{h}.
+$$
 
-Für $$ f(x)=\tfrac{1}{2}x^2 $$ erhalten wir zum Beispiel $f^\prime(x)=x$.
+Für $f(x)=\tfrac{1}{2}x^2$ erhalten wir zum Beispiel $f^\prime(x)=x$.
 Folgender Code appriximiert also für `h` nahe bei Null die Ableitung an der Stelle `x0`.
 ```{code-cell}
 import numpy as np

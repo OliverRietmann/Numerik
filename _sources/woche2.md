@@ -15,40 +15,72 @@ kernelspec:
 
 # Woche 2: Grundlagen der Numerik mit Python
 
-Jupyter Book also lets you write text-based notebooks using MyST Markdown.
-See [the Notebooks with MyST Markdown documentation](https://jupyterbook.org/file-types/myst-notebooks.html) for more detailed instructions.
-This page shows off a notebook written in MyST Markdown.
+Lernziele:
 
-## An example cell
+1. Ich kann `if` / `else` Blöcke nutzen.
+2. Ich kann `for` und `while` Schleifen implementieren.
 
-With MyST Markdown, you can define code cells with a directive like so:
+## Endliche Arithmetik
 
+Die Ableitung einer stetig differenzierbaren Funktion $$f$$ an der Stelle $x_0$ ist definiert als
+
+$$ f^\prime(x0)= \lim\limits_{h\rightarrow 0} \frac{f(x_0+h)-f(x_0)}{h} $$.
+
+Für $$ f(x)=\tfrac{1}{2}x^2 $$ erhalten wir zum Beispiel $f^\prime(x)=x$.
+Folgender Code appriximiert also für `h` nahe bei Null die Ableitung an der Stelle `x0`.
 ```{code-cell}
-print(2 + 2)
+import numpy as np
+from matplotlib import pyplot as plt
+
+def derivative(g, x0, h):
+    return (g(x0 + h) - g(x0)) / h
+
+def f(x):
+    return 0.5 * x**2
+
+h_values = np.array([2**(-k) for k in range(10, 30)])
+df_values = derivative(f, 1.0, h_values)
+error = np.abs(1.0 - df_values)
+
+print(error)
 ```
 
-When your book is built, the contents of any `{code-cell}` blocks will be
-executed with your default Jupyter kernel, and their outputs will be displayed
-in-line with the rest of your content.
+Archmides entwickelte einen Algorithmus zur Berechnung der Kreiszahl $$\pi$$.
+Dabei berechnet er die Fläche des Einheitskreises (Radius 1), welche genau $$\pi$$ entspricht.
+Die Fläche wird durch
 
-```{seealso}
-Jupyter Book uses [Jupytext](https://jupytext.readthedocs.io/en/latest/) to convert text-based files to notebooks, and can support [many other text-based notebook files](https://jupyterbook.org/file-types/jupytext.html).
+```{image} ./images/archimedes.jpg
+:alt: archimedes
+:class: fig
+:width: 400px
+:align: center
 ```
 
-## Create a notebook with MyST Markdown
+## Kontrollstrukturen
 
-MyST Markdown notebooks are defined by two things:
+Letzte Woche haben wir folgendes Programm geschrieben.
+Es gibt aus, ob die Zahl `n` gerade oer ungerade ist.
+Hier bezeichnet `%` den Modulo-Operator (Rest aus Division).
+```{code-cell}
+n = 3
 
-1. YAML metadata that is needed to understand if / how it should convert text files to notebooks (including information about the kernel needed).
-   See the YAML at the top of this page for example.
-2. The presence of `{code-cell}` directives, which will be executed with your book.
-
-That's all that is needed to get started!
-
-## Quickly add YAML metadata for MyST Notebooks
-
-If you have a markdown file and you'd like to quickly add YAML metadata to it, so that Jupyter Book will treat it as a MyST Markdown Notebook, run the following command:
-
+if n % 2 == 1:
+  print(n, "ist gerade")
+else:
+  print(n, "ist ungerade")
 ```
-jupyter-book myst init path/to/markdownfile.md
+
+:::{admonition} Aufgabe
+Ergänzen Sie folgenden Python Code, so dass er die Binärdarstellung der natürlichen Zahl `n` ausgiebt.
+:::
+```{code-cell}
+# Zum Beispiel 6 --> 110 oder 26 --> 11010
+n = 6
+
+while n > 0:
+  if n % 2 == 0:
+    print(0)
+  else:
+    print(1)
+  n = n // 2
 ```

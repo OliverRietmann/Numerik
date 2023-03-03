@@ -434,27 +434,54 @@ Folgender Code appriximiert also für <code class="docutils literal notranslate"
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
 
 <span class="k">def</span> <span class="nf">derivative</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="n">x0</span><span class="p">,</span> <span class="n">h</span><span class="p">):</span>
-    <span class="k">return</span> <span class="p">(</span><span class="n">g</span><span class="p">(</span><span class="n">x0</span> <span class="o">+</span> <span class="n">h</span><span class="p">)</span> <span class="o">-</span> <span class="n">g</span><span class="p">(</span><span class="n">x0</span><span class="p">))</span> <span class="o">/</span> <span class="n">h</span>
+  <span class="k">return</span> <span class="p">(</span><span class="n">g</span><span class="p">(</span><span class="n">x0</span> <span class="o">+</span> <span class="n">h</span><span class="p">)</span> <span class="o">-</span> <span class="n">g</span><span class="p">(</span><span class="n">x0</span><span class="p">))</span> <span class="o">/</span> <span class="n">h</span>
 
 <span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
-    <span class="k">return</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">x</span><span class="o">**</span><span class="mi">2</span>
+  <span class="k">return</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">x</span><span class="o">**</span><span class="mi">2</span>
 
-<span class="n">h_values</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">2</span><span class="o">**</span><span class="p">(</span><span class="o">-</span><span class="n">k</span><span class="p">)</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">30</span><span class="p">)])</span>
-<span class="n">df_values</span> <span class="o">=</span> <span class="n">derivative</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="n">h_values</span><span class="p">)</span>
-<span class="n">error</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="mf">1.0</span> <span class="o">-</span> <span class="n">df_values</span><span class="p">)</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="n">error</span><span class="p">)</span>
+<span class="n">h_list</span> <span class="o">=</span> <span class="p">[</span><span class="mi">10</span><span class="o">**</span><span class="p">(</span><span class="o">-</span><span class="mi">4</span><span class="p">),</span> <span class="mi">10</span><span class="o">**</span><span class="p">(</span><span class="o">-</span><span class="mi">6</span><span class="p">),</span> <span class="mi">10</span><span class="o">**</span><span class="p">(</span><span class="o">-</span><span class="mi">8</span><span class="p">),</span> <span class="mi">10</span><span class="o">**</span><span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="p">),</span> <span class="mi">10</span><span class="o">**</span><span class="p">(</span><span class="o">-</span><span class="mi">12</span><span class="p">)]</span>
+<span class="k">for</span> <span class="n">h</span> <span class="ow">in</span> <span class="n">h_list</span><span class="p">:</span>
+  <span class="n">df</span> <span class="o">=</span> <span class="n">derivative</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="n">h</span><span class="p">)</span>
+  <span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
-<p>Archmides entwickelte einen Algorithmus zur Berechnung der Kreiszahl $<span class="math notranslate nohighlight">\(\pi\)</span><span class="math notranslate nohighlight">\(.
-Dabei berechnet er die Fläche des Einheitskreises (Radius 1), welche genau \)</span><span class="math notranslate nohighlight">\(\pi\)</span>$ entspricht.
-Die Fläche wird durch</p>
-<a class="fig reference internal image-reference" href="_images/archimedes.jpg"><img alt="archimedes" class="fig align-center" src="_images/archimedes.jpg" style="width: 400px;" /></a>
+<div class="admonition-aufgabe admonition">
+<p class="admonition-title">Aufgabe</p>
+<p>Was beobachten Sie im obigem Code? Finden Sie eine Erklärung.</p>
+</div>
+<p>Archmides entwickelte einen Algorithmus zur Berechnung der Kreiszahl <span class="math notranslate nohighlight">\(\pi\)</span>.
+Dabei approximiert er den Umfang des Einheitskreises (Radius 1),
+welcher genau <span class="math notranslate nohighlight">\(2\pi\)</span> entspricht.
+Dem Kreis wird ein <span class="math notranslate nohighlight">\(n\)</span>-Eck einbeschrieben.
+Sei <span class="math notranslate nohighlight">\(s_n\)</span> dessen Seitenlänge.
+Für die Seitenlänge <span class="math notranslate nohighlight">\(s_{2n}\)</span> eines einbeschriebenen <span class="math notranslate nohighlight">\(2n\)</span>-Ecks
+gilt dann die Rekursionsformel</p>
+<div class="math notranslate nohighlight">
+\[
+s_{2n}=\sqrt{1-\sqrt{1-\frac{s_n^2}{2}}}
+\]</div>
+<p>Für das <span class="math notranslate nohighlight">\(4\)</span>-Eck gilt zum Beispiel <span class="math notranslate nohighlight">\(s_4=\sqrt{2}\)</span>.
+Wir verzichten hier auf die (einfache) Herleitung dieser Formel.</p>
+<a class="fig reference internal image-reference" href="_images/archimedes.pdf"><img alt="archimedes" class="fig align-center" src="_images/archimedes.pdf" style="width: 400px;" /></a>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="n">n</span> <span class="o">=</span> <span class="mi">4</span>
+<span class="n">s</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mf">2.0</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">27</span><span class="p">):</span>
+  <span class="n">n</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">n</span>
+  <span class="n">s</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mf">2.0</span> <span class="o">-</span> <span class="mf">2.0</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mf">1.0</span> <span class="o">-</span> <span class="mf">0.25</span> <span class="o">*</span> <span class="n">s</span><span class="o">**</span><span class="mi">2</span><span class="p">))</span>
+  <span class="n">pi_approx</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">n</span> <span class="o">*</span> <span class="n">s</span>
+  <span class="nb">print</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="s2">&quot;</span><span class="se">\t</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">pi_approx</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="kontrollstrukturen">
 <h2>Kontrollstrukturen<a class="headerlink" href="#kontrollstrukturen" title="Permalink to this headline">#</a></h2>

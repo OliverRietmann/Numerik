@@ -82,9 +82,11 @@ Bezüglich $\pi=4$ gibt es einen fun-fact: [Indiana Pi Bill](https://de.wikipedi
 
 Da $\pi$ eine irrationale Zahl ist, kann sie auch im Binärsystem nicht exakt dargestellt werden.
 Auch die Zahl $0.1$ kann im Binärsystem nicht exakt dargestellt werden.
+
 $$
 0.1=\frac{1}{10}=\frac{1}{16}+\frac{1}{32}+\frac{1}{256}+\frac{1}{512}+\cdots
 $$
+
 Das heisst, die Darstellung dieser Zahl auf dem Computer ist immer fehlerbehaftet.
 
 

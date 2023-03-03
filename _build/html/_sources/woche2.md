@@ -101,10 +101,10 @@ for i in range(27):
 ```
 
 :::{warning}
-Seien $a$ und $b$ zwei Gleitkommazahlen.
-1. **Auslöschung:** Wenn $a$ und $b$ etwa gleich gross sind, dann hat das Resultat von $a-b$ einen grossen relativen Fehler.
+Seien $a$ und $b$ zwei Gleitkommazahlen, die aus.
+1. **Auslöschung:** Wenn $a$ und $b$ etwa gleich gross sind, dann kann das Resultat von $a-b$ einen grossen relativen Fehler haben.
 
-2. **Absorbtion:** Wenn $a$ viel grösser is als $b$, dann hat das Resultat von $a+b$ einen grossen Fehler (es ist etwa gleich $a$).
+2. **Absorbtion:** Wenn $a$ viel grösser ist als $b$, dann liegt das Ergebnis von $a+b$ zu nahe an $a$.
 :::
 
 Hier sind ein paar Beispiele.

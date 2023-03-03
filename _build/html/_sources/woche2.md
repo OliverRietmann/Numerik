@@ -69,7 +69,7 @@ Wir verzichten hier auf die (einfache) Herleitung dieser Formel.
 ```{image} images/archimedes.png
 :alt: archimedes
 :class: fig
-:width: 400px
+:width: 300px
 :align: center
 ```
 

@@ -58,18 +58,13 @@ Für die Seitenlänge $s_{2n}$ eines einbeschriebenen $2n$-Ecks
 gilt dann die Rekursionsformel
 
 $$
-s_{2n}=\sqrt{1-\sqrt{1-\frac{s_n^2}{2}}}
+s_{2n}=\sqrt{2-2\sqrt{1-\frac{s_n^2}{2}}}
 $$
 
 Für das $4$-Eck gilt zum Beispiel $s_4=\sqrt{2}$.
 Wir verzichten hier auf die (einfache) Herleitung dieser Formel.
 
-```{image} ./images/archimedes.pdf
-:alt: archimedes
-:class: fig
-:width: 400px
-:align: center
-```
+![archimedes](./images/archimedes.pdf)
 
 ```{code-cell}
 import numpy as np

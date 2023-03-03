@@ -60,7 +60,7 @@ Für die Seitenlänge $s_{2n}$ eines einbeschriebenen $2n$-Ecks
 gilt dann die Rekursionsformel
 
 $$
-s_{2n}=\sqrt{2-2\sqrt{1-\frac{s_n^2}{2}}}
+s_{2n}=\sqrt{2-2\sqrt{1-\frac{s_n^2}{4}}}
 $$
 
 Für das $4$-Eck gilt zum Beispiel $s_4=\sqrt{2}$.
@@ -77,6 +77,8 @@ for i in range(27):
   pi_approx = 0.5 * n * s
   print(n, "\t", pi_approx)
 ```
+
+Bezüglich $\pi=4$ gibt es einen fun-fcat: [Indiana Pi Bill](https://de.wikipedia.org/wiki/Indiana_Pi_Bill)
 
 ## Kontrollstrukturen
 

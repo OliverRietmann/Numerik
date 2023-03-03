@@ -17,8 +17,10 @@ kernelspec:
 
 Lernziele:
 
-1. Ich kann `if` / `else` Blöcke nutzen.
-2. Ich kann `for` und `while` Schleifen implementieren.
+1. Ich kann die Auslöschung erklären.
+2. Ich kann die Absorbtion erklären.
+3. Ich kann `if` / `else` Blöcke nutzen.
+4. Ich kann `for` und `while` Schleifen implementieren.
 
 ## Endliche Arithmetik
 
@@ -64,7 +66,7 @@ $$
 Für das $4$-Eck gilt zum Beispiel $s_4=\sqrt{2}$.
 Wir verzichten hier auf die (einfache) Herleitung dieser Formel.
 
-![archimedes](./images/archimedes.pdf)
+![archimedes](../images/archimedes.pdf)
 
 ```{code-cell}
 import numpy as np

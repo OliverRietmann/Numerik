@@ -66,6 +66,8 @@ $$
 Für das $4$-Eck gilt zum Beispiel $s_4=\sqrt{2}$.
 Wir verzichten hier auf die (einfache) Herleitung dieser Formel.
 
+![hustlin_erd](images/archimedes.png)
+
 ```{code-cell}
 import numpy as np
 

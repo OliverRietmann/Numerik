@@ -35,8 +35,8 @@ def float_print(x):
   print("{0:0.20f}".format(x))
 
 float_print(0.1)
-float_print((1.0 / 3.0)**3 - 1 / 27)
-float_print(1.0 + 1e-16)
+float_print((1.0 / 3.0)**3 - 1 / 27)  # Auslöschung
+float_print(1.0 + 1e-16)              # Absorbtion
 
 np.finfo(’float’)
 
@@ -56,3 +56,12 @@ while n > 0:
   else:
     print(1)
   n = n // 2
+
+n = 43602299
+s = 0
+
+while n > 0:
+  s = s + (n % 10)
+  n = n // 10
+
+print(s)

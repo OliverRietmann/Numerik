@@ -102,8 +102,9 @@ for i in range(27):
 
 :::{warning}
 Seien $a$ und $b$ zwei Gleitkommazahlen.
-1. Auslöschung: Wenn $a$ und $b$ etwa gleich gross sind, dann hat das Resultat von $a-b$ einen grossen relativen Fehler
-2. Absorbtion: Wenn $a$ viel grösser is als $b$, dann hat das Resultat von $a+b$ einen grossen Fehler (es ist etwa gleich $a$).
+1. **Auslöschung:** Wenn $a$ und $b$ etwa gleich gross sind, dann hat das Resultat von $a-b$ einen grossen relativen Fehler.
+
+2. **Absorbtion:** Wenn $a$ viel grösser is als $b$, dann hat das Resultat von $a+b$ einen grossen Fehler (es ist etwa gleich $a$).
 :::
 
 Hier sind ein paar Beispiele.
@@ -112,8 +113,8 @@ def float_print(x):
   print("{0:0.20f}".format(x))
 
 float_print(0.1)
-float_print((1.0 / 3.0)**3 - 1 / 27)
-float_print(1.0 + 1e-16)
+float_print((1.0 / 3.0)**3 - 1 / 27)  # Auslöschung
+float_print(1.0 + 1e-16)              # Absorbtion
 ```
 
 Die Eigenschaften eines `numpy` floats kann man abfragen.
@@ -149,4 +150,18 @@ while n > 0:
   else:
     print(1)
   n = n // 2
+```
+
+:::{admonition} Aufgabe
+Ergänzen Sie folgenden Python Code, so dass er die Quersumme der natürlichen Zahl `n` ausgibt.
+:::
+```{code-cell}
+n = 43602299
+s = 0
+
+while n > 0:
+  s = s + (n % 10)
+  n = n // 10
+
+print(s)
 ```

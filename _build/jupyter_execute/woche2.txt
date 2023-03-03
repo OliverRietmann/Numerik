@@ -1,1 +1,31 @@
-print(2 + 2)
+import numpy as np
+from matplotlib import pyplot as plt
+
+def derivative(g, x0, h):
+    return (g(x0 + h) - g(x0)) / h
+
+def f(x):
+    return 0.5 * x**2
+
+h_values = np.array([2**(-k) for k in range(10, 30)])
+df_values = derivative(f, 1.0, h_values)
+error = np.abs(1.0 - df_values)
+
+print(error)
+
+n = 3
+
+if n % 2 == 1:
+  print(n, "ist gerade")
+else:
+  print(n, "ist ungerade")
+
+# Zum Beispiel 6 --> 110 oder 26 --> 11010
+n = 6
+
+while n > 0:
+  if n % 2 == 0:
+    print(0)
+  else:
+    print(1)
+  n = n // 2

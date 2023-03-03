@@ -128,7 +128,8 @@ float_print(1.0 + 1e-16)              # Absorbtion
 Die Eigenschaften eines `numpy` floats kann man abfragen.
 ```{code-cell}
 import numpy as np
-np.finfo(’float’)
+
+np.finfo(float)
 ```
 
 
@@ -153,24 +154,18 @@ Ergänzen Sie folgenden Python Code, so dass er die Binärdarstellung der natür
 # Zum Beispiel 6 --> 110 oder 26 --> 11010
 n = 6
 
-while n > 0:
-  if n % 2 == 0:
-    print(0)
-  else:
-    print(1)
-  n = n // 2
+# Ihr Code kommt hier hin
+# ...
+# ...
 ```
 
 :::{admonition} Aufgabe
 Ergänzen Sie folgenden Python Code, so dass er die Quersumme der natürlichen Zahl `n` ausgibt.
 :::
 ```{code-cell}
-n = 43602299
-s = 0
+n = 43602299 # Quersumme ist 35
 
-while n > 0:
-  s = s + (n % 10)
-  n = n // 10
-
-print(s)
+# Ihr Code kommt hier hin
+# ...
+# ...
 ```

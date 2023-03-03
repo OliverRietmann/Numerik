@@ -509,8 +509,8 @@ Das heisst, die Darstellung dieser Zahl auf dem Computer ist immer fehlerbehafte
 <p class="admonition-title">Warning</p>
 <p>Seien <span class="math notranslate nohighlight">\(a\)</span> und <span class="math notranslate nohighlight">\(b\)</span> zwei Gleitkommazahlen.</p>
 <ol class="simple">
-<li><p>Auslöschung: Wenn <span class="math notranslate nohighlight">\(a\)</span> und <span class="math notranslate nohighlight">\(b\)</span> etwa gleich gross sind, dann hat das Resultat von <span class="math notranslate nohighlight">\(a-b\)</span> einen grossen relativen Fehler</p></li>
-<li><p>Absorbtion: Wenn <span class="math notranslate nohighlight">\(a\)</span> viel grösser is als <span class="math notranslate nohighlight">\(b\)</span>, dann hat das Resultat von <span class="math notranslate nohighlight">\(a+b\)</span> einen grossen Fehler (es ist etwa gleich <span class="math notranslate nohighlight">\(a\)</span>).</p></li>
+<li><p><strong>Auslöschung:</strong> Wenn <span class="math notranslate nohighlight">\(a\)</span> und <span class="math notranslate nohighlight">\(b\)</span> etwa gleich gross sind, dann hat das Resultat von <span class="math notranslate nohighlight">\(a-b\)</span> einen grossen relativen Fehler.</p></li>
+<li><p><strong>Absorbtion:</strong> Wenn <span class="math notranslate nohighlight">\(a\)</span> viel grösser is als <span class="math notranslate nohighlight">\(b\)</span>, dann hat das Resultat von <span class="math notranslate nohighlight">\(a+b\)</span> einen grossen Fehler (es ist etwa gleich <span class="math notranslate nohighlight">\(a\)</span>).</p></li>
 </ol>
 </div>
 <p>Hier sind ein paar Beispiele.</p>
@@ -520,8 +520,8 @@ Das heisst, die Darstellung dieser Zahl auf dem Computer ist immer fehlerbehafte
   <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{0:0.20f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
 
 <span class="n">float_print</span><span class="p">(</span><span class="mf">0.1</span><span class="p">)</span>
-<span class="n">float_print</span><span class="p">((</span><span class="mf">1.0</span> <span class="o">/</span> <span class="mf">3.0</span><span class="p">)</span><span class="o">**</span><span class="mi">3</span> <span class="o">-</span> <span class="mi">1</span> <span class="o">/</span> <span class="mi">27</span><span class="p">)</span>
-<span class="n">float_print</span><span class="p">(</span><span class="mf">1.0</span> <span class="o">+</span> <span class="mf">1e-16</span><span class="p">)</span>
+<span class="n">float_print</span><span class="p">((</span><span class="mf">1.0</span> <span class="o">/</span> <span class="mf">3.0</span><span class="p">)</span><span class="o">**</span><span class="mi">3</span> <span class="o">-</span> <span class="mi">1</span> <span class="o">/</span> <span class="mi">27</span><span class="p">)</span>  <span class="c1"># Auslöschung</span>
+<span class="n">float_print</span><span class="p">(</span><span class="mf">1.0</span> <span class="o">+</span> <span class="mf">1e-16</span><span class="p">)</span>              <span class="c1"># Absorbtion</span>
 </pre></div>
 </div>
 </div>
@@ -567,6 +567,24 @@ Hier bezeichnet <code class="docutils literal notranslate"><span class="pre">%</
   <span class="k">else</span><span class="p">:</span>
     <span class="nb">print</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
   <span class="n">n</span> <span class="o">=</span> <span class="n">n</span> <span class="o">//</span> <span class="mi">2</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="admonition-aufgabe admonition">
+<p class="admonition-title">Aufgabe</p>
+<p>Ergänzen Sie folgenden Python Code, so dass er die Quersumme der natürlichen Zahl <code class="docutils literal notranslate"><span class="pre">n</span></code> ausgibt.</p>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">n</span> <span class="o">=</span> <span class="mi">43602299</span>
+<span class="n">s</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="k">while</span> <span class="n">n</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+  <span class="n">s</span> <span class="o">=</span> <span class="n">s</span> <span class="o">+</span> <span class="p">(</span><span class="n">n</span> <span class="o">%</span> <span class="mi">10</span><span class="p">)</span>
+  <span class="n">n</span> <span class="o">=</span> <span class="n">n</span> <span class="o">//</span> <span class="mi">10</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>

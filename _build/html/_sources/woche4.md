@@ -24,8 +24,19 @@ Lernziele:
 
 ## Bisektion
 
-Anführungszeichen `"..."` definieren eine Zeichenkette (engl. string).
 ```{code-cell} ipython3
+def bisection(f, a, b, tol):
+    # Ihr Code kommt hier hin.
+    return [a, b]
+
+f = lambda x: x**2 - 3
+a = 1
+b = 2
+
+# sqrt(3) = 1.7320508075688772
+print(bisection(f, a, b, 1.0e-3))
+```
+<!---
 def bisection(f, a, b, tol):
     assert(f(a) * f(b) < 0)
     while abs(b-a) > tol:
@@ -45,7 +56,7 @@ b = 2
 
 # sqrt(3) = 1.7320508075688772
 print(bisection(f, a, b, 1.0e-3))
-```
+-->
 
 ## Newton Verfahren
 
@@ -60,16 +71,26 @@ und diese konvergiert dann gegen $\sqrt{a}$.
 
 ```{code-cell} ipython3
 def heron(a, x, tol):
-    while abs(x**2 - a) > tol:
-        x = 0.5 * (x + a / x)
+    # Ersetzen Sie diesen Code.
     return x
 
 a = 3.0
 x = 2.0
 
 # sqrt(3) = 1.7320508075688772
-print(newton(x, a, 1.0e-3))
+print(heron(a, x, 1.0e-3))
 ```
+<!---
+def heron(a, x, tol):
+    # Ihr Code kommt hier hin.
+    return x
+
+a = 3.0
+x = 2.0
+
+# sqrt(3) = 1.7320508075688772
+print(heron(a, x, 1.0e-3))
+-->
 
 Das Newton Verfahren für eine stetig differenzierbare Funktion $f:\mathbb R\rightarrow\mathbb R$ ist definiert durch die Folge
 
@@ -82,6 +103,18 @@ Dieser sollte nahe bei der tatsächlichen Nullstelle $x^\ast$ liegen.
 
 ```{code-cell} ipython3
 def newton(f, df, x, tol):
+    # Ihr Code kommt hier hin.
+    return x
+
+f = lambda x: x**2 - 3
+df = lambda x: 2 * x
+x = 2.0
+
+# sqrt(3) = 1.7320508075688772
+print(newton(f, df, x, 1.0e-3))
+```
+<!---
+def newton(f, df, x, tol):
     while abs(f(x)) > tol:
         x = x - f(x) / df(x)
     return x
@@ -92,4 +125,4 @@ x = 2.0
 
 # sqrt(3) = 1.7320508075688772
 print(newton(f, df, x, 1.0e-3))
-```
+-->

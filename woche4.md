@@ -24,6 +24,11 @@ Lernziele:
 
 ## Bisektion
 
+Die Bisketion halbiert in jedem Schritt das Interval, welches die Nullstelle der stetigen Funktion $f:\mathbb R\rightarrow\mathbb R$ enthält.
+
+:::{admonition} Aufgabe
+Implementieren Sie die Bisektion.
+:::
 ```{code-cell} ipython3
 def bisection(f, a, b, tol):
     # Ihr Code kommt hier hin.
@@ -69,6 +74,9 @@ $$
 
 und diese konvergiert dann gegen $\sqrt{a}$.
 
+:::{admonition} Aufgabe
+Implementieren Sie das Heronsche Näherungsverfahren.
+:::
 ```{code-cell} ipython3
 def heron(a, x, tol):
     # Ihr Code kommt hier hin.
@@ -101,6 +109,9 @@ $$
 mit einem geeigneten Startwert $x_0$.
 Dieser sollte nahe bei der tatsächlichen Nullstelle $x^\ast$ liegen.
 
+:::{admonition} Aufgabe
+Implementieren Sie das Newton Verfahren.
+:::
 ```{code-cell} ipython3
 def newton(f, df, x, tol):
     # Ihr Code kommt hier hin.

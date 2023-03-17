@@ -431,6 +431,11 @@ title="Print to PDF"
 </ol>
 <section id="bisektion">
 <h2>Bisektion<a class="headerlink" href="#bisektion" title="Permalink to this headline">#</a></h2>
+<p>Die Bisketion halbiert in jedem Schritt das Interval, welches die Nullstelle der stetigen Funktion <span class="math notranslate nohighlight">\(f:\mathbb R\rightarrow\mathbb R\)</span> enthält.</p>
+<div class="admonition-aufgabe admonition">
+<p class="admonition-title">Aufgabe</p>
+<p>Implementieren Sie die Bisektion.</p>
+</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">bisection</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">tol</span><span class="p">):</span>
@@ -478,6 +483,10 @@ Es ist definiert durch die Folge</p>
 x_{k+1}=\frac{1}{2}\bigg(x_k+\frac{a}{x_k}\bigg)
 \]</div>
 <p>und diese konvergiert dann gegen <span class="math notranslate nohighlight">\(\sqrt{a}\)</span>.</p>
+<div class="admonition-aufgabe admonition">
+<p class="admonition-title">Aufgabe</p>
+<p>Implementieren Sie das Heronsche Näherungsverfahren.</p>
+</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">heron</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">tol</span><span class="p">):</span>
@@ -511,6 +520,10 @@ x_{k+1}=x_k-\frac{f(x_k)}{f^\prime(x_k)}
 \]</div>
 <p>mit einem geeigneten Startwert <span class="math notranslate nohighlight">\(x_0\)</span>.
 Dieser sollte nahe bei der tatsächlichen Nullstelle <span class="math notranslate nohighlight">\(x^\ast\)</span> liegen.</p>
+<div class="admonition-aufgabe admonition">
+<p class="admonition-title">Aufgabe</p>
+<p>Implementieren Sie das Newton Verfahren.</p>
+</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">newton</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">df</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">tol</span><span class="p">):</span>

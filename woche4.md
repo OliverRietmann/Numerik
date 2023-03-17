@@ -34,30 +34,30 @@ def bisection(f, a, b, tol):
     # Ihr Code kommt hier hin.
     return [a, b]
 
-f = lambda x: x**2 - 3
-a = 1
-b = 2
+f = lambda x: x**2 - 3.0
+a = 1.0
+b = 2.0
 
 # sqrt(3) = 1.7320508075688772
 print(bisection(f, a, b, 1.0e-3))
 ```
 <!---
 def bisection(f, a, b, tol):
-    assert(f(a) * f(b) < 0)
+    assert(f(a) * f(b) < 0.0)
     while abs(b-a) > tol:
         m = (a + b) / 2
         fm = f(m)
         if fm == 0.0:
             return m, m
-        elif fm * f(b) < 0:
+        elif fm * f(b) < 0.0:
             a = m
         else:
             b = m
     return [a, b]
 
-f = lambda x: x**2 - 3
-a = 1
-b = 2
+f = lambda x: x**2 - 3.0
+a = 1.0
+b = 2.0
 
 # sqrt(3) = 1.7320508075688772
 print(bisection(f, a, b, 1.0e-3))
@@ -117,8 +117,8 @@ def newton(f, df, x, tol):
     # Ihr Code kommt hier hin.
     return x
 
-f = lambda x: x**2 - 3
-df = lambda x: 2 * x
+f = lambda x: x**2 - 3.0
+df = lambda x: 2.0 * x
 x = 2.0
 
 # sqrt(3) = 1.7320508075688772
@@ -130,8 +130,8 @@ def newton(f, df, x, tol):
         x = x - f(x) / df(x)
     return x
 
-f = lambda x: x**2 - 3
-df = lambda x: 2 * x
+f = lambda x: x**2 - 3.0
+df = lambda x: 2.0 * x
 x = 2.0
 
 # sqrt(3) = 1.7320508075688772

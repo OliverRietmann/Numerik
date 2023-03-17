@@ -442,9 +442,9 @@ title="Print to PDF"
     <span class="c1"># Ihr Code kommt hier hin.</span>
     <span class="k">return</span> <span class="p">[</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">]</span>
 
-<span class="n">f</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">**</span><span class="mi">2</span> <span class="o">-</span> <span class="mi">3</span>
-<span class="n">a</span> <span class="o">=</span> <span class="mi">1</span>
-<span class="n">b</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">f</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">**</span><span class="mi">2</span> <span class="o">-</span> <span class="mf">3.0</span>
+<span class="n">a</span> <span class="o">=</span> <span class="mf">1.0</span>
+<span class="n">b</span> <span class="o">=</span> <span class="mf">2.0</span>
 
 <span class="c1"># sqrt(3) = 1.7320508075688772</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">bisection</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="mf">1.0e-3</span><span class="p">))</span>
@@ -454,21 +454,21 @@ title="Print to PDF"
 </div>
 <!---
 def bisection(f, a, b, tol):
-    assert(f(a) * f(b) < 0)
+    assert(f(a) * f(b) < 0.0)
     while abs(b-a) > tol:
         m = (a + b) / 2
         fm = f(m)
         if fm == 0.0:
             return m, m
-        elif fm * f(b) < 0:
+        elif fm * f(b) < 0.0:
             a = m
         else:
             b = m
     return [a, b]
 
-f = lambda x: x**2 - 3
-a = 1
-b = 2
+f = lambda x: x**2 - 3.0
+a = 1.0
+b = 2.0
 
 # sqrt(3) = 1.7320508075688772
 print(bisection(f, a, b, 1.0e-3))
@@ -530,8 +530,8 @@ Dieser sollte nahe bei der tatsächlichen Nullstelle <span class="math notransla
     <span class="c1"># Ihr Code kommt hier hin.</span>
     <span class="k">return</span> <span class="n">x</span>
 
-<span class="n">f</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">**</span><span class="mi">2</span> <span class="o">-</span> <span class="mi">3</span>
-<span class="n">df</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">x</span>
+<span class="n">f</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">**</span><span class="mi">2</span> <span class="o">-</span> <span class="mf">3.0</span>
+<span class="n">df</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="mf">2.0</span> <span class="o">*</span> <span class="n">x</span>
 <span class="n">x</span> <span class="o">=</span> <span class="mf">2.0</span>
 
 <span class="c1"># sqrt(3) = 1.7320508075688772</span>
@@ -546,8 +546,8 @@ def newton(f, df, x, tol):
         x = x - f(x) / df(x)
     return x
 
-f = lambda x: x**2 - 3
-df = lambda x: 2 * x
+f = lambda x: x**2 - 3.0
+df = lambda x: 2.0 * x
 x = 2.0
 
 # sqrt(3) = 1.7320508075688772

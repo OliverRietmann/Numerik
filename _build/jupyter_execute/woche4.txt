@@ -1,0 +1,42 @@
+def bisection(f, a, b, tol):
+    assert(f(a) * f(b) < 0)
+    while abs(b-a) > tol:
+        m = (a + b) / 2
+        fm = f(m)
+        if fm == 0.0:
+            return m, m
+        elif fm * f(b) < 0:
+            a = m
+        else:
+            b = m
+    return [a, b]
+
+f = lambda x: x**2 - 3
+a = 1
+b = 2
+
+# sqrt(3) = 1.7320508075688772
+print(bisection(f, a, b, 1.0e-3))
+
+def heron(a, x, tol):
+    while abs(x**2 - a) > tol:
+        x = 0.5 * (x + a / x)
+    return x
+
+a = 3.0
+x = 2.0
+
+# sqrt(3) = 1.7320508075688772
+print(newton(x, a, 1.0e-3))
+
+def newton(f, df, x, tol):
+    while abs(f(x)) > tol:
+        x = x - f(x) / df(x)
+    return x
+
+f = lambda x: x**2 - 3
+df = lambda x: 2 * x
+x = 2.0
+
+# sqrt(3) = 1.7320508075688772
+print(newton(f, df, x, 1.0e-3))

@@ -10,7 +10,7 @@ b = 2
 print(bisection(f, a, b, 1.0e-3))
 
 def heron(a, x, tol):
-    # Ersetzen Sie diesen Code.
+    # Ihr Code kommt hier hin.
     return x
 
 a = 3.0

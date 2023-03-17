@@ -71,7 +71,7 @@ und diese konvergiert dann gegen $\sqrt{a}$.
 
 ```{code-cell} ipython3
 def heron(a, x, tol):
-    # Ersetzen Sie diesen Code.
+    # Ihr Code kommt hier hin.
     return x
 
 a = 3.0

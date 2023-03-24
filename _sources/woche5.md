@@ -31,12 +31,15 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 f = lambda x: x**2 * np.sin(x)
+df = lambda x: 2.0 * x * np.sin(x) + x**2 * np.cos(x)
 x = np.linspace(2.0, 7.0, 100)
-y = f(x)
 
-plt.figure()
-plt.plot(x, y)
-plt.grid(True)
+fig, axes = plt.subplots(2)
+axes[0].plot(x, f(x), label=r'$f(x)$')
+axes[1].plot(x, df(x), label=r'$f^\prime(x)$')
+for ax in axes:
+    ax.legend()
+    ax.grid(True)
 plt.show()
 ```
 
@@ -49,12 +52,12 @@ Ergänzen Sie dazu folgenden Code.
 import numpy as np
 
 f = lambda x: x**2 * np.sin(x)
-df = lambda x: 2.0 * np.sin(x) + x**2 * np.cos(x)
+df = lambda x: 2.0 * x * np.sin(x) + x**2 * np.cos(x)
 ddf = lambda x: (2.0 - x**2) * np.sin(x) + 4.0 * x * np.cos(x)
 
-def newton(f, df, x, tol):
-    while np.abs(f(x)) > tol:
-        x = x - f(x) / df(x)
+def newton(g, dg, x, tol):
+    while np.abs(g(x)) > tol:
+        x = x - g(x) / dg(x)
     return x
 
 tol = 1.0e-5
@@ -79,16 +82,18 @@ Dazu müssen diese auf einem `numpy.meshgrid` ausgewertet werden.
 import numpy as np
 import matplotlib.pyplot as plt
 
-x = np.linspace(-5.0, 5.0, 100 )
-y = np.linspace(-5.0, 5.0, 100 )
+x = np.linspace(-5.0, 5.0, 50 )
+y = np.linspace(-5.0, 5.0, 50 )
 X, Y = np.meshgrid(x, y)
 
 f1 = lambda x, y: 2.0 * x + 4.0 * y
 f2 = lambda x, y: 4.0 * x + 8.0 * y**3
 
-fig, axs = plt.subplots(1, 2, subplot_kw={"projection": "3d"})
-axs[0].plot_surface(X, Y, f1(x, y))
-axs[1].plot_surface(X, Y, f2(x, y))
+fig, (ax1, ax2) = plt.subplots(1, 2, subplot_kw={"projection": "3d"})
+ax1.title.set_text(r'$f_1(x, y)$')
+ax1.plot_surface(X, Y, f1(X, Y))
+ax2.title.set_text(r'$f_2(x, y)$')
+ax2.plot_surface(X, Y, f2(X, Y))
 plt.show()
 ```
 
@@ -140,6 +145,7 @@ $$
 
 Hier bezeichnet $J(x, y)$ die Jacobi-Matrix von $f$ an der Stelle $(x, y)$.
 Die Matrix-Vektor Multiplikation entspricht dem Lösen eines linearen Gleichungssystems (LGS):
+
 $$
 \vec{v}=\left(J(x, y)\right)^{-1}\cdot f(x, y)
 \quad\Longleftrightarrow\quad
@@ -158,13 +164,16 @@ f2 = lambda x, y: 4.0 * x + 8.0 * y**3
 f = lambda x, y: np.array([f1(x, y), f2(x, y)])
 J = lambda x, y: np.array([[2.0, 4.0], [4.0, 24.0 * y**2]])
 
-def newton(f, J, x, y, tol):
-    while np.linalg.norm(f(x, y)) > tol:
-        x, y = np.solve(J(x, y), f(x, y))
-    return x, y
+def newton(f, J, x, y, tol, N):
+    n = 0
+    while np.linalg.norm(f(x, y)) > tol and n < N:
+        z = np.array([x, y])
+        x, y = z - np.linalg.solve(J(x, y), f(x, y))
+        n += 1
+    return x, y, n
 
 x0, y0 = (3.0, 2.0)
-print(newton(f, J, x0, y0, 1.0e-5))
+print(newton(f, J, x0, y0, 1.0e-3, 20))
 ```
 
 Die Nullstellen von $f$ sind

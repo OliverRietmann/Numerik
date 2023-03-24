@@ -20,13 +20,15 @@ df = lambda x: 2.0 * x * np.sin(x) + x**2 * np.cos(x)
 ddf = lambda x: (2.0 - x**2) * np.sin(x) + 4.0 * x * np.cos(x)
 
 def newton(g, dg, x, tol):
-    while np.abs(g(x)) > tol:
-        x = x - g(x) / dg(x)
+    # Ihr Code kommt hier hin.
+    # ...
     return x
 
 tol = 1.0e-5
 for x0 in [3.0, 4.0, 5.0]:
-    print(newton(df, ddf, x0, tol))
+    # Ihr Code kommt hier hin.
+    # ...
+    pass
 
 import numpy as np
 import matplotlib.pyplot as plt
@@ -55,26 +57,10 @@ J = lambda x, y: np.array([[2.0, 4.0], [4.0, 24.0 * y**2]])
 def newton(f, J, x, y, tol, N):
     n = 0
     while np.linalg.norm(f(x, y)) > tol and n < N:
-        d = np.linalg.solve(J(x, y), f(x, y))
-        x, y = np.array([x, y]) - d
-        n += 1
+        # Ihr Code kommt hier hin
+        # ...
+        # ...
     return x, y, n
 
 x0, y0 = (3.0, 2.0)
 print(newton(f, J, x0, y0, 1.0e-3, 20))
-
-import numpy as np
-import matplotlib.pyplot as plt
-
-x = np.linspace(-3.0, 3.0, 50)
-y = np.linspace(-3.0, 3.0, 50)
-X, Y = np.meshgrid(x, y)
-
-f1 = lambda x, y: 2.0 * x + 4.0 * y
-f2 = lambda x, y: 4.0 * x + 8.0 * y**3
-residuum = lambda x, y: np.sqrt(f1(x, y)**2 + f2(x, y)**2)
-
-plt.figure()
-plt.title("Residuum")
-plt.contourf(X, Y, residuum(X, Y))
-plt.show()

@@ -55,6 +55,24 @@ df = lambda x: 2.0 * x * np.sin(x) + x**2 * np.cos(x)
 ddf = lambda x: (2.0 - x**2) * np.sin(x) + 4.0 * x * np.cos(x)
 
 def newton(g, dg, x, tol):
+    # Ihr Code kommt hier hin.
+    # ...
+    return x
+
+tol = 1.0e-5
+for x0 in [3.0, 4.0, 5.0]:
+    # Ihr Code kommt hier hin.
+    # ...
+    pass
+```
+<!--
+import numpy as np
+
+f = lambda x: x**2 * np.sin(x)
+df = lambda x: 2.0 * x * np.sin(x) + x**2 * np.cos(x)
+ddf = lambda x: (2.0 - x**2) * np.sin(x) + 4.0 * x * np.cos(x)
+
+def newton(g, dg, x, tol):
     while np.abs(g(x)) > tol:
         x = x - g(x) / dg(x)
     return x
@@ -62,8 +80,7 @@ def newton(g, dg, x, tol):
 tol = 1.0e-5
 for x0 in [3.0, 4.0, 5.0]:
     print(newton(df, ddf, x0, tol))
-```
-
+-->
 ## Plotten einer Funktion von $\mathbb R^2$ nach $\mathbb R$.
 
 Wir plotten die Funktionen
@@ -166,6 +183,25 @@ J = lambda x, y: np.array([[2.0, 4.0], [4.0, 24.0 * y**2]])
 def newton(f, J, x, y, tol, N):
     n = 0
     while np.linalg.norm(f(x, y)) > tol and n < N:
+        # Ihr Code kommt hier hin
+        # ...
+        # ...
+    return x, y, n
+
+x0, y0 = (3.0, 2.0)
+print(newton(f, J, x0, y0, 1.0e-3, 20))
+```
+<!--
+import numpy as np
+
+f1 = lambda x, y: 2.0 * x + 4.0 * y
+f2 = lambda x, y: 4.0 * x + 8.0 * y**3
+f = lambda x, y: np.array([f1(x, y), f2(x, y)])
+J = lambda x, y: np.array([[2.0, 4.0], [4.0, 24.0 * y**2]])
+
+def newton(f, J, x, y, tol, N):
+    n = 0
+    while np.linalg.norm(f(x, y)) > tol and n < N:
         d = np.linalg.solve(J(x, y), f(x, y))
         x, y = np.array([x, y]) - d
         n += 1
@@ -174,6 +210,7 @@ def newton(f, J, x, y, tol, N):
 x0, y0 = (3.0, 2.0)
 print(newton(f, J, x0, y0, 1.0e-3, 20))
 ```
+-->
 
 Die Nullstellen von $f$ sind
 
@@ -191,8 +228,7 @@ $$
 1
 \end{pmatrix}.
 $$
-
-```{code-cell} ipython3
+<!--
 import numpy as np
 import matplotlib.pyplot as plt
 
@@ -209,3 +245,4 @@ plt.title("Residuum")
 plt.contourf(X, Y, residuum(X, Y))
 plt.show()
 ```
+-->

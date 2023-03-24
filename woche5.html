@@ -497,17 +497,35 @@ Ergänzen Sie dazu folgenden Code.</p>
 <span class="n">ddf</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="p">(</span><span class="mf">2.0</span> <span class="o">-</span> <span class="n">x</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">+</span> <span class="mf">4.0</span> <span class="o">*</span> <span class="n">x</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
 
 <span class="k">def</span> <span class="nf">newton</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="n">dg</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">tol</span><span class="p">):</span>
-    <span class="k">while</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">g</span><span class="p">(</span><span class="n">x</span><span class="p">))</span> <span class="o">&gt;</span> <span class="n">tol</span><span class="p">:</span>
-        <span class="n">x</span> <span class="o">=</span> <span class="n">x</span> <span class="o">-</span> <span class="n">g</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">/</span> <span class="n">dg</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="c1"># Ihr Code kommt hier hin.</span>
+    <span class="c1"># ...</span>
     <span class="k">return</span> <span class="n">x</span>
 
 <span class="n">tol</span> <span class="o">=</span> <span class="mf">1.0e-5</span>
 <span class="k">for</span> <span class="n">x0</span> <span class="ow">in</span> <span class="p">[</span><span class="mf">3.0</span><span class="p">,</span> <span class="mf">4.0</span><span class="p">,</span> <span class="mf">5.0</span><span class="p">]:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">newton</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">ddf</span><span class="p">,</span> <span class="n">x0</span><span class="p">,</span> <span class="n">tol</span><span class="p">))</span>
+    <span class="c1"># Ihr Code kommt hier hin.</span>
+    <span class="c1"># ...</span>
+    <span class="k">pass</span>
 </pre></div>
 </div>
 </div>
 </div>
+<!--
+import numpy as np
+
+f = lambda x: x**2 * np.sin(x)
+df = lambda x: 2.0 * x * np.sin(x) + x**2 * np.cos(x)
+ddf = lambda x: (2.0 - x**2) * np.sin(x) + 4.0 * x * np.cos(x)
+
+def newton(g, dg, x, tol):
+    while np.abs(g(x)) > tol:
+        x = x - g(x) / dg(x)
+    return x
+
+tol = 1.0e-5
+for x0 in [3.0, 4.0, 5.0]:
+    print(newton(df, ddf, x0, tol))
+-->
 </section>
 <section id="plotten-einer-funktion-von-mathbb-r-2-nach-mathbb-r">
 <h2>Plotten einer Funktion von <span class="math notranslate nohighlight">\(\mathbb R^2\)</span> nach <span class="math notranslate nohighlight">\(\mathbb R\)</span>.<a class="headerlink" href="#plotten-einer-funktion-von-mathbb-r-2-nach-mathbb-r" title="Permalink to this headline">#</a></h2>
@@ -611,9 +629,9 @@ Lösen Sie das LGS mit <code class="docutils literal notranslate"><span class="p
 <span class="k">def</span> <span class="nf">newton</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">J</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">tol</span><span class="p">,</span> <span class="n">N</span><span class="p">):</span>
     <span class="n">n</span> <span class="o">=</span> <span class="mi">0</span>
     <span class="k">while</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">))</span> <span class="o">&gt;</span> <span class="n">tol</span> <span class="ow">and</span> <span class="n">n</span> <span class="o">&lt;</span> <span class="n">N</span><span class="p">:</span>
-        <span class="n">d</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">J</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">),</span> <span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">))</span>
-        <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">])</span> <span class="o">-</span> <span class="n">d</span>
-        <span class="n">n</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="c1"># Ihr Code kommt hier hin</span>
+        <span class="c1"># ...</span>
+        <span class="c1"># ...</span>
     <span class="k">return</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">n</span>
 
 <span class="n">x0</span><span class="p">,</span> <span class="n">y0</span> <span class="o">=</span> <span class="p">(</span><span class="mf">3.0</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">)</span>
@@ -622,6 +640,26 @@ Lösen Sie das LGS mit <code class="docutils literal notranslate"><span class="p
 </div>
 </div>
 </div>
+<!--
+import numpy as np
+
+f1 = lambda x, y: 2.0 * x + 4.0 * y
+f2 = lambda x, y: 4.0 * x + 8.0 * y**3
+f = lambda x, y: np.array([f1(x, y), f2(x, y)])
+J = lambda x, y: np.array([[2.0, 4.0], [4.0, 24.0 * y**2]])
+
+def newton(f, J, x, y, tol, N):
+    n = 0
+    while np.linalg.norm(f(x, y)) > tol and n < N:
+        d = np.linalg.solve(J(x, y), f(x, y))
+        x, y = np.array([x, y]) - d
+        n += 1
+    return x, y, n
+
+x0, y0 = (3.0, 2.0)
+print(newton(f, J, x0, y0, 1.0e-3, 20))
+```
+-->
 <p>Die Nullstellen von <span class="math notranslate nohighlight">\(f\)</span> sind</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
@@ -638,28 +676,24 @@ Lösen Sie das LGS mit <code class="docutils literal notranslate"><span class="p
 1
 \end{pmatrix}.
 \end{split}\]</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<!--
+import numpy as np
+import matplotlib.pyplot as plt
 
-<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mf">3.0</span><span class="p">,</span> <span class="mf">3.0</span><span class="p">,</span> <span class="mi">50</span><span class="p">)</span>
-<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mf">3.0</span><span class="p">,</span> <span class="mf">3.0</span><span class="p">,</span> <span class="mi">50</span><span class="p">)</span>
-<span class="n">X</span><span class="p">,</span> <span class="n">Y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+x = np.linspace(-3.0, 3.0, 50)
+y = np.linspace(-3.0, 3.0, 50)
+X, Y = np.meshgrid(x, y)
 
-<span class="n">f1</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="mf">2.0</span> <span class="o">*</span> <span class="n">x</span> <span class="o">+</span> <span class="mf">4.0</span> <span class="o">*</span> <span class="n">y</span>
-<span class="n">f2</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="mf">4.0</span> <span class="o">*</span> <span class="n">x</span> <span class="o">+</span> <span class="mf">8.0</span> <span class="o">*</span> <span class="n">y</span><span class="o">**</span><span class="mi">3</span>
-<span class="n">residuum</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">f1</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">f2</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+f1 = lambda x, y: 2.0 * x + 4.0 * y
+f2 = lambda x, y: 4.0 * x + 8.0 * y**3
+residuum = lambda x, y: np.sqrt(f1(x, y)**2 + f2(x, y)**2)
 
-<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Residuum&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">contourf</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">residuum</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">))</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-</div>
-</section>
+plt.figure()
+plt.title("Residuum")
+plt.contourf(X, Y, residuum(X, Y))
+plt.show()
+```
+--></section>
 </section>
 
     <script type="text/x-thebe-config">

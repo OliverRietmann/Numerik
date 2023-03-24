@@ -31,8 +31,8 @@ for x0 in [3.0, 4.0, 5.0]:
 import numpy as np
 import matplotlib.pyplot as plt
 
-x = np.linspace(-5.0, 5.0, 50 )
-y = np.linspace(-5.0, 5.0, 50 )
+x = np.linspace(-5.0, 5.0, 50)
+y = np.linspace(-5.0, 5.0, 50)
 X, Y = np.meshgrid(x, y)
 
 f1 = lambda x, y: 2.0 * x + 4.0 * y
@@ -62,3 +62,19 @@ def newton(f, J, x, y, tol, N):
 
 x0, y0 = (3.0, 2.0)
 print(newton(f, J, x0, y0, 1.0e-3, 20))
+
+import numpy as np
+import matplotlib.pyplot as plt
+
+x = np.linspace(-3.0, 3.0, 50)
+y = np.linspace(-3.0, 3.0, 50)
+X, Y = np.meshgrid(x, y)
+
+f1 = lambda x, y: 2.0 * x + 4.0 * y
+f2 = lambda x, y: 4.0 * x + 8.0 * y**3
+residuum = lambda x, y: np.sqrt(f1(x, y)**2 + f2(x, y)**2)
+
+plt.figure()
+plt.title("Residuum")
+plt.contourf(X, Y, residuum(X, Y))
+plt.show()

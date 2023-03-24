@@ -13,13 +13,13 @@ kernelspec:
   name: python3
 ---
 
+# Woche 5: Newton-Verfahren (Vertiefung)
+
 Lernziele:
 
 1. Ich kann die Jacobi-Matrix einer Funktion von $\mathbb R^n$ nach $\mathbb R^n$ berechnen, wobei $1\leq n\leq 3$.
 2. Ich kann das Newton-Verfahren in 1D und 2D implementieren.
 3. Ich kann die Funktion `matplotlib.pyplot.plot_surface` verwenden.
-
-# Woche 5: Newton-Verfahren (Vertiefung)
 
 ## Minimierung einer differenzierbaren Funktion
 
@@ -81,8 +81,8 @@ Dazu müssen diese auf einem `numpy.meshgrid` ausgewertet werden.
 import numpy as np
 import matplotlib.pyplot as plt
 
-x = np.linspace(-5.0, 5.0, 50 )
-y = np.linspace(-5.0, 5.0, 50 )
+x = np.linspace(-5.0, 5.0, 50)
+y = np.linspace(-5.0, 5.0, 50)
 X, Y = np.meshgrid(x, y)
 
 f1 = lambda x, y: 2.0 * x + 4.0 * y
@@ -191,3 +191,21 @@ $$
 1
 \end{pmatrix}.
 $$
+
+```{code-cell} ipython3
+import numpy as np
+import matplotlib.pyplot as plt
+
+x = np.linspace(-3.0, 3.0, 50)
+y = np.linspace(-3.0, 3.0, 50)
+X, Y = np.meshgrid(x, y)
+
+f1 = lambda x, y: 2.0 * x + 4.0 * y
+f2 = lambda x, y: 4.0 * x + 8.0 * y**3
+residuum = lambda x, y: np.sqrt(f1(x, y)**2 + f2(x, y)**2)
+
+plt.figure()
+plt.title("Residuum")
+plt.contourf(X, Y, residuum(X, Y))
+plt.show()
+```

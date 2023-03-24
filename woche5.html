@@ -451,14 +451,14 @@ title="Print to PDF"
                 
               <div>
                 
-  <p>Lernziele:</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="woche-5-newton-verfahren-vertiefung">
+<h1>Woche 5: Newton-Verfahren (Vertiefung)<a class="headerlink" href="#woche-5-newton-verfahren-vertiefung" title="Permalink to this headline">#</a></h1>
+<p>Lernziele:</p>
 <ol class="simple">
 <li><p>Ich kann die Jacobi-Matrix einer Funktion von <span class="math notranslate nohighlight">\(\mathbb R^n\)</span> nach <span class="math notranslate nohighlight">\(\mathbb R^n\)</span> berechnen, wobei <span class="math notranslate nohighlight">\(1\leq n\leq 3\)</span>.</p></li>
 <li><p>Ich kann das Newton-Verfahren in 1D und 2D implementieren.</p></li>
 <li><p>Ich kann die Funktion <code class="docutils literal notranslate"><span class="pre">matplotlib.pyplot.plot_surface</span></code> verwenden.</p></li>
 </ol>
-<section class="tex2jax_ignore mathjax_ignore" id="woche-5-newton-verfahren-vertiefung">
-<h1>Woche 5: Newton-Verfahren (Vertiefung)<a class="headerlink" href="#woche-5-newton-verfahren-vertiefung" title="Permalink to this headline">#</a></h1>
 <section id="minimierung-einer-differenzierbaren-funktion">
 <h2>Minimierung einer differenzierbaren Funktion<a class="headerlink" href="#minimierung-einer-differenzierbaren-funktion" title="Permalink to this headline">#</a></h2>
 <p>Wir betrachten die Funktion <span class="math notranslate nohighlight">\(f(x)=x^2\sin(x)\)</span> im Intervall <span class="math notranslate nohighlight">\([2,7]\)</span>.</p>
@@ -525,8 +525,8 @@ Dazu müssen diese auf einem <code class="docutils literal notranslate"><span cl
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 
-<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mf">5.0</span><span class="p">,</span> <span class="mf">5.0</span><span class="p">,</span> <span class="mi">50</span> <span class="p">)</span>
-<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mf">5.0</span><span class="p">,</span> <span class="mf">5.0</span><span class="p">,</span> <span class="mi">50</span> <span class="p">)</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mf">5.0</span><span class="p">,</span> <span class="mf">5.0</span><span class="p">,</span> <span class="mi">50</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mf">5.0</span><span class="p">,</span> <span class="mf">5.0</span><span class="p">,</span> <span class="mi">50</span><span class="p">)</span>
 <span class="n">X</span><span class="p">,</span> <span class="n">Y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
 
 <span class="n">f1</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="mf">2.0</span> <span class="o">*</span> <span class="n">x</span> <span class="o">+</span> <span class="mf">4.0</span> <span class="o">*</span> <span class="n">y</span>
@@ -638,6 +638,27 @@ Lösen Sie das LGS mit <code class="docutils literal notranslate"><span class="p
 1
 \end{pmatrix}.
 \end{split}\]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mf">3.0</span><span class="p">,</span> <span class="mf">3.0</span><span class="p">,</span> <span class="mi">50</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mf">3.0</span><span class="p">,</span> <span class="mf">3.0</span><span class="p">,</span> <span class="mi">50</span><span class="p">)</span>
+<span class="n">X</span><span class="p">,</span> <span class="n">Y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+
+<span class="n">f1</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="mf">2.0</span> <span class="o">*</span> <span class="n">x</span> <span class="o">+</span> <span class="mf">4.0</span> <span class="o">*</span> <span class="n">y</span>
+<span class="n">f2</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="mf">4.0</span> <span class="o">*</span> <span class="n">x</span> <span class="o">+</span> <span class="mf">8.0</span> <span class="o">*</span> <span class="n">y</span><span class="o">**</span><span class="mi">3</span>
+<span class="n">residuum</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">f1</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">f2</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Residuum&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">contourf</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">residuum</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 </section>
 

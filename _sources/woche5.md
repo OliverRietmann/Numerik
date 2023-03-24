@@ -182,10 +182,9 @@ J = lambda x, y: np.array([[2.0, 4.0], [4.0, 24.0 * y**2]])
 
 def newton(f, J, x, y, tol, N):
     n = 0
-    while np.linalg.norm(f(x, y)) > tol and n < N:
-        # Ihr Code kommt hier hin
-        # ...
-        # ...
+    # Ihr Code kommt hier hin
+    # ...
+    # ...
     return x, y, n
 
 x0, y0 = (3.0, 2.0)

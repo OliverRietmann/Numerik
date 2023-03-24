@@ -15,10 +15,9 @@ kernelspec:
 
 Lernziele:
 
-1. Ich kann die Jacobi-Matrix einer Funktion von $\mathbb R^n$ nach $\mathbb R^n$ berechnen, wobei $1\geq n\leq 3$.
+1. Ich kann die Jacobi-Matrix einer Funktion von $\mathbb R^n$ nach $\mathbb R^n$ berechnen, wobei $1\leq n\leq 3$.
 2. Ich kann das Newton-Verfahren in 1D und 2D implementieren.
 3. Ich kann die Funktion `matplotlib.pyplot.plot_surface` verwenden.
-4. Ich kann den Begriff **Residuum** im Zusammenhang mit dem Newton-Verfahren erklären.
 
 # Woche 5: Newton-Verfahren (Vertiefung)
 

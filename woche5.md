@@ -146,9 +146,9 @@ Hier bezeichnet $J(x, y)$ die Jacobi-Matrix von $f$ an der Stelle $(x, y)$.
 Die Matrix-Vektor Multiplikation entspricht dem Lösen eines linearen Gleichungssystems (LGS):
 
 $$
-\vec{v}=\left(J(x, y)\right)^{-1}\cdot f(x, y)
+\vec{d}=\left(J(x, y)\right)^{-1}\cdot f(x, y)
 \quad\Longleftrightarrow\quad
-J(x, y)\cdot\vec{v}=f(x, y).
+J(x, y)\cdot\vec{d}=f(x, y).
 $$
 
 :::{admonition} Aufgabe
@@ -166,8 +166,8 @@ J = lambda x, y: np.array([[2.0, 4.0], [4.0, 24.0 * y**2]])
 def newton(f, J, x, y, tol, N):
     n = 0
     while np.linalg.norm(f(x, y)) > tol and n < N:
-        z = np.array([x, y])
-        x, y = z - np.linalg.solve(J(x, y), f(x, y))
+        d = np.linalg.solve(J(x, y), f(x, y))
+        x, y = np.array([x, y]) - d
         n += 1
     return x, y, n
 

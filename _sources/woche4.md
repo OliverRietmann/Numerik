@@ -31,7 +31,16 @@ Implementieren Sie die Bisektion.
 :::
 ```{code-cell} ipython3
 def bisection(f, a, b, tol):
-    # Ihr Code kommt hier hin.
+    assert(f(a) * f(b) < 0.0)
+    while abs(b-a) > tol:
+        m = (a + b) / 2
+        fm = f(m)
+        if fm == 0.0:
+            return m, m
+        elif fm * f(b) < 0.0:
+            a = m
+        else:
+            b = m
     return [a, b]
 
 f = lambda x: x**2 - 3.0
@@ -114,7 +123,8 @@ Implementieren Sie das Newton Verfahren.
 :::
 ```{code-cell} ipython3
 def newton(f, df, x, tol):
-    # Ihr Code kommt hier hin.
+    while abs(f(x)) > tol:
+        x = x - f(x) / df(x)
     return x
 
 f = lambda x: x**2 - 3.0

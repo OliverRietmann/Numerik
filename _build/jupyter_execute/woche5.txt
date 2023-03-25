@@ -62,3 +62,18 @@ def newton(f, J, x, y, tol, N):
 
 x0, y0 = (3.0, 2.0)
 print(newton(f, J, x0, y0, 1.0e-3, 20))
+
+import numpy as np
+import matplotlib.pyplot as plt
+
+f1 = lambda x, y: 2.0 * x + 4.0 * y
+f2 = lambda x, y: 4.0 * x + 8.0 * y**3
+
+x = np.linspace(-5.0, 5.0, 50)
+y = np.linspace(-5.0, 5.0, 50)
+X, Y = np.meshgrid(x, y)
+
+fig, axs = plt.subplots()
+axs.contourf(X, Y, f1(X, Y), [0, 0.01], colors='red')
+axs.contourf(X, Y, f2(X, Y), [0, 0.01], colors='blue')
+plt.show()

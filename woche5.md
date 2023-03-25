@@ -225,21 +225,23 @@ $$
 1
 \end{pmatrix}.
 $$
-<!--
+
+Die Kandidaten für Nullstellen kann man graphisch ermitteln.
+Dazu kann man zum Beispiel die Höhenlinie der Höhe Null plotten.
+
+```{code-cell} ipython3
 import numpy as np
 import matplotlib.pyplot as plt
 
-x = np.linspace(-3.0, 3.0, 50)
-y = np.linspace(-3.0, 3.0, 50)
-X, Y = np.meshgrid(x, y)
-
 f1 = lambda x, y: 2.0 * x + 4.0 * y
 f2 = lambda x, y: 4.0 * x + 8.0 * y**3
-residuum = lambda x, y: np.sqrt(f1(x, y)**2 + f2(x, y)**2)
 
-plt.figure()
-plt.title("Residuum")
-plt.contourf(X, Y, residuum(X, Y))
+x = np.linspace(-5.0, 5.0, 50)
+y = np.linspace(-5.0, 5.0, 50)
+X, Y = np.meshgrid(x, y)
+
+fig, axs = plt.subplots()
+axs.contourf(X, Y, f1(X, Y), [0, 0.01], colors='red')
+axs.contourf(X, Y, f2(X, Y), [0, 0.01], colors='blue')
 plt.show()
 ```
--->

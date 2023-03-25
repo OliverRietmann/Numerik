@@ -55,15 +55,13 @@ df = lambda x: 2.0 * x * np.sin(x) + x**2 * np.cos(x)
 ddf = lambda x: (2.0 - x**2) * np.sin(x) + 4.0 * x * np.cos(x)
 
 def newton(g, dg, x, tol):
-    # Ihr Code kommt hier hin.
-    # ...
+    while np.abs(g(x)) > tol:
+        x = x - g(x) / dg(x)
     return x
 
 tol = 1.0e-5
 for x0 in [3.0, 4.0, 5.0]:
-    # Ihr Code kommt hier hin.
-    # ...
-    pass
+    print(newton(df, ddf, x0, tol))
 ```
 <!--
 import numpy as np
@@ -182,9 +180,10 @@ J = lambda x, y: np.array([[2.0, 4.0], [4.0, 24.0 * y**2]])
 
 def newton(f, J, x, y, tol, N):
     n = 0
-    # Ihr Code kommt hier hin
-    # ...
-    # ...
+    while np.linalg.norm(f(x, y)) > tol and n < N:
+        d = np.linalg.solve(J(x, y), f(x, y))
+        x, y = np.array([x, y]) - d
+        n += 1
     return x, y, n
 
 x0, y0 = (3.0, 2.0)
@@ -208,7 +207,6 @@ def newton(f, J, x, y, tol, N):
 
 x0, y0 = (3.0, 2.0)
 print(newton(f, J, x0, y0, 1.0e-3, 20))
-```
 -->
 
 Die Nullstellen von $f$ sind

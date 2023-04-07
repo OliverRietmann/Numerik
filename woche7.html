@@ -443,6 +443,10 @@ title="Print to PDF"
   <section class="tex2jax_ignore mathjax_ignore" id="woche-7-gauss-algorithmus">
 <h1>Woche 7: Gauss-Algorithmus<a class="headerlink" href="#woche-7-gauss-algorithmus" title="Permalink to this headline">#</a></h1>
 <p>Lernziele:</p>
+<ol class="simple">
+<li><p>Ich kann mit <code class="docutils literal notranslate"><span class="pre">numpy.linalg.solve(...)</span></code> ein LGS numerisch lösen.</p></li>
+<li><p>Ich kann erklären, wann und warum der Gauss-Algorithmus schlechte Lösungen liefert.</p></li>
+</ol>
 <section id="lineare-gleichungssysteme">
 <h2>Lineare Gleichungssysteme<a class="headerlink" href="#lineare-gleichungssysteme" title="Permalink to this headline">#</a></h2>
 <p>Wir betrachten das lineare Gleichungssystem (LGS) <span class="math notranslate nohighlight">\(Ax=b\)</span>, wobei</p>
@@ -577,7 +581,7 @@ x=
     0 \\
     1 \\
     1000
-\end{pmatrix}
+\end{pmatrix}.
 \end{split}\]</div>
 <p>Das entsprechende LGS lösen wir zuerst mit unserer Implementierung der <span class="math notranslate nohighlight">\(LU\)</span>-Zerlegung.</p>
 <div class="cell docutils container">

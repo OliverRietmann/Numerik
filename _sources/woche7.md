@@ -13,7 +13,7 @@ kernelspec:
   name: python3
 ---
 
-# Woche 5: Gauss-Algorithmus
+# Woche 7: Gauss-Algorithmus
 
 Lernziele:
 
@@ -53,7 +53,7 @@ Das entsprechende LGS lösen wir in Python mit `numpy.linalg.solve(...)`.
 ```{code-cell} ipython3
 import numpy as np
 
-A = np.array([[0.0, 1.0, 0.0],
+A = np.array([[1.0e-20, 1.0, 0.0],
               [1.0, 0.0, 1.0],
               [1.0, 1.0, 0.0]])
 b = np.array([1.0, 1000.0, 1.0])

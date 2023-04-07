@@ -192,3 +192,28 @@ x = np.linalg.solve(A, b)
 
 print("x =", x) # [0, 1, 1000]
 ```
+
+## Konditionszahl
+
+Die Konditionszahl einer Matrix $A$ ist definiert als
+
+$$
+\kappa(A):=\lVert A\rVert\cdot\lVert A^{-1}\rVert
+$$
+
+und kann in Python berechnet werden mit `numpy.linalg.cond(...)`.
+
+```{code-cell} ipython3
+import numpy as np
+
+a = 1.0e-20
+A = np.array([[a, 1.0, 0.0],
+              [1.0, 0.0, 1.0],
+              [1.0, 1.0, 0.0]])
+P = np.array([[0.0, 1.0, 0.0],
+              [1.0, 0.0, 0.0],
+              [0.0, 0.0, 1.0]])
+
+print(np.linalg.cond(A))
+print(np.linalg.cond(P @ A))
+```

@@ -1,0 +1,11 @@
+import numpy as np
+
+A = np.array([[0.0, 1.0, 0.0],
+              [1.0, 0.0, 1.0],
+              [1.0, 1.0, 0.0]])
+b = np.array([1.0, 1000.0, 1.0])
+
+x = np.linalg.solve(A, b)
+
+print(x)
+print(np.dot(A, x))

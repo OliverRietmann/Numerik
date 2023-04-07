@@ -158,6 +158,8 @@ Das entsprechende LGS lösen wir zuerst mit unserer Implementierung der $LU$-Zer
 ```{code-cell} ipython3
 import numpy as np
 
+# np.set_printoptions(suppress=True, formatter={'float_kind':'{:0.0f}'.format}) 
+
 a = 1.0e-20
 A = np.array([[a, 1.0, 0.0],
               [1.0, 0.0, 1.0],

@@ -142,6 +142,16 @@ $$
 
 mit der sehr kleinen Zahl $a=10^{-20}$.
 Hier wäre als fast eine Zeilenvertauschung nötig (falls $a=0$ wäre sie tatsächlich nötig).
+Die Lösung des LGS $Ax=b$ lautet
+
+$$
+x=
+\begin{pmatrix}
+    0 \\
+    1 \\
+    1000
+\end{pmatrix}
+$$
 
 Das entsprechende LGS lösen wir zuerst mit unserer Implementierung der $LU$-Zerlegung.
 
@@ -155,17 +165,17 @@ A = np.array([[a, 1.0, 0.0],
 b = np.array([1.0, 1000.0, 1.0])
 
 L, U = LUdecomposition(A)
-y = forward(U, b)
-x = backward(L, y)
+y = forward(L, b)
+x = backward(U, y)
 
-print("x =", x) # [ 3. -6. -6.]
+print("x =", x) # [0, 1, 1000]
 ```
 
 :::{admonition} Aufgabe
-Was ist das Problem?
+Wo liegt das Problem und wie können wir es beheben?
 :::
 
-Nun lösen wir das LGS `numpy.linalg.solve(...)`.
+Nun lösen wir das LGS mit `numpy.linalg.solve(...)`.
 
 ```{code-cell} ipython3
 import numpy as np
@@ -176,7 +186,7 @@ A = np.array([[a, 1.0, 0.0],
               [1.0, 1.0, 0.0]])
 b = np.array([1.0, 1000.0, 1.0])
 
-x = numpy.linalg.solve(A, b)
+x = np.linalg.solve(A, b)
 
-print("x =", x) # [ 3. -6. -6.]
+print("x =", x) # [0, 1, 1000]
 ```

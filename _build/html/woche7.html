@@ -558,7 +558,17 @@ b:=
 \end{pmatrix}
 \end{split}\]</div>
 <p>mit der sehr kleinen Zahl <span class="math notranslate nohighlight">\(a=10^{-20}\)</span>.
-Hier wäre als fast eine Zeilenvertauschung nötig (falls <span class="math notranslate nohighlight">\(a=0\)</span> wäre sie tatsächlich nötig).</p>
+Hier wäre als fast eine Zeilenvertauschung nötig (falls <span class="math notranslate nohighlight">\(a=0\)</span> wäre sie tatsächlich nötig).
+Die Lösung des LGS <span class="math notranslate nohighlight">\(Ax=b\)</span> lautet</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+x=
+\begin{pmatrix}
+    0 \\
+    1 \\
+    1000
+\end{pmatrix}
+\end{split}\]</div>
 <p>Das entsprechende LGS lösen wir zuerst mit unserer Implementierung der <span class="math notranslate nohighlight">\(LU\)</span>-Zerlegung.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -571,19 +581,19 @@ Hier wäre als fast eine Zeilenvertauschung nötig (falls <span class="math notr
 <span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">1000.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">])</span>
 
 <span class="n">L</span><span class="p">,</span> <span class="n">U</span> <span class="o">=</span> <span class="n">LUdecomposition</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
-<span class="n">y</span> <span class="o">=</span> <span class="n">forward</span><span class="p">(</span><span class="n">U</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
-<span class="n">x</span> <span class="o">=</span> <span class="n">backward</span><span class="p">(</span><span class="n">L</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">forward</span><span class="p">(</span><span class="n">L</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">backward</span><span class="p">(</span><span class="n">U</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;x =&quot;</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span> <span class="c1"># [ 3. -6. -6.]</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;x =&quot;</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span> <span class="c1"># [0, 1, 1000]</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="admonition-aufgabe admonition">
 <p class="admonition-title">Aufgabe</p>
-<p>Was ist das Problem?</p>
+<p>Wo liegt das Problem und wie können wir es beheben?</p>
 </div>
-<p>Nun lösen wir das LGS <code class="docutils literal notranslate"><span class="pre">numpy.linalg.solve(...)</span></code>.</p>
+<p>Nun lösen wir das LGS mit <code class="docutils literal notranslate"><span class="pre">numpy.linalg.solve(...)</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -594,9 +604,9 @@ Hier wäre als fast eine Zeilenvertauschung nötig (falls <span class="math notr
               <span class="p">[</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">]])</span>
 <span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">1000.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">])</span>
 
-<span class="n">x</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;x =&quot;</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span> <span class="c1"># [ 3. -6. -6.]</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;x =&quot;</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span> <span class="c1"># [0, 1, 1000]</span>
 </pre></div>
 </div>
 </div>

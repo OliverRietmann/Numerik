@@ -57,10 +57,10 @@ A = np.array([[a, 1.0, 0.0],
 b = np.array([1.0, 1000.0, 1.0])
 
 L, U = LUdecomposition(A)
-y = forward(U, b)
-x = backward(L, y)
+y = forward(L, b)
+x = backward(U, y)
 
-print("x =", x) # [ 3. -6. -6.]
+print("x =", x) # [0, 1, 1000]
 
 import numpy as np
 
@@ -70,6 +70,6 @@ A = np.array([[a, 1.0, 0.0],
               [1.0, 1.0, 0.0]])
 b = np.array([1.0, 1000.0, 1.0])
 
-x = numpy.linalg.solve(A, b)
+x = np.linalg.solve(A, b)
 
-print("x =", x) # [ 3. -6. -6.]
+print("x =", x) # [0, 1, 1000]

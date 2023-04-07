@@ -17,6 +17,9 @@ kernelspec:
 
 Lernziele:
 
+1. Ich kann mit `numpy.linalg.solve(...)` ein LGS numerisch lösen.
+2. Ich kann erklären, wann und warum der Gauss-Algorithmus schlechte Lösungen liefert.
+
 ## Lineare Gleichungssysteme
 
 Wir betrachten das lineare Gleichungssystem (LGS) $Ax=b$, wobei
@@ -150,7 +153,7 @@ x=
     0 \\
     1 \\
     1000
-\end{pmatrix}
+\end{pmatrix}.
 $$
 
 Das entsprechende LGS lösen wir zuerst mit unserer Implementierung der $LU$-Zerlegung.

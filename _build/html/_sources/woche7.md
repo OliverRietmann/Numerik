@@ -70,7 +70,7 @@ def forward(L, b):
 def backward(U, y):
     x = np.zeros_like(y)
     for i in reversed(range(len(y))):
-        x[i] = (x[i] - np.dot(U[i], y)) / U[i, i]
+        x[i] = (y[i] - np.dot(U[i], x)) / U[i, i]
     return x
 
 L = np.array([[1.0, 0.0, 0.0],
@@ -83,7 +83,7 @@ b = np.array([3.0, 0.0, 3.0])
 
 y = forward(L, b)
 x = backward(U, y)
-print(y)
+print("y =", y)
 print(x)
 ```
 

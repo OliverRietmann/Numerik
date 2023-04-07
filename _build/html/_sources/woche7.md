@@ -36,6 +36,11 @@ b:=
 \end{pmatrix}.
 $$
 
+Hier ist $A$ eine Matrix und $b$ ein Vektor.
+Beide sind gegeben.
+Der Vektor $x$ ist die gesuchte Grösse.
+Wir betrachten nur den Spezialfall wo $A$ eine **quadratische** Matrix ist.
+
 Wir berechnen die $LU$-Zerlegung (ohne Zeilenvertauschung).
 
 ```{code-cell} ipython3
@@ -44,7 +49,7 @@ import numpy as np
 def LUdecomposition(A):
     n = len(A)
     L = np.eye(n)
-    U = A.copy()
+    U = A
     for k in range(n):
         L[k+1:n, k] = U[k+1:n, k] / U[k, k]
         for j in range(k + 1, n):
@@ -116,24 +121,14 @@ print("y =", y) # [ 3. -6. -6.]
 print("x =", x) # [-4. -5.  3.]
 ```
 
-## Lineare Gleichungssysteme
+## Numerische Instabilität
 
-Ein lineares Gleichungssystem (LGS) ist eine Gleichung der Form
-
-$$
-Ax=b.
-$$
-
-Hier ist $A$ eine Matrix und $b$ ein Vektor.
-Beide sind gegeben.
-Der Vektor $x$ ist die gesuchte Grösse.
-Wir betrachten hier nur den Spezialfall wo $A$ eine **quadratische** Matrix ist.
-Hier ist ein Beispiel
+Wir betrachten ein neues LGS $Ax=b$, wobei
 
 $$
 A:=
 \begin{pmatrix}
-    0 & 1 & 0 \\
+    a & 1 & 0 \\
     1 & 0 & 1 \\
     1 & 1 & 0
 \end{pmatrix},\qquad
@@ -145,22 +140,43 @@ b:=
 \end{pmatrix}
 $$
 
-Das entsprechende LGS lösen wir in Python mit `numpy.linalg.solve(...)`.
+mit der sehr kleinen Zahl $a=10^{-20}$.
+Hier wäre als fast eine Zeilenvertauschung nötig (falls $a=0$ wäre sie tatsächlich nötig).
+
+Das entsprechende LGS lösen wir zuerst mit unserer Implementierung der $LU$-Zerlegung.
 
 ```{code-cell} ipython3
 import numpy as np
 
-A = np.array([[0.0, 1.0, 0.0],
+a = 1.0e-20
+A = np.array([[a, 1.0, 0.0],
               [1.0, 0.0, 1.0],
               [1.0, 1.0, 0.0]])
 b = np.array([1.0, 1000.0, 1.0])
 
-x = np.linalg.solve(A, b)
+L, U = LUdecomposition(A)
+y = forward(U, b)
+x = backward(L, y)
 
-print(x)
-print(np.dot(A, x))
+print("x =", x) # [ 3. -6. -6.]
 ```
 
 :::{admonition} Aufgabe
-test
+Was ist das Problem?
 :::
+
+Nun lösen wir das LGS `numpy.linalg.solve(...)`.
+
+```{code-cell} ipython3
+import numpy as np
+
+a = 1.0e-20
+A = np.array([[a, 1.0, 0.0],
+              [1.0, 0.0, 1.0],
+              [1.0, 1.0, 0.0]])
+b = np.array([1.0, 1000.0, 1.0])
+
+x = numpy.linalg.solve(A, b)
+
+print("x =", x) # [ 3. -6. -6.]
+```

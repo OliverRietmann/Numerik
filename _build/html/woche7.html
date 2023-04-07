@@ -387,8 +387,8 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id1">
-   Lineare Gleichungssysteme
+  <a class="reference internal nav-link" href="#numerische-instabilitat">
+   Numerische Instabilität
   </a>
  </li>
 </ul>
@@ -416,8 +416,8 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id1">
-   Lineare Gleichungssysteme
+  <a class="reference internal nav-link" href="#numerische-instabilitat">
+   Numerische Instabilität
   </a>
  </li>
 </ul>
@@ -451,6 +451,10 @@ b:=
     3
 \end{pmatrix}.
 \end{split}\]</div>
+<p>Hier ist <span class="math notranslate nohighlight">\(A\)</span> eine Matrix und <span class="math notranslate nohighlight">\(b\)</span> ein Vektor.
+Beide sind gegeben.
+Der Vektor <span class="math notranslate nohighlight">\(x\)</span> ist die gesuchte Grösse.
+Wir betrachten nur den Spezialfall wo <span class="math notranslate nohighlight">\(A\)</span> eine <strong>quadratische</strong> Matrix ist.</p>
 <p>Wir berechnen die <span class="math notranslate nohighlight">\(LU\)</span>-Zerlegung (ohne Zeilenvertauschung).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -459,7 +463,7 @@ b:=
 <span class="k">def</span> <span class="nf">LUdecomposition</span><span class="p">(</span><span class="n">A</span><span class="p">):</span>
     <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
     <span class="n">L</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
-    <span class="n">U</span> <span class="o">=</span> <span class="n">A</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+    <span class="n">U</span> <span class="o">=</span> <span class="n">A</span>
     <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
         <span class="n">L</span><span class="p">[</span><span class="n">k</span><span class="o">+</span><span class="mi">1</span><span class="p">:</span><span class="n">n</span><span class="p">,</span> <span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">U</span><span class="p">[</span><span class="n">k</span><span class="o">+</span><span class="mi">1</span><span class="p">:</span><span class="n">n</span><span class="p">,</span> <span class="n">k</span><span class="p">]</span> <span class="o">/</span> <span class="n">U</span><span class="p">[</span><span class="n">k</span><span class="p">,</span> <span class="n">k</span><span class="p">]</span>
         <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">k</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
@@ -535,23 +539,14 @@ b:=
 </div>
 </div>
 </section>
-<section id="id1">
-<h2>Lineare Gleichungssysteme<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h2>
-<p>Ein lineares Gleichungssystem (LGS) ist eine Gleichung der Form</p>
-<div class="math notranslate nohighlight">
-\[
-Ax=b.
-\]</div>
-<p>Hier ist <span class="math notranslate nohighlight">\(A\)</span> eine Matrix und <span class="math notranslate nohighlight">\(b\)</span> ein Vektor.
-Beide sind gegeben.
-Der Vektor <span class="math notranslate nohighlight">\(x\)</span> ist die gesuchte Grösse.
-Wir betrachten hier nur den Spezialfall wo <span class="math notranslate nohighlight">\(A\)</span> eine <strong>quadratische</strong> Matrix ist.
-Hier ist ein Beispiel</p>
+<section id="numerische-instabilitat">
+<h2>Numerische Instabilität<a class="headerlink" href="#numerische-instabilitat" title="Permalink to this headline">#</a></h2>
+<p>Wir betrachten ein neues LGS <span class="math notranslate nohighlight">\(Ax=b\)</span>, wobei</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
 A:=
 \begin{pmatrix}
-    0 &amp; 1 &amp; 0 \\
+    a &amp; 1 &amp; 0 \\
     1 &amp; 0 &amp; 1 \\
     1 &amp; 1 &amp; 0
 \end{pmatrix},\qquad
@@ -562,27 +557,49 @@ b:=
     1
 \end{pmatrix}
 \end{split}\]</div>
-<p>Das entsprechende LGS lösen wir in Python mit <code class="docutils literal notranslate"><span class="pre">numpy.linalg.solve(...)</span></code>.</p>
+<p>mit der sehr kleinen Zahl <span class="math notranslate nohighlight">\(a=10^{-20}\)</span>.
+Hier wäre als fast eine Zeilenvertauschung nötig (falls <span class="math notranslate nohighlight">\(a=0\)</span> wäre sie tatsächlich nötig).</p>
+<p>Das entsprechende LGS lösen wir zuerst mit unserer Implementierung der <span class="math notranslate nohighlight">\(LU\)</span>-Zerlegung.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 
-<span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">],</span>
+<span class="n">a</span> <span class="o">=</span> <span class="mf">1.0e-20</span>
+<span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="n">a</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">],</span>
               <span class="p">[</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">],</span>
               <span class="p">[</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">]])</span>
 <span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">1000.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">])</span>
 
-<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+<span class="n">L</span><span class="p">,</span> <span class="n">U</span> <span class="o">=</span> <span class="n">LUdecomposition</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">forward</span><span class="p">(</span><span class="n">U</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">backward</span><span class="p">(</span><span class="n">L</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">x</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;x =&quot;</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span> <span class="c1"># [ 3. -6. -6.]</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="admonition-aufgabe admonition">
 <p class="admonition-title">Aufgabe</p>
-<p>test</p>
+<p>Was ist das Problem?</p>
+</div>
+<p>Nun lösen wir das LGS <code class="docutils literal notranslate"><span class="pre">numpy.linalg.solve(...)</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="n">a</span> <span class="o">=</span> <span class="mf">1.0e-20</span>
+<span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="n">a</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">],</span>
+              <span class="p">[</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">],</span>
+              <span class="p">[</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">]])</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">1000.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">])</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;x =&quot;</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span> <span class="c1"># [ 3. -6. -6.]</span>
+</pre></div>
+</div>
+</div>
 </div>
 </section>
 </section>

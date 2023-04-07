@@ -3,7 +3,7 @@ import numpy as np
 def LUdecomposition(A):
     n = len(A)
     L = np.eye(n)
-    U = A.copy()
+    U = A
     for k in range(n):
         L[k+1:n, k] = U[k+1:n, k] / U[k, k]
         for j in range(k + 1, n):
@@ -50,12 +50,26 @@ print("x =", x) # [-4. -5.  3.]
 
 import numpy as np
 
-A = np.array([[0.0, 1.0, 0.0],
+a = 1.0e-20
+A = np.array([[a, 1.0, 0.0],
               [1.0, 0.0, 1.0],
               [1.0, 1.0, 0.0]])
 b = np.array([1.0, 1000.0, 1.0])
 
-x = np.linalg.solve(A, b)
+L, U = LUdecomposition(A)
+y = forward(U, b)
+x = backward(L, y)
 
-print(x)
-print(np.dot(A, x))
+print("x =", x) # [ 3. -6. -6.]
+
+import numpy as np
+
+a = 1.0e-20
+A = np.array([[a, 1.0, 0.0],
+              [1.0, 0.0, 1.0],
+              [1.0, 1.0, 0.0]])
+b = np.array([1.0, 1000.0, 1.0])
+
+x = numpy.linalg.solve(A, b)
+
+print("x =", x) # [ 3. -6. -6.]

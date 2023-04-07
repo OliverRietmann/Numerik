@@ -17,9 +17,77 @@ kernelspec:
 
 Lernziele:
 
+## Lineare Gleichungssysteme
 
+Wir betrachten das lineare Gleichungssystem (LGS) $Ax=b$, wobei
 
-## Linear Gleichungssysteme
+$$
+A:=
+\begin{pmatrix}
+    1 & -2 & -1 \\
+    2 & -1 & 1 \\
+    3 & -6 & -5
+\end{pmatrix},\qquad
+b:=
+\begin{pmatrix}
+    3 \\
+    0 \\
+    3
+\end{pmatrix}.
+$$
+
+Wir haben bereits die $LU$-Zerlegung von $A$ berechnet:
+
+$$
+\begin{pmatrix}
+    1 & -2 & -1 \\
+    2 & -1 & 1 \\
+    3 & -6 & -5
+\end{pmatrix}
+=
+\begin{pmatrix}
+    1 & 0 & 0 \\
+    2 & 1 & 0 \\
+    3 & 0 & 0
+\end{pmatrix}
+\cdot
+\begin{pmatrix}
+    1 & -2 & -1 \\
+    0 & 3 & 3 \\
+    0 & 0 & -2
+\end{pmatrix}
+$$
+
+```{code-cell} ipython3
+import numpy as np
+
+def forward(L, b):
+    y = np.zeros_like(b)
+    for i in range(len(b)):
+        y[i] = (b[i] - np.dot(L[i], y)) / L[i, i]
+    return y
+
+def backward(U, y):
+    x = np.zeros_like(y)
+    for i in reversed(range(len(y))):
+        y[i] = (b[i] - np.dot(L[i], y)) / L[i, i]
+    return y
+
+L = np.array([[1.0, 0.0, 0.0],
+              [2.0, 1.0, 0.0],
+              [3.0, 0.0, 1.0]])
+U = np.array([[1.0, -2.0, -1.0],
+              [0.0,  3.0,  3.0],
+              [0.0,  0.0, -2.0]])
+b = np.array([3.0, 0.0, 3.0])
+
+y = forward(L, b)
+x = backward(U, y)
+print(y)
+print(x)
+```
+
+## Lineare Gleichungssysteme
 
 Ein lineares Gleichungssystem (LGS) ist eine Gleichung der Form
 
@@ -53,7 +121,7 @@ Das entsprechende LGS lösen wir in Python mit `numpy.linalg.solve(...)`.
 ```{code-cell} ipython3
 import numpy as np
 
-A = np.array([[1.0e-20, 1.0, 0.0],
+A = np.array([[0.0, 1.0, 0.0],
               [1.0, 0.0, 1.0],
               [1.0, 1.0, 0.0]])
 b = np.array([1.0, 1000.0, 1.0])

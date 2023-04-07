@@ -83,8 +83,8 @@ b = np.array([3.0, 0.0, 3.0])
 
 y = forward(L, b)
 x = backward(U, y)
-print("y =", y)
-print(x)
+print("y =", y) # [ 3. -6. -6.]
+print("x =", x) # [-4. -5.  3.]
 ```
 
 ## Lineare Gleichungssysteme

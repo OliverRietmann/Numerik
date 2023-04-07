@@ -36,7 +36,32 @@ b:=
 \end{pmatrix}.
 $$
 
-Wir haben bereits die $LU$-Zerlegung von $A$ berechnet:
+Wir berechnen die $LU$-Zerlegung (ohne Zeilenvertauschung).
+
+```{code-cell} ipython3
+import numpy as np
+
+def LU_decomposition(A):
+    n = len(A)
+    L = np.eye(n)
+    U = A.copy()
+    for k in range(n):
+        L[k+1:n, k] = U[k+1:n, k] / U[k, k]
+    for j in range(k + 1, n):
+        U[j, :] = U[j, :] - L[j, k] * U[k, :]
+    return L, U
+
+A = np.array([[1.0, -2.0, -1.0],
+              [2.0, -1.0,  1.0],
+              [3.0, -6.0, -5.0]])
+
+L, U = LUFaktoren(A)
+print(L)
+print(U)
+print(L @ U)
+```
+
+Wir haben die $LU$-Zerlegung von $A$ bereits berechnet:
 
 $$
 \begin{pmatrix}
@@ -57,6 +82,8 @@ $$
     0 & 0 & -2
 \end{pmatrix}
 $$
+
+Nun können wir das LGS lösen.
 
 ```{code-cell} ipython3
 import numpy as np

@@ -74,5 +74,4 @@ plt.figure()
 plt.plot(x, y, 'bo')
 plt.plot(x, m * x + b, 'r-')
 plt.show()
-plt.clear()
 ```

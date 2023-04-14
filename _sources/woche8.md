@@ -42,14 +42,14 @@ A:=
     1 & x_1 \\
     1 & x_2 \\
     \vdots & \vdots \\
-    1 & x_m
+    1 & x_n
 \end{pmatrix},\qquad
 y:=
 \begin{pmatrix}
     y_1 \\
     y_2 \\
     \vdots \\
-    y_m
+    y_n
 \end{pmatrix}.
 $$
 
@@ -63,12 +63,12 @@ n = 4
 x = np.linspace(-2.5, 2.5, n)
 y = 2.0 * x + 3.0 + 0.5 * np.random.rand(n)
 
-A = np.column_stack((np.ones_like(x), x, x**2))
+A = np.column_stack((np.ones_like(x), x))
 AT = np.transpose(A)
 
 print(A)
 
-b, m = np.linalg.solve(AT @ A, np.dot(A, y))
+b, m = np.linalg.solve(AT @ A, np.dot(AT, y))
 
 plt.figure()
 plt.plot(x, y, 'bo')

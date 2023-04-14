@@ -56,12 +56,14 @@ Wir lösen die Normalengleichung mit 'numpy.linalg.solve(...)'.
 import numpy as np
 import matplotlib.pyplot as plt
 
-n = 50
+n = 4
 x = np.linspace(-2.5, 2.5, n)
 y = 2.0 * x + 3.0 + 0.5 * np.random.rand(n)
 
 A = np.column_stack((np.ones_like(x), x, x**2))
 AT = np.transpose(A)
+
+print(A)
 
 b, m = np.linalg.solve(AT @ A, np.dot(A, y))
 

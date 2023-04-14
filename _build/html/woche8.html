@@ -511,7 +511,7 @@ y:=
 <section id="allgemeine-polynome">
 <h2>Allgemeine Polynome<a class="headerlink" href="#allgemeine-polynome" title="Permalink to this headline">#</a></h2>
 <p>Nun wollen wir ein Polynom von Grad 3 fitten.
-Die Normalengleichung für den Koeffizientenvektor <span class="math notranslate nohighlight">\(p\)</span> des Polynoms lautet</p>
+Die Normalengleichung für den Koeffizientenvektor <span class="math notranslate nohighlight">\(p\)</span> dieses Polynoms lautet</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
 A^TA\cdot
@@ -526,7 +526,7 @@ A:=
     1 &amp; x_2 &amp; x_2^2 &amp; x_2^3 \\
     \vdots &amp; \vdots &amp; \vdots &amp; \vdots \\
     1 &amp; x_n &amp; x_n^2 &amp; x_n^3 \\
-\end{pmatrix}
+\end{pmatrix}.
 \end{split}\]</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -535,7 +535,7 @@ A:=
 
 <span class="n">n</span> <span class="o">=</span> <span class="mi">30</span>
 <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mf">2.5</span><span class="p">,</span> <span class="mf">2.5</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>
-<span class="n">noise</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="o">-</span> <span class="mf">0.5</span>
+<span class="n">noise</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="o">-</span> <span class="mf">0.25</span>
 <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">tanh</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">+</span> <span class="n">noise</span>
 
 <span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">column_stack</span><span class="p">((</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">n</span><span class="p">),</span> <span class="n">x</span><span class="p">,</span> <span class="n">x</span><span class="o">**</span><span class="mi">2</span><span class="p">,</span> <span class="n">x</span><span class="o">**</span><span class="mi">3</span><span class="p">))</span>

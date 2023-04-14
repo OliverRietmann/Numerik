@@ -117,3 +117,43 @@ plt.show()
 ```
 
 ## Beliebige Funktionen
+
+Nun wollen wir eine Funktion der Form
+
+$$
+f(x)=p_0\cdot\sin(x)+p_1\cdot x
+$$
+
+fitten.
+Die Normalengleichung für den Koeffizientenvektor $p=(p_0,p_1)^T$ lautet
+
+$$
+A^TA\cdot p=A^Ty,\qquad
+A:=
+\begin{pmatrix}
+    \sin(x_1) & x_1^2 \\
+    \sin(x_2) & x_2^2 \\
+    \vdots & \vdots & \vdots & \vdots \\
+    \sin(x_n) & x_n
+\end{pmatrix}.
+$$
+
+```{code-cell} ipython3
+import numpy as np
+import matplotlib.pyplot as plt
+
+n = 30
+x = np.linspace(-5.0, 5.0, n)
+noise = 0.5 * np.random.rand(n) - 0.25
+y = np.sin(x) + 0.5 * x + noise
+
+A = np.column_stack((np.sin(x), x))
+AT = np.transpose(A)
+p = np.linalg.solve(AT @ A, np.dot(AT, y))
+print(p)
+
+plt.figure()
+plt.plot(x, y, 'bo')
+plt.plot(x, np.dot(A, p), 'r-')
+plt.show()
+```

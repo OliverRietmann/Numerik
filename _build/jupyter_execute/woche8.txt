@@ -33,3 +33,21 @@ plt.figure()
 plt.plot(x, y, 'bo')
 plt.plot(x, np.dot(A, p), 'r-')
 plt.show()
+
+import numpy as np
+import matplotlib.pyplot as plt
+
+n = 30
+x = np.linspace(-5.0, 5.0, n)
+noise = 0.5 * np.random.rand(n) - 0.25
+y = np.sin(x) + 0.5 * x + noise
+
+A = np.column_stack((np.sin(x), x))
+AT = np.transpose(A)
+p = np.linalg.solve(AT @ A, np.dot(AT, y))
+print(p)
+
+plt.figure()
+plt.plot(x, y, 'bo')
+plt.plot(x, np.dot(A, p), 'r-')
+plt.show()

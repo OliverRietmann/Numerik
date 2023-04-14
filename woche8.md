@@ -59,16 +59,14 @@ Wir lösen die Normalengleichung mit 'numpy.linalg.solve(...)'.
 import numpy as np
 import matplotlib.pyplot as plt
 
-n = 50
+n = 30
 x = np.linspace(-2.5, 2.5, n)
 noise = np.random.rand(n) - 0.5
 y = 2.0 * x + 3.0 + noise
 
 A = np.column_stack((np.ones_like(x), x))
 AT = np.transpose(A)
-
 b, m = np.linalg.solve(AT @ A, np.dot(AT, y))
-
 print(m, b)
 
 plt.figure()

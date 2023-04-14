@@ -6,7 +6,7 @@ x = np.linspace(-2.5, 2.5, n)
 noise = np.random.rand(n) - 0.5
 y = 2.0 * x + 3.0 + noise
 
-A = np.column_stack((np.ones_like(x), x))
+A = np.column_stack((np.ones(n), x))
 AT = np.transpose(A)
 b, m = np.linalg.solve(AT @ A, np.dot(AT, y))
 print(m, b)
@@ -14,4 +14,22 @@ print(m, b)
 plt.figure()
 plt.plot(x, y, 'bo')
 plt.plot(x, m * x + b, 'r-')
+plt.show()
+
+import numpy as np
+import matplotlib.pyplot as plt
+
+n = 30
+x = np.linspace(-2.5, 2.5, n)
+noise = np.random.rand(n) - 0.5
+y = np.tanh(x) + noise
+
+A = np.column_stack((np.ones(n), x, x**2, x**3))
+AT = np.transpose(A)
+p = np.linalg.solve(AT @ A, np.dot(AT, y))
+print(p)
+
+plt.figure()
+plt.plot(x, y, 'bo')
+plt.plot(x, np.dot(A, p), 'r-')
 plt.show()

@@ -53,7 +53,7 @@ y:=
 \end{pmatrix}.
 $$
 
-Wir lösen die Normalengleichung mit 'numpy.linalg.solve(...)'.
+Wir lösen die Normalengleichung mit `numpy.linalg.solve(...)`.
 
 ```{code-cell} ipython3
 import numpy as np
@@ -64,7 +64,7 @@ x = np.linspace(-2.5, 2.5, n)
 noise = np.random.rand(n) - 0.5
 y = 2.0 * x + 3.0 + noise
 
-A = np.column_stack((np.ones_like(x), x))
+A = np.column_stack((np.ones(n), x))
 AT = np.transpose(A)
 b, m = np.linalg.solve(AT @ A, np.dot(AT, y))
 print(m, b)
@@ -74,3 +74,46 @@ plt.plot(x, y, 'bo')
 plt.plot(x, m * x + b, 'r-')
 plt.show()
 ```
+
+## Allgemeine Polynome
+
+Nun wollen wir ein Polynom von Grad 3 fitten.
+Die Normalengleichung für den Koeffizientenvektor $p$ des Polynoms lautet
+
+$$
+A^TA\cdot
+\begin{pmatrix}
+    b \\
+    m
+\end{pmatrix}
+=A^Ty,\qquad
+A:=
+\begin{pmatrix}
+    1 & x_1 & x_1^2 & x_1^3 \\
+    1 & x_2 & x_2^2 & x_2^3 \\
+    \vdots & \vdots & \vdots & \vdots \\
+    1 & x_n & x_n^2 & x_n^3 \\
+\end{pmatrix}
+$$
+
+```{code-cell} ipython3
+import numpy as np
+import matplotlib.pyplot as plt
+
+n = 30
+x = np.linspace(-2.5, 2.5, n)
+noise = np.random.rand(n) - 0.5
+y = np.tanh(x) + noise
+
+A = np.column_stack((np.ones(n), x, x**2, x**3))
+AT = np.transpose(A)
+p = np.linalg.solve(AT @ A, np.dot(AT, y))
+print(p)
+
+plt.figure()
+plt.plot(x, y, 'bo')
+plt.plot(x, np.dot(A, p), 'r-')
+plt.show()
+```
+
+## Beliebige Funktionen

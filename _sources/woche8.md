@@ -153,8 +153,8 @@ $$
 A^TA\cdot p=A^Ty,\qquad
 A:=
 \begin{pmatrix}
-    \sin(x_1) & x_1^2 \\
-    \sin(x_2) & x_2^2 \\
+    \sin(x_1) & x_1 \\
+    \sin(x_2) & x_2 \\
     \vdots & \vdots \\
     \sin(x_n) & x_n
 \end{pmatrix}.

@@ -19,7 +19,7 @@ Lernziele:
 
 1. Ich zu einer gegebenen Linearkombination von Funktionen die zugehörige Normalengleichung aufstellen.
 2. Ich kann die Normalengleichung mit `numpy.linalg.solve(...)` lösen.
-3. Ich kann die Funktionen `numpy.polyfit` und `numpy.polyval` anwenden.
+3. Ich kann die Funktionen `numpy.polyfit(...)` und `numpy.polyval(...)` anwenden.
 
 ## Gerade
 

@@ -511,22 +511,28 @@ y:=
 </section>
 <section id="allgemeine-polynome">
 <h2>Allgemeine Polynome<a class="headerlink" href="#allgemeine-polynome" title="Permalink to this headline">#</a></h2>
-<p>Nun wollen wir ein Polynom von Grad 3 fitten.
-Die Normalengleichung für den Koeffizientenvektor <span class="math notranslate nohighlight">\(p\)</span> dieses Polynoms lautet</p>
+<p>Nun wollen wir ein Polynom <span class="math notranslate nohighlight">\(p_3\)</span> von Grad 3 fitten, also</p>
+<div class="math notranslate nohighlight">
+\[
+p_3(x)=p_3x^3+p_2x^2+p_1x^1+p_0.
+\]</div>
+<p>Die Normalengleichung für den Koeffizientenvektor <span class="math notranslate nohighlight">\(p=(p_0,p_1,p_2,p_3)^T\)</span> dieses Polynoms lautet</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
-A^TA\cdot
-\begin{pmatrix}
-    b \\
-    m
-\end{pmatrix}
-=A^Ty,\qquad
+A^TA\cdot p=A^Ty,\qquad
 A:=
 \begin{pmatrix}
     1 &amp; x_1 &amp; x_1^2 &amp; x_1^3 \\
     1 &amp; x_2 &amp; x_2^2 &amp; x_2^3 \\
     \vdots &amp; \vdots &amp; \vdots &amp; \vdots \\
     1 &amp; x_n &amp; x_n^2 &amp; x_n^3 \\
+\end{pmatrix},\qquad
+y:=
+\begin{pmatrix}
+    y_1 \\
+    y_2 \\
+    \vdots \\
+    y_n
 \end{pmatrix}.
 \end{split}\]</div>
 <div class="cell docutils container">
@@ -594,6 +600,13 @@ A:=
     \sin(x_2) &amp; x_2 \\
     \vdots &amp; \vdots \\
     \sin(x_n) &amp; x_n
+\end{pmatrix},\qquad
+y:=
+\begin{pmatrix}
+    y_1 \\
+    y_2 \\
+    \vdots \\
+    y_n
 \end{pmatrix}.
 \end{split}\]</div>
 <div class="cell docutils container">

@@ -78,22 +78,29 @@ plt.show()
 
 ## Allgemeine Polynome
 
-Nun wollen wir ein Polynom von Grad 3 fitten.
-Die Normalengleichung für den Koeffizientenvektor $p$ dieses Polynoms lautet
+Nun wollen wir ein Polynom $p_3$ von Grad 3 fitten, also
 
 $$
-A^TA\cdot
-\begin{pmatrix}
-    b \\
-    m
-\end{pmatrix}
-=A^Ty,\qquad
+p_3(x)=p_3x^3+p_2x^2+p_1x^1+p_0.
+$$
+
+Die Normalengleichung für den Koeffizientenvektor $p=(p_0,p_1,p_2,p_3)^T$ dieses Polynoms lautet
+
+$$
+A^TA\cdot p=A^Ty,\qquad
 A:=
 \begin{pmatrix}
     1 & x_1 & x_1^2 & x_1^3 \\
     1 & x_2 & x_2^2 & x_2^3 \\
     \vdots & \vdots & \vdots & \vdots \\
     1 & x_n & x_n^2 & x_n^3 \\
+\end{pmatrix},\qquad
+y:=
+\begin{pmatrix}
+    y_1 \\
+    y_2 \\
+    \vdots \\
+    y_n
 \end{pmatrix}.
 $$
 
@@ -157,6 +164,13 @@ A:=
     \sin(x_2) & x_2 \\
     \vdots & \vdots \\
     \sin(x_n) & x_n
+\end{pmatrix},\qquad
+y:=
+\begin{pmatrix}
+    y_1 \\
+    y_2 \\
+    \vdots \\
+    y_n
 \end{pmatrix}.
 $$
 

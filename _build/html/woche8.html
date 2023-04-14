@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Woche 4: Nullstellen nichtlinearer Funktionen &#8212; My sample book</title>
+    <title>Woche 8: Ausgleichsrechnung (Regression) &#8212; My sample book</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -54,8 +54,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Woche 5: Newton-Verfahren (Vertiefung)" href="woche5.html" />
-    <link rel="prev" title="Woche 2: Grundlagen der Numerik mit Python" href="woche2.html" />
+    <link rel="prev" title="Woche 7: Gauss-Algorithmus" href="woche7.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -126,8 +125,8 @@ const thebe_selector_output = ".output, .cell_output"
    Woche 2: Grundlagen der Numerik mit Python
   </a>
  </li>
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
+ <li class="toctree-l1">
+  <a class="reference internal" href="woche4.html">
    Woche 4: Nullstellen nichtlinearer Funktionen
   </a>
  </li>
@@ -141,8 +140,8 @@ const thebe_selector_output = ".output, .cell_output"
    Woche 7: Gauss-Algorithmus
   </a>
  </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="woche8.html">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
    Woche 8: Ausgleichsrechnung (Regression)
   </a>
  </li>
@@ -205,7 +204,7 @@ title="Toggle navigation"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="https://mybinder.org/v2/gh/OliverRietmann/Numerik/master?urlpath=tree/woche4.md"
+        <a href="https://mybinder.org/v2/gh/OliverRietmann/Numerik/master?urlpath=tree/woche8.md"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -283,7 +282,7 @@ title="Source repository"
       </li>
       
       <li>
-        <a href="https://github.com/OliverRietmann/Numerik/issues/new?title=Issue%20on%20page%20%2Fwoche4.html&body=Your%20issue%20content%20here."
+        <a href="https://github.com/OliverRietmann/Numerik/issues/new?title=Issue%20on%20page%20%2Fwoche8.html&body=Your%20issue%20content%20here."
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -311,7 +310,7 @@ title="Open an issue"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="_sources/woche4.ipynb"
+        <a href="_sources/woche8.ipynb"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -328,7 +327,7 @@ title="Download notebook file"
       </li>
       
       <li>
-        <a href="_sources/woche4.md"
+        <a href="_sources/woche8.md"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -388,13 +387,8 @@ title="Print to PDF"
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#bisektion">
-   Bisektion
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#newton-verfahren">
-   Newton Verfahren
+  <a class="reference internal nav-link" href="#gerade">
+   Gerade
   </a>
  </li>
 </ul>
@@ -406,7 +400,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Woche 4: Nullstellen nichtlinearer Funktionen</h1>
+                <h1>Woche 8: Ausgleichsrechnung (Regression)</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -417,13 +411,8 @@ title="Print to PDF"
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#bisektion">
-   Bisektion
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#newton-verfahren">
-   Newton Verfahren
+  <a class="reference internal nav-link" href="#gerade">
+   Gerade
   </a>
  </li>
 </ul>
@@ -436,149 +425,67 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="woche-4-nullstellen-nichtlinearer-funktionen">
-<h1>Woche 4: Nullstellen nichtlinearer Funktionen<a class="headerlink" href="#woche-4-nullstellen-nichtlinearer-funktionen" title="Permalink to this headline">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="woche-8-ausgleichsrechnung-regression">
+<h1>Woche 8: Ausgleichsrechnung (Regression)<a class="headerlink" href="#woche-8-ausgleichsrechnung-regression" title="Permalink to this headline">#</a></h1>
 <p>Lernziele:</p>
 <ol class="simple">
-<li><p>Ich kann eine nichtlineare Gleichung in eine Nullstellensuche umschreiben.</p></li>
-<li><p>Ich kann die Bisektion in Python implementieren.</p></li>
-<li><p>Ich kann das Newton Verfahren in Python implementieren.</p></li>
-<li><p>Ich kenne die Vor- und Nachteile dieser Methoden.</p></li>
+<li><p>Ich kann mit <code class="docutils literal notranslate"><span class="pre">numpy.linalg.solve(...)</span></code> ein LGS numerisch lösen.</p></li>
+<li><p>Ich kann erklären, wann und warum der Gauss-Algorithmus schlechte Lösungen liefert.</p></li>
 </ol>
-<section id="bisektion">
-<h2>Bisektion<a class="headerlink" href="#bisektion" title="Permalink to this headline">#</a></h2>
-<p>Die Bisketion halbiert in jedem Schritt das Interval, welches die Nullstelle der stetigen Funktion <span class="math notranslate nohighlight">\(f:\mathbb R\rightarrow\mathbb R\)</span> enthält.</p>
-<div class="admonition-aufgabe admonition">
-<p class="admonition-title">Aufgabe</p>
-<p>Implementieren Sie die Bisektion.</p>
-</div>
+<section id="gerade">
+<h2>Gerade<a class="headerlink" href="#gerade" title="Permalink to this headline">#</a></h2>
+<p>Wir wollen eine Gerade <span class="math notranslate nohighlight">\(f(x)=mx+b\)</span> an gegebene Punkte <span class="math notranslate nohighlight">\((x_i,y_i),i=1,\ldots,n\)</span> fitten.
+Die zugehörige Normalengleichung lautet
+$<span class="math notranslate nohighlight">\(
+A^TA\cdot
+\begin{pmatrix}
+    b \\
+    m
+\end{pmatrix}
+=A^Ty
+\)</span><span class="math notranslate nohighlight">\(
+wobei
+\)</span><span class="math notranslate nohighlight">\(
+A:=
+\begin{pmatrix}
+    1 &amp; x_1 \\
+    1 &amp; x_2 \\
+    \vdots &amp; \vdots \\
+    1 &amp; x_m
+\end{pmatrix},\qquad
+y:=
+\begin{pmatrix}
+    y_1 \\
+    y_2 \\
+    \vdots \\
+    y_m
+\end{pmatrix}.
+\)</span>$</p>
+<p>Wir lösen die Normalengleichung mit ‘numpy.linalg.solve(…)’.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">bisection</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">tol</span><span class="p">):</span>
-    <span class="k">assert</span><span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="o">*</span> <span class="n">f</span><span class="p">(</span><span class="n">b</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mf">0.0</span><span class="p">)</span>
-    <span class="k">while</span> <span class="nb">abs</span><span class="p">(</span><span class="n">b</span><span class="o">-</span><span class="n">a</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">tol</span><span class="p">:</span>
-        <span class="n">m</span> <span class="o">=</span> <span class="p">(</span><span class="n">a</span> <span class="o">+</span> <span class="n">b</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span>
-        <span class="n">fm</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>
-        <span class="k">if</span> <span class="n">fm</span> <span class="o">==</span> <span class="mf">0.0</span><span class="p">:</span>
-            <span class="k">return</span> <span class="n">m</span><span class="p">,</span> <span class="n">m</span>
-        <span class="k">elif</span> <span class="n">fm</span> <span class="o">*</span> <span class="n">f</span><span class="p">(</span><span class="n">b</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mf">0.0</span><span class="p">:</span>
-            <span class="n">a</span> <span class="o">=</span> <span class="n">m</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="n">b</span> <span class="o">=</span> <span class="n">m</span>
-    <span class="k">return</span> <span class="p">[</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">]</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 
-<span class="n">f</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">**</span><span class="mi">2</span> <span class="o">-</span> <span class="mf">3.0</span>
-<span class="n">a</span> <span class="o">=</span> <span class="mf">1.0</span>
-<span class="n">b</span> <span class="o">=</span> <span class="mf">2.0</span>
+<span class="n">n</span> <span class="o">=</span> <span class="mi">50</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mf">2.5</span><span class="p">,</span> <span class="mf">2.5</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="mf">2.0</span> <span class="o">*</span> <span class="n">x</span> <span class="o">+</span> <span class="mf">3.0</span> <span class="o">+</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
 
-<span class="c1"># sqrt(3) = 1.7320508075688772</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">bisection</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="mf">1.0e-3</span><span class="p">))</span>
+<span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">column_stack</span><span class="p">((</span><span class="n">np</span><span class="o">.</span><span class="n">ones_like</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="n">x</span><span class="p">,</span> <span class="n">x</span><span class="o">**</span><span class="mi">2</span><span class="p">))</span>
+<span class="n">AT</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+
+<span class="n">b</span><span class="p">,</span> <span class="n">m</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">AT</span> <span class="o">@</span> <span class="n">A</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">y</span><span class="p">))</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="s1">&#39;bo&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">m</span> <span class="o">*</span> <span class="n">x</span> <span class="o">+</span> <span class="n">b</span><span class="p">,</span> <span class="s1">&#39;r-&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 </div>
-<!---
-def bisection(f, a, b, tol):
-    assert(f(a) * f(b) < 0.0)
-    while abs(b-a) > tol:
-        m = (a + b) / 2
-        fm = f(m)
-        if fm == 0.0:
-            return m, m
-        elif fm * f(b) < 0.0:
-            a = m
-        else:
-            b = m
-    return [a, b]
-
-f = lambda x: x**2 - 3.0
-a = 1.0
-b = 2.0
-
-# sqrt(3) = 1.7320508075688772
-print(bisection(f, a, b, 1.0e-3))
--->
 </section>
-<section id="newton-verfahren">
-<h2>Newton Verfahren<a class="headerlink" href="#newton-verfahren" title="Permalink to this headline">#</a></h2>
-<p>Das Heronsche Näherungsverfahren approximiert die Wurzel <span class="math notranslate nohighlight">\(\sqrt{a}\)</span> einer positiven Zahl <span class="math notranslate nohighlight">\(a\)</span>, oder äquivalent die Nullstelle von <span class="math notranslate nohighlight">\(f(x)=x^2-a\)</span>.
-Es ist definiert durch die Folge</p>
-<div class="math notranslate nohighlight">
-\[
-x_{k+1}=\frac{1}{2}\bigg(x_k+\frac{a}{x_k}\bigg)
-\]</div>
-<p>und diese konvergiert dann gegen <span class="math notranslate nohighlight">\(\sqrt{a}\)</span>.</p>
-<div class="admonition-aufgabe admonition">
-<p class="admonition-title">Aufgabe</p>
-<p>Implementieren Sie das Heronsche Näherungsverfahren.</p>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">heron</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">tol</span><span class="p">):</span>
-    <span class="c1"># Ihr Code kommt hier hin.</span>
-    <span class="k">return</span> <span class="n">x</span>
-
-<span class="n">a</span> <span class="o">=</span> <span class="mf">3.0</span>
-<span class="n">x</span> <span class="o">=</span> <span class="mf">2.0</span>
-
-<span class="c1"># sqrt(3) = 1.7320508075688772</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">heron</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="mf">1.0e-3</span><span class="p">))</span>
-</pre></div>
-</div>
-</div>
-</div>
-<!---
-def heron(a, x, tol):
-    # Ihr Code kommt hier hin.
-    return x
-
-a = 3.0
-x = 2.0
-
-# sqrt(3) = 1.7320508075688772
-print(heron(a, x, 1.0e-3))
--->
-<p>Das Newton Verfahren für eine stetig differenzierbare Funktion <span class="math notranslate nohighlight">\(f:\mathbb R\rightarrow\mathbb R\)</span> ist definiert durch die Folge</p>
-<div class="math notranslate nohighlight">
-\[
-x_{k+1}=x_k-\frac{f(x_k)}{f^\prime(x_k)}
-\]</div>
-<p>mit einem geeigneten Startwert <span class="math notranslate nohighlight">\(x_0\)</span>.
-Dieser sollte nahe bei der tatsächlichen Nullstelle <span class="math notranslate nohighlight">\(x^\ast\)</span> liegen.</p>
-<div class="admonition-aufgabe admonition">
-<p class="admonition-title">Aufgabe</p>
-<p>Implementieren Sie das Newton Verfahren.</p>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">newton</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">df</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">tol</span><span class="p">):</span>
-    <span class="k">while</span> <span class="nb">abs</span><span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">))</span> <span class="o">&gt;</span> <span class="n">tol</span><span class="p">:</span>
-        <span class="n">x</span> <span class="o">=</span> <span class="n">x</span> <span class="o">-</span> <span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">/</span> <span class="n">df</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">x</span>
-
-<span class="n">f</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">**</span><span class="mi">2</span> <span class="o">-</span> <span class="mf">3.0</span>
-<span class="n">df</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="mf">2.0</span> <span class="o">*</span> <span class="n">x</span>
-<span class="n">x</span> <span class="o">=</span> <span class="mf">2.0</span>
-
-<span class="c1"># sqrt(3) = 1.7320508075688772</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">newton</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">df</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="mf">1.0e-3</span><span class="p">))</span>
-</pre></div>
-</div>
-</div>
-</div>
-<!---
-def newton(f, df, x, tol):
-    while abs(f(x)) > tol:
-        x = x - f(x) / df(x)
-    return x
-
-f = lambda x: x**2 - 3.0
-df = lambda x: 2.0 * x
-x = 2.0
-
-# sqrt(3) = 1.7320508075688772
-print(newton(f, df, x, 1.0e-3))
---></section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -608,19 +515,12 @@ print(newton(f, df, x, 1.0e-3))
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="woche2.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="woche7.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Woche 2: Grundlagen der Numerik mit Python</p>
+            <p class="prev-next-title">Woche 7: Gauss-Algorithmus</p>
         </div>
-    </a>
-    <a class='right-next' id="next-link" href="woche5.html" title="next page">
-    <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Woche 5: Newton-Verfahren (Vertiefung)</p>
-    </div>
-    <i class="fas fa-angle-right"></i>
     </a>
 </div>
             </footer>

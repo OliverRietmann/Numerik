@@ -134,7 +134,7 @@ print(p)
 
 plt.figure()
 plt.plot(x, y, 'bo')
-plt.plot(x, numpy.polyval(p, x), 'r-')
+plt.plot(x, np.polyval(p, x), 'r-')
 plt.show()
 ```
 

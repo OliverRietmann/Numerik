@@ -78,7 +78,7 @@ plt.show()
 ## Allgemeine Polynome
 
 Nun wollen wir ein Polynom von Grad 3 fitten.
-Die Normalengleichung für den Koeffizientenvektor $p$ des Polynoms lautet
+Die Normalengleichung für den Koeffizientenvektor $p$ dieses Polynoms lautet
 
 $$
 A^TA\cdot
@@ -93,7 +93,7 @@ A:=
     1 & x_2 & x_2^2 & x_2^3 \\
     \vdots & \vdots & \vdots & \vdots \\
     1 & x_n & x_n^2 & x_n^3 \\
-\end{pmatrix}
+\end{pmatrix}.
 $$
 
 ```{code-cell} ipython3
@@ -102,7 +102,7 @@ import matplotlib.pyplot as plt
 
 n = 30
 x = np.linspace(-2.5, 2.5, n)
-noise = np.random.rand(n) - 0.5
+noise = 0.5 * np.random.rand(n) - 0.25
 y = np.tanh(x) + noise
 
 A = np.column_stack((np.ones(n), x, x**2, x**3))

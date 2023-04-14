@@ -449,8 +449,9 @@ title="Print to PDF"
 <h1>Woche 8: Ausgleichsrechnung (Regression)<a class="headerlink" href="#woche-8-ausgleichsrechnung-regression" title="Permalink to this headline">#</a></h1>
 <p>Lernziele:</p>
 <ol class="simple">
-<li><p>Ich kann mit <code class="docutils literal notranslate"><span class="pre">numpy.linalg.solve(...)</span></code> ein LGS numerisch lösen.</p></li>
-<li><p>Ich kann erklären, wann und warum der Gauss-Algorithmus schlechte Lösungen liefert.</p></li>
+<li><p>Ich zu einer gegebenen Linearkombination von Funktionen die zugehörige Normalengleichung aufstellen.</p></li>
+<li><p>Ich kann die Normalengleichung mit <code class="docutils literal notranslate"><span class="pre">numpy.linalg.solve(...)</span></code> lösen.</p></li>
+<li><p>Ich kann die Funktionen <code class="docutils literal notranslate"><span class="pre">numpy.polyfit</span></code> und <code class="docutils literal notranslate"><span class="pre">numpy.polyval</span></code> anwenden.</p></li>
 </ol>
 <section id="gerade">
 <h2>Gerade<a class="headerlink" href="#gerade" title="Permalink to this headline">#</a></h2>
@@ -551,6 +552,29 @@ A:=
 </div>
 </div>
 </div>
+<p>Alternativ können auch die Funktionen <code class="docutils literal notranslate"><span class="pre">numpy.polyfit(...)</span></code> und <code class="docutils literal notranslate"><span class="pre">numpy.polyval(...)</span></code> verwendet werden.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="n">n</span> <span class="o">=</span> <span class="mi">30</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mf">2.5</span><span class="p">,</span> <span class="mf">2.5</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>
+<span class="n">noise</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="o">-</span> <span class="mf">0.25</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">tanh</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">+</span> <span class="n">noise</span>
+
+<span class="n">degree</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="n">p</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">polyfit</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">degree</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="s1">&#39;bo&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">numpy</span><span class="o">.</span><span class="n">polyval</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">x</span><span class="p">),</span> <span class="s1">&#39;r-&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="beliebige-funktionen">
 <h2>Beliebige Funktionen<a class="headerlink" href="#beliebige-funktionen" title="Permalink to this headline">#</a></h2>
@@ -568,7 +592,7 @@ A:=
 \begin{pmatrix}
     \sin(x_1) &amp; x_1^2 \\
     \sin(x_2) &amp; x_2^2 \\
-    \vdots &amp; \vdots &amp; \vdots &amp; \vdots \\
+    \vdots &amp; \vdots \\
     \sin(x_n) &amp; x_n
 \end{pmatrix}.
 \end{split}\]</div>

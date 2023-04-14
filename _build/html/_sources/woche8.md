@@ -17,8 +17,9 @@ kernelspec:
 
 Lernziele:
 
-1. Ich kann mit `numpy.linalg.solve(...)` ein LGS numerisch lösen.
-2. Ich kann erklären, wann und warum der Gauss-Algorithmus schlechte Lösungen liefert.
+1. Ich zu einer gegebenen Linearkombination von Funktionen die zugehörige Normalengleichung aufstellen.
+2. Ich kann die Normalengleichung mit `numpy.linalg.solve(...)` lösen.
+3. Ich kann die Funktionen `numpy.polyfit` und `numpy.polyval` anwenden.
 
 ## Gerade
 
@@ -116,6 +117,27 @@ plt.plot(x, np.dot(A, p), 'r-')
 plt.show()
 ```
 
+Alternativ können auch die Funktionen `numpy.polyfit(...)` und `numpy.polyval(...)` verwendet werden.
+
+```{code-cell} ipython3
+import numpy as np
+import matplotlib.pyplot as plt
+
+n = 30
+x = np.linspace(-2.5, 2.5, n)
+noise = 0.5 * np.random.rand(n) - 0.25
+y = np.tanh(x) + noise
+
+degree = 3
+p = np.polyfit(x, y, degree)
+print(p)
+
+plt.figure()
+plt.plot(x, y, 'bo')
+plt.plot(x, numpy.polyval(p, x), 'r-')
+plt.show()
+```
+
 ## Beliebige Funktionen
 
 Nun wollen wir eine Funktion der Form
@@ -133,7 +155,7 @@ A:=
 \begin{pmatrix}
     \sin(x_1) & x_1^2 \\
     \sin(x_2) & x_2^2 \\
-    \vdots & \vdots & \vdots & \vdots \\
+    \vdots & \vdots \\
     \sin(x_n) & x_n
 \end{pmatrix}.
 $$

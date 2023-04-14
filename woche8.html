@@ -435,17 +435,19 @@ title="Print to PDF"
 <section id="gerade">
 <h2>Gerade<a class="headerlink" href="#gerade" title="Permalink to this headline">#</a></h2>
 <p>Wir wollen eine Gerade <span class="math notranslate nohighlight">\(f(x)=mx+b\)</span> an gegebene Punkte <span class="math notranslate nohighlight">\((x_i,y_i),i=1,\ldots,n\)</span> fitten.
-Die zugehörige Normalengleichung lautet
-$<span class="math notranslate nohighlight">\(
+Die zugehörige Normalengleichung lautet</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
 A^TA\cdot
 \begin{pmatrix}
     b \\
     m
 \end{pmatrix}
 =A^Ty
-\)</span><span class="math notranslate nohighlight">\(
-wobei
-\)</span><span class="math notranslate nohighlight">\(
+\end{split}\]</div>
+<p>wobei</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
 A:=
 \begin{pmatrix}
     1 &amp; x_1 \\
@@ -460,7 +462,7 @@ y:=
     \vdots \\
     y_m
 \end{pmatrix}.
-\)</span>$</p>
+\end{split}\]</div>
 <p>Wir lösen die Normalengleichung mit ‘numpy.linalg.solve(…)’.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">

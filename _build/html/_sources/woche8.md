@@ -24,6 +24,7 @@ Lernziele:
 
 Wir wollen eine Gerade $f(x)=mx+b$ an gegebene Punkte $(x_i,y_i),i=1,\ldots,n$ fitten.
 Die zugehörige Normalengleichung lautet
+
 $$
 A^TA\cdot
 \begin{pmatrix}
@@ -32,7 +33,9 @@ A^TA\cdot
 \end{pmatrix}
 =A^Ty
 $$
+
 wobei
+
 $$
 A:=
 \begin{pmatrix}

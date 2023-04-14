@@ -66,8 +66,6 @@ y = 2.0 * x + 3.0 + 0.5 * np.random.rand(n)
 A = np.column_stack((np.ones_like(x), x))
 AT = np.transpose(A)
 
-print(A)
-
 b, m = np.linalg.solve(AT @ A, np.dot(AT, y))
 
 plt.figure()

@@ -526,6 +526,16 @@ p_n(x)=y_0\ell_0(x)+y_1\ell_1(x)+\cdots+y_n\ell_n(x)
 \[
 \ell_i(x)=\prod\limits_{k\neq i}\frac{x-x_k}{x_i-x_k}.
 \]</div>
+<p>Der folgende Plot visualisiert die definierende Eigenschaft</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\ell_i(x_k)=
+\begin{cases}
+0,\ i\neq k\\
+1,\ i=k
+\end{cases}
+\end{split}\]</div>
+<p>der Lagrange Polynome.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>

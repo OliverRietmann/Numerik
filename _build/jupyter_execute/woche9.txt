@@ -25,7 +25,7 @@ y = np.array([1.0, 1.0, 0.0, 0.0, 3.0])
 p = np.polyfit(x, y, len(x))
 
 x_values = np.linspace(0.0, 2.0, 100)
-y_values = numpy.polyval(p, x_values)
+y_values = np.polyval(p, x_values)
 
 plt.figure()
 plt.plot(x, y, 'bo')

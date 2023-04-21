@@ -55,7 +55,7 @@ $$
 \end{pmatrix}.
 $$
 
-Wir lösen die Normalengleichung mit `numpy.linalg.solve(...)`.
+Wir lösen dieses mit `numpy.linalg.solve(...)`.
 
 ```{code-cell} ipython3
 import numpy as np
@@ -65,61 +65,50 @@ x = np.array([0.0, 0.5, 1.0, 1.5, 2.0])
 y = np.array([1.0, 1.0, 0.0, 0.0, 3.0])
 
 V = np.vander(x, increasing=True)
-a = np.linalg.solve(A, y)
-
+a = np.linalg.solve(V, y)
 p = lambda x: sum([a[i] * x**i for i in range(len(a))])
 
+x_values = np.linspace(0.0, 2.0, 100)
 plt.figure()
 plt.plot(x, y, 'bo')
-plt.plot(x, p(x), 'r-')
+plt.plot(x_values, p(x_values), 'r-')
 plt.show()
 ```
 
 ## Lagrange Polynome
 
-Nun wollen wir ein Polynom von Grad 3 fitten, also
+Seinen wieder Punkte $(x_i,y_i),i=0,\ldots,n$ gegeben.
+Unser Interpolationspolynom ist nun von der Form
 
 $$
-f(x)=p_3x^3+p_2x^2+p_1x^1+p_0.
+p_n(x)=y_0\ell_0(x)+y_1\ell_1(x)+\cdots+y_n\ell_n(x)
 $$
 
-Die Normalengleichung für den Koeffizientenvektor $p=(p_0,p_1,p_2,p_3)^T$ dieses Polynoms lautet
+mit den Lagrange Polynomen
 
 $$
-A^TA\cdot p=A^Ty,\qquad
-A:=
-\begin{pmatrix}
-    1 & x_1 & x_1^2 & x_1^3 \\
-    1 & x_2 & x_2^2 & x_2^3 \\
-    \vdots & \vdots & \vdots & \vdots \\
-    1 & x_n & x_n^2 & x_n^3 \\
-\end{pmatrix},\qquad
-y:=
-\begin{pmatrix}
-    y_1 \\
-    y_2 \\
-    \vdots \\
-    y_n
-\end{pmatrix}.
+\ell_i(x)=\prod\limits_{k\neq i}\frac{x-x_k}{x_i-x_k}.
 $$
 
 ```{code-cell} ipython3
 import numpy as np
 import matplotlib.pyplot as plt
 
-n = 30
-x = np.linspace(-2.5, 2.5, n)
-noise = 0.5 * np.random.rand(n) - 0.25
-y = np.tanh(x) + noise
+x = np.array([0.0, 0.5, 1.0, 1.5, 2.0])
+y = np.array([1.0, 1.0, 0.0, 0.0, 3.0])
 
-A = np.column_stack((np.ones(n), x, x**2, x**3))
-AT = np.transpose(A)
-p = np.linalg.solve(AT @ A, np.dot(AT, y))
-print(p)
+def Lagrange_factory(x, i):
+    xi = x[i]
+    x_without_i = np.delete(x, [i])
+    return lambda z: sum([(z - xk) / (xi - xk) for xk in x_without_i])
 
+n = len(x)
+f = [Lagrange_factory(x, i) for i in range(n)]
+
+x_values = np.linspace(0.0, 2.0, 100)
 plt.figure()
 plt.plot(x, y, 'bo')
-plt.plot(x, np.dot(A, p), 'r-')
+plt.plot(x_values, sum(f[i](x_values) for i in range(n)), 'r-')
 plt.show()
 ```
 

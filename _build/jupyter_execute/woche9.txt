@@ -5,31 +5,33 @@ x = np.array([0.0, 0.5, 1.0, 1.5, 2.0])
 y = np.array([1.0, 1.0, 0.0, 0.0, 3.0])
 
 V = np.vander(x, increasing=True)
-a = np.linalg.solve(A, y)
-
+a = np.linalg.solve(V, y)
 p = lambda x: sum([a[i] * x**i for i in range(len(a))])
 
+x_values = np.linspace(0.0, 2.0, 100)
 plt.figure()
 plt.plot(x, y, 'bo')
-plt.plot(x, p(x), 'r-')
+plt.plot(x_values, p(x_values), 'r-')
 plt.show()
 
 import numpy as np
 import matplotlib.pyplot as plt
 
-n = 30
-x = np.linspace(-2.5, 2.5, n)
-noise = 0.5 * np.random.rand(n) - 0.25
-y = np.tanh(x) + noise
+x = np.array([0.0, 0.5, 1.0, 1.5, 2.0])
+y = np.array([1.0, 1.0, 0.0, 0.0, 3.0])
 
-A = np.column_stack((np.ones(n), x, x**2, x**3))
-AT = np.transpose(A)
-p = np.linalg.solve(AT @ A, np.dot(AT, y))
-print(p)
+def Lagrange_factory(x, i):
+    xi = x[i]
+    x_without_i = np.delete(x, [i])
+    return lambda z: sum([(z - xk) / (xi - xk) for xk in x_without_i])
 
+n = len(x)
+f = [Lagrange_factory(x, i) for i in range(n)]
+
+x_values = np.linspace(0.0, 2.0, 100)
 plt.figure()
 plt.plot(x, y, 'bo')
-plt.plot(x, np.dot(A, p), 'r-')
+plt.plot(x_values, sum(f[i](x_values) for i in range(n)), 'r-')
 plt.show()
 
 import numpy as np

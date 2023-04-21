@@ -33,10 +33,10 @@ Die Interpolationsbedingung liefert das LGS
 
 $$
 \begin{pmatrix}
-    1 & x_0 & x_0^2 & \cdots & x_0^3 \\
-    1 & x_1 & x_1^2 & \cdots & x_1^3 \\
+    1 & x_0 & x_0^2 & \cdots & x_0^n \\
+    1 & x_1 & x_1^2 & \cdots & x_1^n \\
     \vdots & \vdots & \vdots & \vdots & \vdots \\
-    1 & x_n & x_n^2 & \cdots & x_n^3 \\
+    1 & x_n & x_n^2 & \cdots & x_n^n \\
 \end{pmatrix}
 \begin{pmatrix}
     a_0 \\
@@ -100,7 +100,7 @@ y = np.array([1.0, 1.0, 0.0, 0.0, 3.0])
 def Lagrange_factory(x, i):
     xi = x[i]
     x_without_i = np.delete(x, [i])
-    return lambda z: sum([(z - xk) / (xi - xk) for xk in x_without_i])
+    return lambda z: np.prod([(z - xk) / (xi - xk) for xk in x_without_i], axis=0)
 
 n = len(x)
 f = [Lagrange_factory(x, i) for i in range(n)]
@@ -108,7 +108,10 @@ f = [Lagrange_factory(x, i) for i in range(n)]
 x_values = np.linspace(0.0, 2.0, 100)
 plt.figure()
 plt.plot(x, y, 'bo')
-plt.plot(x_values, sum(f[i](x_values) for i in range(n)), 'r-')
+plt.plot(x_values, sum(y[i] * f[i](x_values) for i in range(n)), 'k-', label=r"$p_{0}(x)$".format(n + 1))
+for i in range(n):
+	plt.plot(x_values, f[i](x_values), '--', label=r"$f_{0}(x)$".format(i))
+plt.legend()
 plt.show()
 ```
 

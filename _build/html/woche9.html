@@ -54,8 +54,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Woche 8: Ausgleichsrechnung (Regression)" href="woche9.html" />
-    <link rel="prev" title="Woche 7: Gauss-Algorithmus" href="woche7.html" />
+    <link rel="prev" title="Woche 8: Ausgleichsrechnung (Regression)" href="woche8.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -141,13 +140,13 @@ const thebe_selector_output = ".output, .cell_output"
    Woche 7: Gauss-Algorithmus
   </a>
  </li>
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
+ <li class="toctree-l1">
+  <a class="reference internal" href="woche8.html">
    Woche 8: Ausgleichsrechnung (Regression)
   </a>
  </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="woche9.html">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
    Woche 8: Ausgleichsrechnung (Regression)
   </a>
  </li>
@@ -210,7 +209,7 @@ title="Toggle navigation"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="https://mybinder.org/v2/gh/OliverRietmann/Numerik/master?urlpath=tree/woche8.md"
+        <a href="https://mybinder.org/v2/gh/OliverRietmann/Numerik/master?urlpath=tree/woche9.md"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -288,7 +287,7 @@ title="Source repository"
       </li>
       
       <li>
-        <a href="https://github.com/OliverRietmann/Numerik/issues/new?title=Issue%20on%20page%20%2Fwoche8.html&body=Your%20issue%20content%20here."
+        <a href="https://github.com/OliverRietmann/Numerik/issues/new?title=Issue%20on%20page%20%2Fwoche9.html&body=Your%20issue%20content%20here."
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -316,7 +315,7 @@ title="Open an issue"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="_sources/woche8.ipynb"
+        <a href="_sources/woche9.ipynb"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -333,7 +332,7 @@ title="Download notebook file"
       </li>
       
       <li>
-        <a href="_sources/woche8.md"
+        <a href="_sources/woche9.md"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -393,18 +392,18 @@ title="Print to PDF"
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#gerade">
-   Gerade
+  <a class="reference internal nav-link" href="#polynom-interpolation">
+   Polynom-Interpolation
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#allgemeine-polynome">
-   Allgemeine Polynome
+  <a class="reference internal nav-link" href="#lagrange-polynome">
+   Lagrange Polynome
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#beliebige-funktionen">
-   Beliebige Funktionen
+  <a class="reference internal nav-link" href="#splines">
+   Splines
   </a>
  </li>
 </ul>
@@ -427,18 +426,18 @@ title="Print to PDF"
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#gerade">
-   Gerade
+  <a class="reference internal nav-link" href="#polynom-interpolation">
+   Polynom-Interpolation
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#allgemeine-polynome">
-   Allgemeine Polynome
+  <a class="reference internal nav-link" href="#lagrange-polynome">
+   Lagrange Polynome
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#beliebige-funktionen">
-   Beliebige Funktionen
+  <a class="reference internal nav-link" href="#splines">
+   Splines
   </a>
  </li>
 </ul>
@@ -455,35 +454,36 @@ title="Print to PDF"
 <h1>Woche 8: Ausgleichsrechnung (Regression)<a class="headerlink" href="#woche-8-ausgleichsrechnung-regression" title="Permalink to this headline">#</a></h1>
 <p>Lernziele:</p>
 <ol class="simple">
-<li><p>Ich kann zu einer gegebenen Linearkombination von Funktionen die Normalengleichung für die Koeffizienten aufstellen.</p></li>
-<li><p>Ich kann die Normalengleichung mit <code class="docutils literal notranslate"><span class="pre">numpy.linalg.solve(...)</span></code> lösen.</p></li>
-<li><p>Ich kann die Funktionen <code class="docutils literal notranslate"><span class="pre">numpy.polyfit(...)</span></code> und <code class="docutils literal notranslate"><span class="pre">numpy.polyval(...)</span></code> anwenden.</p></li>
+<li><p>Ich kann aus der Interpolationsbedinung ein LGS für die Koeffizienten bestimmen.</p></li>
+<li><p>Ich kann mit <code class="docutils literal notranslate"><span class="pre">numpy.linalg.solve(...)</span></code> ein LGS lösen.</p></li>
+<li><p>Ich kann eine Polynom-Interpolation mit den Funktionen <code class="docutils literal notranslate"><span class="pre">numpy.polyfit(...)</span></code> und <code class="docutils literal notranslate"><span class="pre">numpy.polyval(...)</span></code> ausführen.</p></li>
 </ol>
-<section id="gerade">
-<h2>Gerade<a class="headerlink" href="#gerade" title="Permalink to this headline">#</a></h2>
-<p>Wir wollen eine Gerade <span class="math notranslate nohighlight">\(f(x)=mx+b\)</span> an gegebene Punkte <span class="math notranslate nohighlight">\((x_i,y_i),i=1,\ldots,n\)</span> fitten.
-Die zugehörige Normalengleichung lautet</p>
+<section id="polynom-interpolation">
+<h2>Polynom-Interpolation<a class="headerlink" href="#polynom-interpolation" title="Permalink to this headline">#</a></h2>
+<p>Wir wollen ein das Interpolationspolynom <span class="math notranslate nohighlight">\(p_n(x)\)</span> durch die Punkte <span class="math notranslate nohighlight">\((x_i,y_i),i=0,\ldots,n\)</span> berechnen, wobei</p>
+<div class="math notranslate nohighlight">
+\[
+p_n(x)=a_0+a_1x+a_2x^2+\cdots+a_nx^n.
+\]</div>
+<p>Die Interpolationsbedingung liefert das LGS</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
-A^TA\cdot
 \begin{pmatrix}
-    b \\
-    m
+    1 &amp; x_0 &amp; x_0^2 &amp; \cdots &amp; x_0^3 \\
+    1 &amp; x_1 &amp; x_1^2 &amp; \cdots &amp; x_1^3 \\
+    \vdots &amp; \vdots &amp; \vdots &amp; \vdots &amp; \vdots \\
+    1 &amp; x_n &amp; x_n^2 &amp; \cdots &amp; x_n^3 \\
 \end{pmatrix}
-=A^Ty
-\end{split}\]</div>
-<p>wobei</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-A:=
 \begin{pmatrix}
-    1 &amp; x_1 \\
-    1 &amp; x_2 \\
-    \vdots &amp; \vdots \\
-    1 &amp; x_n
-\end{pmatrix},\qquad
-y:=
+    a_0 \\
+    a_1 \\
+    a_2 \\
+    \vdots \\
+    a_n
+\end{pmatrix}
+=
 \begin{pmatrix}
+    y_0 \\
     y_1 \\
     y_2 \\
     \vdots \\
@@ -515,8 +515,8 @@ y:=
 </div>
 </div>
 </section>
-<section id="allgemeine-polynome">
-<h2>Allgemeine Polynome<a class="headerlink" href="#allgemeine-polynome" title="Permalink to this headline">#</a></h2>
+<section id="lagrange-polynome">
+<h2>Lagrange Polynome<a class="headerlink" href="#lagrange-polynome" title="Permalink to this headline">#</a></h2>
 <p>Nun wollen wir ein Polynom von Grad 3 fitten, also</p>
 <div class="math notranslate nohighlight">
 \[
@@ -588,8 +588,8 @@ y:=
 </div>
 </div>
 </section>
-<section id="beliebige-funktionen">
-<h2>Beliebige Funktionen<a class="headerlink" href="#beliebige-funktionen" title="Permalink to this headline">#</a></h2>
+<section id="splines">
+<h2>Splines<a class="headerlink" href="#splines" title="Permalink to this headline">#</a></h2>
 <p>Nun wollen wir eine Funktion der Form</p>
 <div class="math notranslate nohighlight">
 \[
@@ -668,19 +668,12 @@ y:=
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="woche7.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="woche8.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Woche 7: Gauss-Algorithmus</p>
+            <p class="prev-next-title">Woche 8: Ausgleichsrechnung (Regression)</p>
         </div>
-    </a>
-    <a class='right-next' id="next-link" href="woche9.html" title="next page">
-    <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Woche 8: Ausgleichsrechnung (Regression)</p>
-    </div>
-    <i class="fas fa-angle-right"></i>
     </a>
 </div>
             </footer>

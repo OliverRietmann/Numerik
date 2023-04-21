@@ -69,9 +69,11 @@ a = np.linalg.solve(V, y)
 p = lambda x: sum([a[i] * x**i for i in range(len(a))])
 
 x_values = np.linspace(0.0, 2.0, 100)
+y_values = p(x_values)
+
 plt.figure()
 plt.plot(x, y, 'bo')
-plt.plot(x_values, p(x_values), 'r-')
+plt.plot(x_values, y_values, 'r-')
 plt.show()
 ```
 
@@ -87,9 +89,11 @@ y = np.array([1.0, 1.0, 0.0, 0.0, 3.0])
 p = np.polyfit(x, y, len(x))
 
 x_values = np.linspace(0.0, 2.0, 100)
+y_values = numpy.polyval(p, x_values)
+
 plt.figure()
 plt.plot(x, y, 'bo')
-plt.plot(x_values, numpy.polyval(p, x_values), 'r-')
+plt.plot(x_values, y_values, 'r-')
 plt.show()
 ```
 
@@ -145,72 +149,22 @@ plt.legend()
 plt.show()
 ```
 
-Alternativ können auch die Funktionen `numpy.polyfit(...)` und `numpy.polyval(...)` verwendet werden.
-
-```{code-cell} ipython3
-import numpy as np
-import matplotlib.pyplot as plt
-
-n = 30
-x = np.linspace(-2.5, 2.5, n)
-noise = 0.5 * np.random.rand(n) - 0.25
-y = np.tanh(x) + noise
-
-degree = 3
-p = np.polyfit(x, y, degree)
-print(p)
-
-plt.figure()
-plt.plot(x, y, 'bo')
-plt.plot(x, np.polyval(p, x), 'r-')
-plt.show()
-```
-
 ## Splines
 
-Nun wollen wir eine Funktion der Form
-
-$$
-f(x)=p_0\cdot\sin(x)+p_1\cdot x
-$$
-
-fitten.
-Die Normalengleichung für den Koeffizientenvektor $p=(p_0,p_1)^T$ lautet
-
-$$
-A^TA\cdot p=A^Ty,\qquad
-A:=
-\begin{pmatrix}
-    \sin(x_1) & x_1 \\
-    \sin(x_2) & x_2 \\
-    \vdots & \vdots \\
-    \sin(x_n) & x_n
-\end{pmatrix},\qquad
-y:=
-\begin{pmatrix}
-    y_1 \\
-    y_2 \\
-    \vdots \\
-    y_n
-\end{pmatrix}.
-$$
+Lineare Splines können mit `numpy.interp(...)` berechnet werden.
 
 ```{code-cell} ipython3
 import numpy as np
 import matplotlib.pyplot as plt
 
-n = 30
-x = np.linspace(-5.0, 5.0, n)
-noise = 0.5 * np.random.rand(n) - 0.25
-y = np.sin(x) + 0.5 * x + noise
+x = np.array([0.0, 0.5, 1.0, 1.5, 2.0])
+y = np.array([1.0, 1.0, 0.0, 0.0, 3.0])
 
-A = np.column_stack((np.sin(x), x))
-AT = np.transpose(A)
-p = np.linalg.solve(AT @ A, np.dot(AT, y))
-print(p)
+x_values = np.linspace(0.0, 2.0, 100)
+y_values = np.interp(x_values, x, y)
 
 plt.figure()
 plt.plot(x, y, 'bo')
-plt.plot(x, np.dot(A, p), 'r-')
+plt.plot(x_values, y_values, 'r-')
 plt.show()
 ```

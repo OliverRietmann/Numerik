@@ -90,6 +90,18 @@ $$
 \ell_i(x)=\prod\limits_{k\neq i}\frac{x-x_k}{x_i-x_k}.
 $$
 
+Der folgende Plot visualisiert die definierende Eigenschaft
+
+$$
+\ell_i(x_k)=
+\begin{cases}
+0,\ i\neq k\\
+1,\ i=k
+\end{cases}
+$$
+
+der Lagrange Polynome.
+
 ```{code-cell} ipython3
 import numpy as np
 import matplotlib.pyplot as plt

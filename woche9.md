@@ -13,7 +13,7 @@ kernelspec:
   name: python3
 ---
 
-# Woche 8: Ausgleichsrechnung (Regression)
+# Woche 9: Interpolation
 
 Lernziele:
 
@@ -41,7 +41,6 @@ $$
 \begin{pmatrix}
     a_0 \\
     a_1 \\
-    a_2 \\
     \vdots \\
     a_n
 \end{pmatrix}
@@ -49,7 +48,6 @@ $$
 \begin{pmatrix}
     y_0 \\
     y_1 \\
-    y_2 \\
     \vdots \\
     y_n
 \end{pmatrix}.

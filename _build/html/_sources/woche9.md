@@ -75,6 +75,24 @@ plt.plot(x_values, p(x_values), 'r-')
 plt.show()
 ```
 
+Alternativ kann man auch `numpy.polyfit(...)` und `numpy.polyval(...)` verwenden.
+
+```{code-cell} ipython3
+import numpy as np
+import matplotlib.pyplot as plt
+
+x = np.array([0.0, 0.5, 1.0, 1.5, 2.0])
+y = np.array([1.0, 1.0, 0.0, 0.0, 3.0])
+
+p = np.polyfit(x, y, len(x))
+
+x_values = np.linspace(0.0, 2.0, 100)
+plt.figure()
+plt.plot(x, y, 'bo')
+plt.plot(x_values, numpy.polyval(p, x_values), 'r-')
+plt.show()
+```
+
 ## Lagrange Polynome
 
 Seinen wieder Punkte $(x_i,y_i),i=0,\ldots,n$ gegeben.

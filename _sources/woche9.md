@@ -86,10 +86,10 @@ import matplotlib.pyplot as plt
 x = np.array([0.0, 0.5, 1.0, 1.5, 2.0])
 y = np.array([1.0, 1.0, 0.0, 0.0, 3.0])
 
-p = np.polyfit(x, y, len(x))
+a = np.polyfit(x, y, len(x) - 1)
 
 x_values = np.linspace(0.0, 2.0, 100)
-y_values = np.polyval(p, x_values)
+y_values = np.polyval(a, x_values)
 
 plt.figure()
 plt.plot(x, y, 'bo')
@@ -137,16 +137,16 @@ def Lagrange_factory(x, i):
     return lambda z: np.prod([(z - xk) / (xi - xk) for xk in x_without_i], axis=0)
 
 n = len(x)
-f = [Lagrange_factory(x, i) for i in range(n)]
+l = [Lagrange_factory(x, i) for i in range(n)]
 
 x_values = np.linspace(0.0, 2.0, 100)
-y_values = sum(y[i] * f[i](x_values) for i in range(n))
+y_values = sum(y[i] * l[i](x_values) for i in range(n))
 
 plt.figure()
 plt.plot(x, y, 'bo')
 plt.plot(x_values, y_values, 'k-', label=r"$p_{0}(x)$".format(n + 1))
 for i in range(n):
-	plt.plot(x_values, f[i](x_values), '--', label=r"$f_{0}(x)$".format(i))
+	plt.plot(x_values, l[i](x_values), '--', label=r"$l_{0}(x)$".format(i))
 plt.legend()
 plt.show()
 ```

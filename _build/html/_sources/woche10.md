@@ -63,13 +63,19 @@ print(np.dot(f(x), w))
 
 ## Trapezregel
 
-Wir approximieren das Integral
+Mit der aus $n$ Knoten zusammengesetzten Trapezregel
 
 $$
-\int_0^\pi\sin(x)dx
+\frac{h}{2}\cdot\big(f(a)+2f(a+h)+\ldots+2f(a+h(n-1))+f(b)\big),
+h=\frac{b-a}{n}
 $$
 
-mit einer zusammengesetzte Trapezregel.
+auf dem Intervall $[a,b]$ approximieren wir das Integral
+
+$$
+\int_0^\pi\sin(x)dx.
+$$
+
 In Python geht das mit der Funktion `numpy.trapz(...)`.
 
 ```{code-cell} ipython3

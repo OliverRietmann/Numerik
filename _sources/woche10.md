@@ -66,7 +66,7 @@ print(np.dot(np.sin(x), w))
 Mit der aus $n$ Knoten zusammengesetzten Trapezregel
 
 $$
-\frac{h}{2}\cdot\big(f(a)+2f(a+h)+\ldots+2f(a+h(n-1))+f(b)\big),
+\frac{h}{2}\cdot\big(f(a)+2f(a+h)+\ldots+2f(a+h(n-1))+f(b)\big),\quad
 h=\frac{b-a}{n}
 $$
 

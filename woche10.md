@@ -22,6 +22,45 @@ Lernziele:
 3. Ich kann `scipy.integrate.simpson(...)` eine zusammengesetzte Simpsonregel anwenden.
 4. Ich kann `scipy.integrate.quad(...)` eine gegebene Funktion numerisch integrieren.
 
+## Allgemeine Quadraturregel
+
+Zu gegebenen Knoten $x_0,\ldots,x_n$ und Gewichten $w_0,\ldots,w_n$ kann man die zugehörige Quadraturregel als Skalarprodukt von Vektoren schreiben
+
+$$
+f(x_0)w_0+f(x_1)w_1+\ldots+f(x_n)w_n=
+\begin{pmatrix}
+    f(x_0) \\
+    f(x_1) \\
+    \vdots \\
+    f(x_n)
+\end{pmatrix}
+\cdot
+\begin{pmatrix}
+    w_0 \\
+    w_1 \\
+    \vdots \\
+    w_n \\
+\end{pmatrix}
+$$
+
+So kann man die Quadratur in Python implementieren.
+
+```{code-cell} ipython3
+import numpy as np
+
+a = 0
+b = np.pi
+
+# Gewichte der 3/8 Regel (siehe Handout der Vorlesung)
+w = (b - a) / 8.0 * np.array([1.0, 3.0, 3.0, 1.0])
+
+n = len(w) - 1
+x = np.linspace(a, b, n + 1)
+
+# Quadratur ist gerade folgendes Skalarprodukt
+print(np.dot(f(x), w))
+```
+
 ## Trapezregel
 
 Wir approximieren das Integral

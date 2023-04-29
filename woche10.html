@@ -497,13 +497,18 @@ f(x_0)w_0+f(x_1)w_1+\ldots+f(x_n)w_n=
 </section>
 <section id="trapezregel">
 <h2>Trapezregel<a class="headerlink" href="#trapezregel" title="Permalink to this headline">#</a></h2>
-<p>Wir approximieren das Integral</p>
+<p>Mit der aus <span class="math notranslate nohighlight">\(n\)</span> Knoten zusammengesetzten Trapezregel</p>
 <div class="math notranslate nohighlight">
 \[
-\int_0^\pi\sin(x)dx
+\frac{h}{2}\cdot\big(f(a)+2f(a+h)+\ldots+2f(a+h(n-1))+f(b)\big),
+h=\frac{b-a}{n}
 \]</div>
-<p>mit einer zusammengesetzte Trapezregel.
-In Python geht das mit der Funktion <code class="docutils literal notranslate"><span class="pre">numpy.trapz(...)</span></code>.</p>
+<p>auf dem Intervall <span class="math notranslate nohighlight">\([a,b]\)</span> approximieren wir das Integral</p>
+<div class="math notranslate nohighlight">
+\[
+\int_0^\pi\sin(x)dx.
+\]</div>
+<p>In Python geht das mit der Funktion <code class="docutils literal notranslate"><span class="pre">numpy.trapz(...)</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>

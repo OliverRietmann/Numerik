@@ -57,8 +57,8 @@ w = (b - a) / 8.0 * np.array([1.0, 3.0, 3.0, 1.0])
 n = len(w) - 1
 x = np.linspace(a, b, n + 1)
 
-# Quadratur ist gerade folgendes Skalarprodukt
-print(np.dot(f(x), w))
+# Die Quadratur ist gerade folgendes Skalarprodukt:
+print(np.dot(np.sin(x), w))
 ```
 
 ## Trapezregel

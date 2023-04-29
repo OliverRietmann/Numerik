@@ -27,7 +27,7 @@ Lernziele:
 Wir approximieren das Integral
 
 $$
-\int_^\pi\sin(x)dx
+\int_0^\pi\sin(x)dx
 $$
 
 mit einer zusammengesetzte Trapezregel.

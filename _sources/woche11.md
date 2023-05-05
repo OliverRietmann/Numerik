@@ -93,7 +93,7 @@ plt.show()
 ```
 -->
 
-## Zweidimentionale DGL
+## Zweidimensionale DGL
 
 Wir lösen das Anfangswertproblem
 

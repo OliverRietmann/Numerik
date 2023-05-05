@@ -103,7 +103,7 @@ y_1^\prime(t) \\
 y_2^\prime(t)
 \end{pmatrix}=
 \begin{pmatrix}
--0.5 & 0
+-0.5 & 0 \\
 0.5 & -0.2
 \end{pmatrix}\cdot
 \begin{pmatrix}
@@ -159,7 +159,7 @@ z_1^\prime(t) \\
 z_2^\prime(t)
 \end{pmatrix}=
 \begin{pmatrix}
-0 & 1
+0 & 1 \\
 -1 & 0
 \end{pmatrix}\cdot
 \begin{pmatrix}

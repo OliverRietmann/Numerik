@@ -90,3 +90,20 @@ y = np.sin(x)
 
 print(np.trapz(y, x))
 ```
+
+Man beachte dass `numpy.trapz(...)` diskrete Werte entgegennimmt.
+Falls man direkt eine auswertbare Funktion `f` integrieren will,
+muss man `scipy.integrate.quad(...)` verwenden.
+
+```{code-cell} ipython3
+import numpy as np
+import scipy as sp
+
+a = 0
+b = np.pi
+
+# np.sin wird direkt übergeben
+result = np.integrate.quad(np.sin, a, b)
+
+print(result.y)
+```

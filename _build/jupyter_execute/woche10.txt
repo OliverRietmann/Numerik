@@ -22,3 +22,14 @@ x = np.linspace(a, b, n + 1)
 y = np.sin(x)
 
 print(np.trapz(y, x))
+
+import numpy as np
+import scipy as sp
+
+a = 0
+b = np.pi
+
+# np.sin wird direkt übergeben
+result = np.integrate.quad(np.sin, a, b)
+
+print(result.y)

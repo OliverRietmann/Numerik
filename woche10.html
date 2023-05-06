@@ -531,6 +531,25 @@ h=\frac{b-a}{n}
 </div>
 </div>
 </div>
+<p>Man beachte dass <code class="docutils literal notranslate"><span class="pre">numpy.trapz(...)</span></code> diskrete Werte entgegennimmt.
+Falls man direkt eine auswertbare Funktion <code class="docutils literal notranslate"><span class="pre">f</span></code> integrieren will,
+muss man <code class="docutils literal notranslate"><span class="pre">scipy.integrate.quad(...)</span></code> verwenden.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">scipy</span> <span class="k">as</span> <span class="nn">sp</span>
+
+<span class="n">a</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span>
+
+<span class="c1"># np.sin wird direkt übergeben</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">integrate</span><span class="o">.</span><span class="n">quad</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">y</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 </section>
 

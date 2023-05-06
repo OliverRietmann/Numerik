@@ -107,3 +107,37 @@ result = np.integrate.quad(np.sin, a, b)
 
 print(result.y)
 ```
+
+## Zusammengesetzte Quadraturregel
+
+Wir können die Gewichte der zusammengesetzten Quadraturregeln wie folgt bauen.
+
+```{code-cell} ipython3
+import numpy as np
+
+# Gewichte der Trapezregel auf [0, 1]
+w = 0.5 * np.array([1.0, 1.0])
+
+# Gewichte der Simpsonregel auf [0, 1]
+# w = 1.0 / 6.0 * np.array([1.0, 4.0, 1.0])
+
+def composite_rule(w, N):
+  m = len(w) - 1
+  n = N * (m + 1) - (N - 1)
+  v = np.zeros(n)
+  for i in range(N):
+    a = i * m
+    b = (i + 1) * m
+    v[a:b + 1] += w
+  return v
+
+v = composite_rule(w, 100)
+n = len(v)
+
+a = 0.0
+b = np.pi
+x = np.linspace(a, b, n)
+h = (b - a) / (n - 1)
+
+print(np.dot(np.sin(x), h * v))
+```

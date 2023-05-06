@@ -27,7 +27,7 @@ Lernziele:
 Zu gegebenen Knoten $x_0,\ldots,x_n$ und Gewichten $w_0,\ldots,w_n$ kann man die zugehörige Quadraturregel als Skalarprodukt von Vektoren schreiben
 
 $$
-f(x_0)w_0+f(x_1)w_1+\ldots+f(x_n)w_n=
+f(x_0)\cdot w_0+f(x_1)\cdot w_1+\ldots+f(x_n)\cdot w_n=
 \begin{pmatrix}
     f(x_0) \\
     f(x_1) \\
@@ -81,7 +81,7 @@ In Python geht das mit der Funktion `numpy.trapz(...)`.
 ```{code-cell} ipython3
 import numpy as np
 
-a = 0
+a = 0.0
 b = np.pi
 n = 100
 
@@ -91,8 +91,8 @@ y = np.sin(x)
 print(np.trapz(y, x))
 ```
 
-Man beachte dass `numpy.trapz(...)` diskrete Werte entgegennimmt.
-Falls man direkt eine auswertbare Funktion `f` integrieren will,
+Man beachte dass `numpy.trapz(...)` diskrete Werte (`numpy.array`) entgegennimmt.
+Falls man eine auswertbare Funktion integrieren will,
 muss man `scipy.integrate.quad(...)` verwenden.
 
 ```{code-cell} ipython3

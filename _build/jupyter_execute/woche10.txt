@@ -14,7 +14,7 @@ print(np.dot(np.sin(x), w))
 
 import numpy as np
 
-a = 0
+a = 0.0
 b = np.pi
 n = 100
 

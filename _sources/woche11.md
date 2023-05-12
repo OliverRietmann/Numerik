@@ -21,8 +21,6 @@ Lernziele:
 2. Ich kann ein gegebenes Anfangswertproblem mit `scipy.integrate.solve_ivp(...)` lösen.
 3. Ich kann eine DGL 2. Ordnung in eine zweidimensionale DGL 1. Ordnung überführen.
 
-## Explizite Eulermethode
-
 ```{figure} images/euler_polygonzug.png
 ---
 scale: 30%
@@ -30,12 +28,14 @@ align: right
 ---
 ```
 
+## Explizite Eulermethode
+
 Wir lösen das Anfangswertproblem
 
 $$
 \begin{cases}
-\qquad y'(t) =-\tfrac{1}{2}\cdot y(t) \\[20pt]
-\qquad y(0)=100
+\quad y'(t) =-\tfrac{1}{2}\cdot y(t) \\[10pt]
+\quad y(0)=100
 \end{cases}
 $$
 

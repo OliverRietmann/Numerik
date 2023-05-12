@@ -28,7 +28,6 @@ Lernziele:
 scale: 30%
 align: right
 ---
-Explizites Eulerverfahren
 ```
 
 Wir lösen das Anfangswertproblem

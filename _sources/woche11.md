@@ -95,6 +95,13 @@ plt.show()
 
 ## Zweidimensionale DGL
 
+```{image} images/euler_polygonzug.png
+:alt: archimedes
+:class: fig
+:width: 300px
+:align: center
+```
+
 Wir lösen das Anfangswertproblem
 
 $$

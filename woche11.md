@@ -33,7 +33,10 @@ align: right
 Wir lösen das Anfangswertproblem
 
 $$
-y'(t)=-\tfrac{1}{2}\cdot y(t),\qquad y(0)=100
+\begin{cases}
+y'(t)=-\tfrac{1}{2}\cdot y(t) \\
+y(0)=100
+\end{cases}
 $$
 
 mit der expliziten Eulermethode.

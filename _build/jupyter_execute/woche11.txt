@@ -1,29 +1,6 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
-def explicit_euler(T, y0, n):
-    h = T / n
-    t = np.linspace(0.0, T, n + 1)
-    y = np.empty(n + 1)
-    y[0] = y0
-    for k in range(n):
-        y[k + 1] = y[k] + h * (-0.5) * y[k]
-    return t, y
-
-T = 10.0
-y0 = 100.0
-
-t, y = explicit_euler(T, y0, 50)
-
-plt.figure()
-plt.plot(t, y, label='explicit Euler')
-plt.plot(t, y0 * np.exp(-0.5 * t), '--', label='exact')
-plt.legend()
-plt.show()
-
-import numpy as np
-import matplotlib.pyplot as plt
-
 def explicit_euler(f, t_span, y0, n):
     h = (t_span[1] - t_span[0]) / n
     t = np.linspace(t_span[0], t_span[1], n + 1)

@@ -23,7 +23,7 @@ Lernziele:
 
 ```{figure} images/euler_polygonzug.png
 ---
-scale: 30%
+scale: 40%
 align: right
 ---
 ```

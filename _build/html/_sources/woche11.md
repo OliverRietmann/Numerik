@@ -23,11 +23,11 @@ Lernziele:
 
 ## Explizite Eulermethode
 
-```{image} images/euler_polygonzug.png
-:alt: archimedes
-:class: fig
-:width: 300px
-:align: center
+```{figure} images/euler_polygonzug.png
+---
+:width: 200px
+:align: right
+---
 ```
 
 Wir lösen das Anfangswertproblem

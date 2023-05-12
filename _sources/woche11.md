@@ -25,10 +25,10 @@ Lernziele:
 
 ```{figure} images/euler_polygonzug.png
 ---
-scale: 50%
+scale: 30%
 align: right
 ---
-Here is my figure caption!
+Explizites Eulerverfahren
 ```
 
 Wir lösen das Anfangswertproblem

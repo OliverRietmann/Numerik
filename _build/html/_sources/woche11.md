@@ -25,9 +25,10 @@ Lernziele:
 
 ```{figure} images/euler_polygonzug.png
 ---
-:width: 200px
-:align: right
+scale: 50%
+align: right
 ---
+Here is my figure caption!
 ```
 
 Wir lösen das Anfangswertproblem

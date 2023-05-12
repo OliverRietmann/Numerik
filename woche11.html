@@ -470,39 +470,43 @@ title="Print to PDF"
 </ol>
 <section id="explizite-eulermethode">
 <h2>Explizite Eulermethode<a class="headerlink" href="#explizite-eulermethode" title="Permalink to this headline">#</a></h2>
-<p>Wir lösen das Anfangswertproblem</p>
-<div class="math notranslate nohighlight">
-\[
-y'(t)=-\tfrac{1}{2}\cdot y(t),\qquad y(0)=100
-\]</div>
-<p>mit der expliziten Eulermethode.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<aside class="sidebar">
+<p class="sidebar-title">Explizites Eulerverfahren</p>
+<a class="fig reference internal image-reference" href="_images/euler_polygonzug.png"><img alt="archimedes" class="fig align-center" src="_images/euler_polygonzug.png" style="width: 300px;" /></a>
+</aside>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
+Wir lösen das Anfangswertproblem
 
-<span class="k">def</span> <span class="nf">explicit_euler</span><span class="p">(</span><span class="n">T</span><span class="p">,</span> <span class="n">y0</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
-    <span class="n">h</span> <span class="o">=</span> <span class="n">T</span> <span class="o">/</span> <span class="n">n</span>
-    <span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">T</span><span class="p">,</span> <span class="n">n</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
-    <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">(</span><span class="n">n</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
-    <span class="n">y</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">y0</span>
-    <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
-        <span class="n">y</span><span class="p">[</span><span class="n">k</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">y</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">+</span> <span class="n">h</span> <span class="o">*</span> <span class="p">(</span><span class="o">-</span><span class="mf">0.5</span><span class="p">)</span> <span class="o">*</span> <span class="n">y</span><span class="p">[</span><span class="n">k</span><span class="p">]</span>
-    <span class="k">return</span> <span class="n">t</span><span class="p">,</span> <span class="n">y</span>
+$$
+y&#39;(t)=-\tfrac{1}{2}\cdot y(t),\qquad y(0)=100
+$$
 
-<span class="n">T</span> <span class="o">=</span> <span class="mf">10.0</span>
-<span class="n">y0</span> <span class="o">=</span> <span class="mf">100.0</span>
+mit der expliziten Eulermethode.
 
-<span class="n">t</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">explicit_euler</span><span class="p">(</span><span class="n">T</span><span class="p">,</span> <span class="n">y0</span><span class="p">,</span> <span class="mi">50</span><span class="p">)</span>
+```{code-cell} ipython3
+import numpy as np
+import matplotlib.pyplot as plt
 
-<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;explicit Euler&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">y0</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="mf">0.5</span> <span class="o">*</span> <span class="n">t</span><span class="p">),</span> <span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;exact&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+def explicit_euler(T, y0, n):
+    h = T / n
+    t = np.linspace(0.0, T, n + 1)
+    y = np.empty(n + 1)
+    y[0] = y0
+    for k in range(n):
+        y[k + 1] = y[k] + h * (-0.5) * y[k]
+    return t, y
+
+T = 10.0
+y0 = 100.0
+
+t, y = explicit_euler(T, y0, 50)
+
+plt.figure()
+plt.plot(t, y, label=&#39;explicit Euler&#39;)
+plt.plot(t, y0 * np.exp(-0.5 * t), &#39;--&#39;, label=&#39;exact&#39;)
+plt.legend()
+plt.show()
 </pre></div>
-</div>
-</div>
 </div>
 <div class="admonition-aufgabe admonition">
 <p class="admonition-title">Aufgabe</p>
@@ -543,7 +547,6 @@ plt.show()
 </section>
 <section id="zweidimensionale-dgl">
 <h2>Zweidimensionale DGL<a class="headerlink" href="#zweidimensionale-dgl" title="Permalink to this headline">#</a></h2>
-<a class="fig reference internal image-reference" href="_images/euler_polygonzug.png"><img alt="archimedes" class="fig align-center" src="_images/euler_polygonzug.png" style="width: 300px;" /></a>
 <p>Wir lösen das Anfangswertproblem</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}

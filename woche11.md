@@ -34,8 +34,8 @@ Wir lösen das Anfangswertproblem
 
 $$
 \begin{cases}
-y'(t)=-\tfrac{1}{2}\cdot y(t) \\
-y(0)=100
+\qquad y'(t) =-\tfrac{1}{2}\cdot y(t) \\[20pt]
+\qquad y(0)=100
 \end{cases}
 $$
 

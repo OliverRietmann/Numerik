@@ -25,10 +25,10 @@ f3 = lambda x: np.sin(x)
 fk_list = [f0, f1, f2, f3]
 
 taylor_factory(x0, fk_list):
-    n = len(fk_list)
-    fkx0 = np.array([fk(x0) for fk in fk_list])
-    factorials = np.math.factorial(np.arange(n))
-    coefficients = fkx0 / factorials
+    derivatives = np.array([fk(x0) for fk in fk_list])
+    factorials = np.math.factorial(np.arange(len(fk_list)))
+    coefficients = derivatives / factorials
+
     return lambda x: np.sum([ck * (x - x0)**k for k, ck in enumerate(coefficients)], axis=0)
 
 t3 = taylor_factory(x0, fk_list)

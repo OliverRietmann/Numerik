@@ -468,9 +468,14 @@ title="Print to PDF"
 <li><p>Ich kann ein gegebenes Anfangswertproblem mit <code class="docutils literal notranslate"><span class="pre">scipy.integrate.solve_ivp(...)</span></code> lösen.</p></li>
 <li><p>Ich kann eine DGL 2. Ordnung in eine zweidimensionale DGL 1. Ordnung überführen.</p></li>
 </ol>
-<figure class="align-right">
-<a class="reference internal image-reference" href="_images/euler_polygonzug.png"><img alt="_images/euler_polygonzug.png" src="_images/euler_polygonzug.png" style="width: 313.17px; height: 217.14000000000001px;" /></a>
-</figure>
+<!--
+```{figure} images/euler_polygonzug.png
+---
+scale: 33%
+align: right
+---
+```
+-->
 <section id="explizite-eulermethode">
 <h2>Explizite Eulermethode<a class="headerlink" href="#explizite-eulermethode" title="Permalink to this headline">#</a></h2>
 <p>Wir lösen das Anfangswertproblem</p>
@@ -517,7 +522,7 @@ title="Print to PDF"
 \[
 y^\prime(t)=f(t, y(t)),\qquad y(t_0)=y_0
 \]</div>
-<p>mit der expliziten Eulermethode lösen kann.</p>
+<p>mit der expliziten Eulermethode lösen kann (der nächste Code-Block ist im Prinzip die Lösung).</p>
 </div>
 <!--
 ```{code-cell} ipython3
@@ -574,7 +579,7 @@ y_2(0)
 \end{pmatrix}
 \end{split}\]</div>
 <p>mit der expliziten Eulermethode.
-Wenn wir es richtig machen, bleibt die Funktion <code class="docutils literal notranslate"><span class="pre">explicit_euler(...)</span></code> unverändert.</p>
+Die Funktion <code class="docutils literal notranslate"><span class="pre">explicit_euler(...)</span></code> bleibt fast unverändert.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>

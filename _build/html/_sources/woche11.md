@@ -21,12 +21,14 @@ Lernziele:
 2. Ich kann ein gegebenes Anfangswertproblem mit `scipy.integrate.solve_ivp(...)` lösen.
 3. Ich kann eine DGL 2. Ordnung in eine zweidimensionale DGL 1. Ordnung überführen.
 
+<!--
 ```{figure} images/euler_polygonzug.png
 ---
 scale: 33%
 align: right
 ---
 ```
+-->
 
 ## Explizite Eulermethode
 
@@ -73,7 +75,7 @@ $$
 y^\prime(t)=f(t, y(t)),\qquad y(t_0)=y_0
 $$
 
-mit der expliziten Eulermethode lösen kann.
+mit der expliziten Eulermethode lösen kann (der nächste Code-Block ist im Prinzip die Lösung).
 :::
 <!--
 ```{code-cell} ipython3
@@ -131,7 +133,7 @@ y_2(0)
 $$
 
 mit der expliziten Eulermethode.
-Wenn wir es richtig machen, bleibt die Funktion `explicit_euler(...)` unverändert.
+Die Funktion `explicit_euler(...)` bleibt fast unverändert.
 ```{code-cell} ipython3
 import numpy as np
 import matplotlib.pyplot as plt

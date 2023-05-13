@@ -1,0 +1,14 @@
+import numpy as np
+import matplotlib.pyplot as plt
+
+x0 = 1.0
+f = lambda x: np.cos(x)
+df = lambda x: -np.sin(x)
+t1 = lambda x: f(x0) + (x - x0) * df(x0)
+x = np.linspace(-np.pi, np.pi, 100)
+
+plt.figure()
+plt.plot(x, t1(x), label='Linearisierung')
+plt.plot(x, f(x), '--', label="f(x)")
+plt.legend()
+plt.show()

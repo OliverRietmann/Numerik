@@ -6,6 +6,7 @@ root: intro
 chapters:
 - file: woche1
 - file: woche2
+- file: woche3
 - file: woche4
 - file: woche5
 - file: woche7

@@ -42,3 +42,39 @@ plt.plot(x, f(x), '--', label="$f(x)$")
 plt.legend()
 plt.show()
 ```
+
+## Taylor Polynome
+
+Nun approximieren wir die Funktion $f(x)=\cos(x)$ an der Stelle $x_0$ mit einem Taylor Polynom $t_n(x)$ vom Grad $n$, also
+
+$$
+t_n(x)=\sum\limits_{k=0}^n\frac{f^{(k)}}{k!}(x-x_0).
+$$
+
+```{code-cell} ipython3
+import numpy as np
+import matplotlib.pyplot as plt
+
+x0 = 1.0
+f0 = lambda x: np.cos(x)
+f1 = lambda x: -np.sin(x)
+f2 = lambda x: -np.cos(x)
+f3 = lambda x: np.sin(x)
+
+fk_list = [f0, f1, f2, f3]
+
+taylor_factory(x0, fk_list):
+    n = len(fk_list)
+    fkx0 = np.array([fk(x0) for fk in fk_list])
+    factorials = np.math.factorial(np.arange(n))
+    coefficients = fkx0 / factorials
+    return lambda x: np.sum([ck * (x - x0)**k for k, ck in enumerate(coefficients)], axis=0)
+
+t3 = taylor_factory(x0, fk_list)
+
+plt.figure()
+plt.plot(x, t3(x), label='$t_3(x)$')
+plt.plot(x, f(x), '--', label="$f(x)$")
+plt.legend()
+plt.show()
+```

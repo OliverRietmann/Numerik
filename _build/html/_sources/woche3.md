@@ -24,7 +24,7 @@ Sei eine Stelle $x_0$ und eine Funktion $f(x)$ gegeben.
 
 ## Linearisierung
 
-Wir linearisieren die Funktion
+Berechne die Linearisierung $t_1(x)$ der Funktion
 
 $$
 f(x)=\cos(x)
@@ -43,8 +43,8 @@ t1 = lambda x: f(x0) + (x - x0) * df(x0)
 x = np.linspace(-np.pi, np.pi, 100)
 
 plt.figure()
-plt.plot(x, t1(x), label='Linearisierung')
-plt.plot(x, f(x), '--', label="f(x)")
+plt.plot(x, t1(x), label='$t_1(x)$')
+plt.plot(x, f(x), '--', label="$f(x)$")
 plt.legend()
 plt.show()
 ```

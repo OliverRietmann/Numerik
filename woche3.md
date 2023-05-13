@@ -24,13 +24,7 @@ Sei eine Stelle $x_0$ und eine Funktion $f(x)$ gegeben.
 
 ## Linearisierung
 
-Berechne die Linearisierung $t_1(x)$ der Funktion
-
-$$
-f(x)=\cos(x)
-$$
-
-an der Stelle $x_0=1$.
+Berechne die Linearisierung $t_1(x)$ der Funktion $f(x)=\cos(x)$ an der Stelle $x_0=1$.
 
 ```{code-cell} ipython3
 import numpy as np

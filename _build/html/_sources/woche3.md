@@ -48,7 +48,7 @@ plt.show()
 Nun approximieren wir die Funktion $f(x)=\cos(x)$ an der Stelle $x_0$ mit einem Taylor Polynom $t_n(x)$ vom Grad $n$, also
 
 $$
-t_n(x)=\sum\limits_{k=0}^n\frac{f^{(k)}}{k!}(x-x_0).
+t_n(x)=\sum\limits_{k=0}^n\frac{f^{(k)}}{k!}(x-x_0)^k.
 $$
 
 ```{code-cell} ipython3

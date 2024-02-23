@@ -44,6 +44,7 @@ Der eingerückte Code wir dabei wiederholt.
 ```{code-cell}
 l = [1, "two", 3]
 print(l)
+
 for n in l:
   print(n)
 ```
@@ -97,12 +98,11 @@ Eine Funktion kann auch mehrere Argumente haben.
 Folgende Funktion soll zwei gleich lange Listen elementweise addieren. Korrigieren Sie die Funktion.
 :::
 ```{code-cell}
-l1 = [1, 2, 3]
-l2 = [4, 5, 6]
-
 def sum_lists(v, w):
   return v + w
 
+l1 = [1, 2, 3]
+l2 = [4, 5, 6]
 print(sum_lists(l1, l2))
 ```
 
@@ -111,11 +111,10 @@ Folgende Funktion soll eine Skalar-Vektor Multiplikation machen.
 Korrigieren Sie die Funktion.
 :::
 ```{code-cell}
-l = [1, 2, 3]
-
 def skalar_mult(s, v):
   return s * v
 
+l = [1, 2, 3]
 print(skalar_mult(3, l))
 ```
 

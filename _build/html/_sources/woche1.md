@@ -285,7 +285,7 @@ plt.xlabel("x")
 plt.show()
 ```
 
-Oder man mach separate Plots.
+Separate Plots sind ebenfalls möglich.
 ```{code-cell}
 import numpy as np
 import matplotlib.pyplot as plt

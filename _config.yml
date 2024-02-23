@@ -34,6 +34,7 @@ html:
 html_theme_options:
   thebe:
     hide_output: true
+  navigation_with_keys: true
 
 launch_buttons:
   thebe: true

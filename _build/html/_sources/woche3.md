@@ -52,6 +52,7 @@ t_n(x)=\sum\limits_{k=0}^n\frac{f^{(k)}}{k!}(x-x_0)^k.
 $$
 
 ```{code-cell} ipython3
+import math
 import numpy as np
 import matplotlib.pyplot as plt
 
@@ -63,9 +64,9 @@ f3 = lambda x: np.sin(x)
 
 fk_list = [f0, f1, f2, f3]
 
-taylor_factory(x0, fk_list):
+def taylor_factory(x0, fk_list):
     derivatives = np.array([fk(x0) for fk in fk_list])
-    factorials = np.math.factorial(np.arange(len(fk_list)))
+    factorials = np.array([math.factorial(n) for n in range(len(fk_list))])
     coefficients = derivatives / factorials
 
     return lambda x: np.sum([ck * (x - x0)**k for k, ck in enumerate(coefficients)], axis=0)

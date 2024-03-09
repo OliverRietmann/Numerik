@@ -62,10 +62,9 @@ s_{2n}=\sqrt{2-2\sqrt{1-\frac{s_n^2}{4}}}
 $$
 
 Für das $4$-Eck gilt zum Beispiel $s_4=\sqrt{2}$.
-Wir verzichten hier auf die (einfache) Herleitung dieser Formel.
+Wir verzichten hier auf die (einfache) Herleitung dieser Formel. TEST
 
 ![archimedes](attachment:images/archimedes.png)
-
 
 ```{code-cell}
 import numpy as np

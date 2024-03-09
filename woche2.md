@@ -64,24 +64,7 @@ $$
 Für das $4$-Eck gilt zum Beispiel $s_4=\sqrt{2}$.
 Wir verzichten hier auf die (einfache) Herleitung dieser Formel.
 
-```{code-cell}
-from IPython.display import Image
-import base64
-
-with open("images/archimedes.png", "rb") as img_file:
-    encoded_img = base64.b64encode(img_file.read()).decode('utf-8')
-
-Image(data=f"data:image/png;base64,{encoded_img}")
-```
-
 ![archimedes](attachment:images/archimedes.png)
-
-```{image} images/archimedes.png
-:alt: archimedes
-:class: fig
-:width: 300px
-:align: center
-```
 
 ```{code-cell}
 import numpy as np

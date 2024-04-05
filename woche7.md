@@ -52,7 +52,7 @@ import numpy as np
 def LUdecomposition(A):
     n = len(A)
     L = np.eye(n)
-    U = A
+    U = A.copy()
     for k in range(n):
         L[k+1:n, k] = U[k+1:n, k] / U[k, k]
         for j in range(k + 1, n):
@@ -82,7 +82,7 @@ $$
 \begin{pmatrix}
     1 & 0 & 0 \\
     2 & 1 & 0 \\
-    3 & 0 & 0
+    3 & 0 & 1
 \end{pmatrix}
 \cdot
 \begin{pmatrix}
@@ -161,19 +161,18 @@ Das entsprechende LGS lösen wir zuerst mit unserer Implementierung der $LU$-Zer
 ```{code-cell} ipython3
 import numpy as np
 
-# np.set_printoptions(suppress=True, formatter={'float_kind':'{:0.0f}'.format}) 
-
 a = 1.0e-20
 A = np.array([[a, 1.0, 0.0],
               [1.0, 0.0, 1.0],
               [1.0, 1.0, 0.0]])
+P = np.array([[0.0, 1.0, 0.0],
+              [1.0, 0.0, 0.0],
+              [0.0, 0.0, 1.0]])
 b = np.array([1.0, 1000.0, 1.0])
 
-L, U = LUdecomposition(A)
-y = forward(L, b)
+L, U = LUdecomposition(A) # Ersetze A --> P @ A
+y = forward(L, b)         # Ersetze b --> P @ b
 x = backward(U, y)
-
-print("x =", x) # [0, 1, 1000]
 ```
 
 :::{admonition} Aufgabe

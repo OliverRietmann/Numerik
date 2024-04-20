@@ -62,7 +62,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 x = np.array([0.0, 0.5, 1.0, 1.5, 2.0])
-y = np.array([1.0, 1.0, 0.0, 0.0, 3.0])
+y = np.array([1.0, 1.0, 0.0, 0.0, 2.0])
 
 V = np.vander(x, increasing=True)
 a = np.linalg.solve(V, y)
@@ -84,7 +84,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 x = np.array([0.0, 0.5, 1.0, 1.5, 2.0])
-y = np.array([1.0, 1.0, 0.0, 0.0, 3.0])
+y = np.array([1.0, 1.0, 0.0, 0.0, 2.0])
 
 a = np.polyfit(x, y, len(x) - 1)
 
@@ -128,25 +128,29 @@ der Lagrange Polynome.
 import numpy as np
 import matplotlib.pyplot as plt
 
-x = np.array([0.0, 0.5, 1.0, 1.5, 2.0])
-y = np.array([1.0, 1.0, 0.0, 0.0, 3.0])
+x_data = np.array([0.0, 0.5, 1.0, 1.5, 2.0])
+y_data = np.array([1.0, 1.0, 0.0, 0.0, 2.0])
 
-def Lagrange_factory(x, i):
-    xi = x[i]
-    x_without_i = np.delete(x, [i])
-    return lambda z: np.prod([(z - xk) / (xi - xk) for xk in x_without_i], axis=0)
+def lagrange_polynom(x, x_data, i):
+    xi = x_data[i]
+    x_data_without_i = np.delete(x_data, [i])
+    return np.prod([(x - xk) / (xi - xk) for xk in x_data_without_i], axis=0)
+    
+def interpolation(x, x_data, y_data):
+    n = len(y_data)
+    assert(len(x_data) == n)
+    return sum(y_data[i] * lagrange_polynom(x, x_data, i) for i in range(n))
 
-n = len(x)
-l = [Lagrange_factory(x, i) for i in range(n)]
+l = lambda x, i: lagrange_polynom(x, x_data, i)
+p4 = lambda x: interpolation(x, x_data, y_data)
 
-x_values = np.linspace(0.0, 2.0, 100)
-y_values = sum(y[i] * l[i](x_values) for i in range(n))
+x_plot = np.linspace(0.0, 2.0, 100)
 
 plt.figure()
-plt.plot(x, y, 'bo')
-plt.plot(x_values, y_values, 'k-', label=r"$p_{0}(x)$".format(n + 1))
+plt.plot(x_data, y_data, 'bo')
+plt.plot(x_plot, p4(x_plot), 'k-', label=r"$p_{0}(x)$".format(n + 1))
 for i in range(n):
-	plt.plot(x_values, l[i](x_values), '--', label=r"$l_{0}(x)$".format(i))
+	plt.plot(x_plot, l(x_plot, i), '--', label=r"$l_{0}(x)$".format(i))
 plt.legend()
 plt.show()
 ```
@@ -160,7 +164,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 x = np.array([0.0, 0.5, 1.0, 1.5, 2.0])
-y = np.array([1.0, 1.0, 0.0, 0.0, 3.0])
+y = np.array([1.0, 1.0, 0.0, 0.0, 2.0])
 
 x_values = np.linspace(0.0, 2.0, 100)
 y_values = np.interp(x_values, x, y)

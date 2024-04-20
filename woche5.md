@@ -226,7 +226,7 @@ $$
 \end{pmatrix}.
 $$
 
-Die Kandidaten für Nullstellen kann man graphisch ermitteln.
+Die Kandidaten für Nullstellen kann man grafisch ermitteln.
 Dazu kann man zum Beispiel die Höhenlinie der Höhe Null plotten.
 
 ```{code-cell} ipython3

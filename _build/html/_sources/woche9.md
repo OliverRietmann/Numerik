@@ -86,7 +86,8 @@ import matplotlib.pyplot as plt
 x = np.array([0.0, 0.5, 1.0, 1.5, 2.0])
 y = np.array([1.0, 1.0, 0.0, 0.0, 2.0])
 
-a = np.polyfit(x, y, len(x) - 1)
+n = len(x) - 1
+a = np.polyfit(x, y, n)
 
 x_values = np.linspace(0.0, 2.0, 100)
 y_values = np.polyval(a, x_values)
@@ -137,21 +138,21 @@ def lagrange_polynom(x, x_data, i):
     return np.prod([(x - xk) / (xi - xk) for xk in x_data_without_i], axis=0)
     
 def interpolation(x, x_data, y_data):
-    n = len(x_data)
-    assert(len(y_data) == n)
-    return sum(y_data[i] * lagrange_polynom(x, x_data, i) for i in range(n))
+    n = len(x_data) - 1
+    assert(len(y_data) == n + 1)
+    return sum(y_data[i] * lagrange_polynom(x, x_data, i) for i in range(n + 1))
 
 l = lambda x, i: lagrange_polynom(x, x_data, i)
 p4 = lambda x: interpolation(x, x_data, y_data)
 
-n = len(x_data)
+n = len(x_data) - 1
 x_plot = np.linspace(0.0, 2.0, 100)
 
 plt.figure()
 plt.plot(x_data, y_data, 'bo')
-plt.plot(x_plot, p4(x_plot), 'k-', label=r"$p_{0}(x)$".format(n + 1))
-for i in range(n):
-	plt.plot(x_plot, l(x_plot, i), '--', label=r"$l_{0}(x)$".format(i))
+plt.plot(x_plot, p4(x_plot), 'k-', label=r"$p_{0}(x)$".format(n))
+for i in range(n + 1):
+	plt.plot(x_plot, l(x_plot, i), '--', label=r"$\ell_{0}(x)$".format(i))
 plt.legend()
 plt.show()
 ```
@@ -164,14 +165,14 @@ Lineare Splines können mit `numpy.interp(...)` berechnet werden.
 import numpy as np
 import matplotlib.pyplot as plt
 
-x = np.array([0.0, 0.5, 1.0, 1.5, 2.0])
-y = np.array([1.0, 1.0, 0.0, 0.0, 2.0])
+x_data = np.array([0.0, 0.5, 1.0, 1.5, 2.0])
+y_data = np.array([1.0, 1.0, 0.0, 0.0, 2.0])
 
-x_values = np.linspace(0.0, 2.0, 100)
-y_values = np.interp(x_values, x, y)
+x_plot = np.linspace(0.0, 2.0, 100)
+y_plot = np.interp(x_plot, x_data, y_data)
 
 plt.figure()
-plt.plot(x, y, 'bo')
-plt.plot(x_values, y_values, 'r-')
+plt.plot(x_data, y_data, 'bo')
+plt.plot(x_plot, y_plot, 'r-')
 plt.show()
 ```

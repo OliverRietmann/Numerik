@@ -137,13 +137,14 @@ def lagrange_polynom(x, x_data, i):
     return np.prod([(x - xk) / (xi - xk) for xk in x_data_without_i], axis=0)
     
 def interpolation(x, x_data, y_data):
-    n = len(y_data)
-    assert(len(x_data) == n)
+    n = len(x_data)
+    assert(len(y_data) == n)
     return sum(y_data[i] * lagrange_polynom(x, x_data, i) for i in range(n))
 
 l = lambda x, i: lagrange_polynom(x, x_data, i)
 p4 = lambda x: interpolation(x, x_data, y_data)
 
+n = len(x_data)
 x_plot = np.linspace(0.0, 2.0, 100)
 
 plt.figure()

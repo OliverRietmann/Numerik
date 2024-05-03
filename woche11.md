@@ -190,6 +190,10 @@ $$
 
 mit der Funktion `numpy.integrate.solve_ivp(...)` bis zur Endzeit $T=2\pi$
 ```{code-cell} ipython3
+import subprocess
+import sys
+subprocess.call([sys.executable, '-m', 'pip', 'install', 'scipy'])
+
 import numpy as np
 import scipy as sp
 import matplotlib.pyplot as plt

@@ -36,66 +36,75 @@ Wir lösen das Anfangswertproblem
 
 $$
 \begin{cases}
-\quad y'(t) =-\tfrac{1}{2}\cdot y(t) \\[10pt]
-\quad y(0)=100
+\quad y'(t) =-t^2\cdot y(t) \\[10pt]
+\quad y(0)=200
 \end{cases}
 $$
 
-mit der expliziten Eulermethode.
+mit $n=50$ Schritten der expliziten Eulermethode mit Zeitschrittweite $h=0.05$.
 
 ```{code-cell} ipython3
 import numpy as np
 import matplotlib.pyplot as plt
 
-def explicit_euler(T, y0, n):
-    h = T / n
-    t = np.linspace(0.0, T, n + 1)
+def explicit_euler(f, t0, y0, h, n):
+    t = np.empty(n + 1)
+    t[0] = t0
     y = np.empty(n + 1)
     y[0] = y0
     for k in range(n):
-        y[k + 1] = y[k] + h * (-0.5) * y[k]
+        t[k + 1] = t[k] + h
+        y[k + 1] = y[k] + h * f(t[k], y[k])
     return t, y
 
-T = 10.0
-y0 = 100.0
+f = lambda t, y: -t**2 * y
+t0 = 0.0
+y0 = 200.0
+h = 0.05
+n = 50
 
-t, y = explicit_euler(T, y0, 50)
+t, y = explicit_euler(f, t0, y0, h, n)
 
 plt.figure()
 plt.plot(t, y, label='explicit Euler')
-plt.plot(t, y0 * np.exp(-0.5 * t), '--', label='exact')
+plt.plot(t, y0 * np.exp(-t**3 / 3.0), '--', label='exact')
 plt.legend()
 plt.show()
 ```
 
 :::{admonition} Aufgabe
+Der Code oben funktioniert nur für eine spezielle Differentialgleichung und nur für die Startzeit $t_0=0$.
 Passen Sie die Funktion `explicit_euler(...)` so an, dass sie ein beliebiges Anfangswertproblem
 
 $$
 y^\prime(t)=f(t, y(t)),\qquad y(t_0)=y_0
 $$
 
-mit der expliziten Eulermethode lösen kann (der nächste Code-Block ist im Prinzip die Lösung).
+mit der expliziten Eulermethode lösen kann.
 :::
-<!--
+
+Lösung:
 ```{code-cell} ipython3
 import numpy as np
 import matplotlib.pyplot as plt
 
-def explicit_euler(f, t_span, y0, n):
-    h = (t_span[1] - t_span[0]) / n
-    t = np.linspace(t_span[0], t_span[1], n + 1)
+def explicit_euler(f, t0, y0, h, n):
+    t = np.empty(n + 1)
+    t[0] = t0
     y = np.empty(n + 1)
     y[0] = y0
     for k in range(n):
-        y[k + 1] = y[k] + h * f(t[k], y[k])
+        t[k + 1] = t[k] + h
+        y[k + 1] = y[k] + h * f(t[k], y[k])  # geändert
     return t, y
 
-f = lambda t, y: -0.5 * y
-t_span = [0.0, 10.0]
-y0 = 100.0
+f = lambda t, y: -t**2 * y
+t0 = 0.0
+y0 = 200.0
+h = 0.05
+n = 50
 
-t, y = explicit_euler(f, t_span, y0, 50)
+t, y = explicit_euler(f, t0, y0, h, n)
 
 plt.figure()
 plt.plot(t, y, label='explicit Euler')
@@ -103,7 +112,6 @@ plt.plot(t, y0 * np.exp(-0.5 * t), '--', label='exact')
 plt.legend()
 plt.show()
 ```
--->
 
 ## Zweidimensionale DGL
 
@@ -138,21 +146,24 @@ Die Funktion `explicit_euler(...)` bleibt fast unverändert.
 import numpy as np
 import matplotlib.pyplot as plt
 
-def explicit_euler(f, t_span, y0, n):
-    h = (t_span[1] - t_span[0]) / n
-    t = np.linspace(t_span[0], t_span[1], n + 1)
-    y = np.empty((n + 1, len(y0)))
+def explicit_euler(f, t0, y0, h, n):
+    t = np.empty(n + 1)
+    t[0] = t0
+    y = np.empty((n + 1, len(y0)))  # geändert
     y[0] = y0
     for k in range(n):
+        t[k + 1] = t[k] + h
         y[k + 1] = y[k] + h * f(t[k], y[k])
     return t, y
 
 M = np.array([[-0.5, 0.0], [0.5, -0.2]])
 f = lambda t, y: np.dot(M, y)
-t_span = [0.0, 20.0]
+t0 = 0.0
 y0 = np.array([100.0, 100.0])
+h = 0.1
+n = 200
 
-t, y = explicit_euler(f, t_span, y0, 200)
+t, y = explicit_euler(f, t0, y0, h, n)
 
 plt.figure()
 plt.plot(t, y[:, 0], label='Element 1')

@@ -47,7 +47,7 @@ mit $n=50$ Schritten der expliziten Eulermethode mit Zeitschrittweite $h=0.05$.
 import numpy as np
 import matplotlib.pyplot as plt
 
-# In der nächsten Aufgabe finden wir eine bessere Version dieser Funktion
+# Unten finden wir eine bessere Version dieser Funktion
 def explicit_euler(y0, h, n):
     t = np.empty(n + 1)
     t[0] = 0.0
@@ -65,8 +65,8 @@ n = 50
 t, y = explicit_euler(y0, h, n)
 
 plt.figure()
-plt.plot(t, y, label='explicit Euler')
-plt.plot(t, y0 * np.exp(-t**3 / 3.0), '--', label='exact')
+plt.plot(t, y0 * np.exp(-t**3 / 3.0), 'r-', label='exact')
+plt.plot(t, y, 'c--', label='explicit Euler')
 plt.legend()
 plt.show()
 ```
@@ -106,8 +106,8 @@ n = 50
 t, y = explicit_euler(f, t0, y0, h, n)
 
 plt.figure()
-plt.plot(t, y, label='explicit Euler')
-plt.plot(t, y0 * np.exp(-t**3 / 3.0), '--', label='exact')
+plt.plot(t, y0 * np.exp(-t**3 / 3.0), 'r-', label='exact')
+plt.plot(t, y, 'c--', label='explicit Euler')
 plt.legend()
 plt.show()
 ```
@@ -165,8 +165,9 @@ n = 200
 t, y = explicit_euler(f, t0, y0, h, n)
 
 plt.figure()
-plt.plot(t, y[:, 0], label='Element 1')
-plt.plot(t, y[:, 1], label='Element 2')
+plt.title('Radioaktive Zerfallskette (Produkt 1 zerfällt weiter in Produkt 2)')
+plt.plot(t, y[:, 0], label='Zerfallsprodukt 1')
+plt.plot(t, y[:, 1], label='Zerfallsprodukt 2')
 plt.legend()
 plt.show()
 ```

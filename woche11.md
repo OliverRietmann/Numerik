@@ -47,23 +47,22 @@ mit $n=50$ Schritten der expliziten Eulermethode mit Zeitschrittweite $h=0.05$.
 import numpy as np
 import matplotlib.pyplot as plt
 
-def explicit_euler(f, t0, y0, h, n):
+# In der nächsten Aufgabe finden wir eine bessere Version dieser Funktion
+def explicit_euler(y0, h, n):
     t = np.empty(n + 1)
-    t[0] = t0
+    t[0] = 0.0
     y = np.empty(n + 1)
     y[0] = y0
     for k in range(n):
         t[k + 1] = t[k] + h
-        y[k + 1] = y[k] + h * f(t[k], y[k])
+        y[k + 1] = y[k] + h * (-t[k]**2 * y[k])
     return t, y
 
-f = lambda t, y: -t**2 * y
-t0 = 0.0
 y0 = 200.0
 h = 0.05
 n = 50
 
-t, y = explicit_euler(f, t0, y0, h, n)
+t, y = explicit_euler(y0, h, n)
 
 plt.figure()
 plt.plot(t, y, label='explicit Euler')
@@ -90,7 +89,7 @@ import matplotlib.pyplot as plt
 
 def explicit_euler(f, t0, y0, h, n):
     t = np.empty(n + 1)
-    t[0] = t0
+    t[0] = t0                                # geändert
     y = np.empty(n + 1)
     y[0] = y0
     for k in range(n):
@@ -108,7 +107,7 @@ t, y = explicit_euler(f, t0, y0, h, n)
 
 plt.figure()
 plt.plot(t, y, label='explicit Euler')
-plt.plot(t, y0 * np.exp(-0.5 * t), '--', label='exact')
+plt.plot(t, y0 * np.exp(-t**3 / 3.0), '--', label='exact')
 plt.legend()
 plt.show()
 ```
@@ -211,10 +210,11 @@ import matplotlib.pyplot as plt
 
 M = np.array([[0.0, 1.0], [-1.0, 0.0]])
 f = lambda t, y: np.dot(M, y)
-t_span = [0.0, 2.0 * np.pi]
+t_span = [0.0, 2.0 * np.pi]  # Start- und Endzeit
+n = 100                      # Anzahl Zeitschritte
 z0 = np.array([1.0, 0.0])
 
-t_eval = np.linspace(t_span[0], t_span[1], 100)
+t_eval = np.linspace(t_span[0], t_span[1], n + 1, endpoint=True)
 sol = sp.integrate.solve_ivp(f, t_span, z0, t_eval=t_eval)
 t = sol.t
 y = sol.y

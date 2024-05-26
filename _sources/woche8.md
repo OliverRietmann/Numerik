@@ -81,7 +81,7 @@ plt.show()
 Nun wollen wir ein Polynom von Grad 3 fitten, also
 
 $$
-f(x)=p_3x^3+p_2x^2+p_1x^1+p_0.
+f(x)=p_0+p_1x^1+p_2x^2+p_3x^3.
 $$
 
 Die Normalengleichung für den Koeffizientenvektor $p=(p_0,p_1,p_2,p_3)^T$ dieses Polynoms lautet

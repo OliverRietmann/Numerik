@@ -96,16 +96,20 @@ Falls man eine auswertbare Funktion integrieren will,
 muss man `scipy.integrate.quad(...)` verwenden.
 
 ```{code-cell} ipython3
+import subprocess
+import sys
+subprocess.call([sys.executable, '-m', 'pip', 'install', 'scipy'])
+
 import numpy as np
 import scipy as sp
 
-a = 0
+a = 0.0
 b = np.pi
 
 # np.sin wird direkt übergeben
-result = np.integrate.quad(np.sin, a, b)
+y, _ = sp.integrate.quad(np.sin, a, b)
 
-print(result.y)
+print(y)
 ```
 
 ## Zusammengesetzte Quadraturregel

@@ -482,6 +482,11 @@ Folgender Code appriximiert also für <code class="docutils literal notranslate"
 <p class="admonition-title">Aufgabe</p>
 <p>Was beobachten Sie im obigem Code? Finden Sie eine Erklärung.</p>
 </div>
+<div class="admonition-losung admonition">
+<p class="admonition-title">Lösung</p>
+<p>Mit kleiner werdendem <span class="math notranslate nohighlight">\(h\)</span> wird die Approximation der Ableitung zuerst besser, aber dann wieder schlechter.
+Dieses Phänomen heisst Auslöschung und ist eine Konsequenz der Darstellungsweise von Gleitkommazahlen auf dem Computer.</p>
+</div>
 <p>Archmides entwickelte einen Algorithmus zur Berechnung der Kreiszahl <span class="math notranslate nohighlight">\(\pi\)</span>.
 Dabei approximiert er den Umfang des Einheitskreises (Radius 1),
 welcher genau <span class="math notranslate nohighlight">\(2\pi\)</span> entspricht.
@@ -524,7 +529,7 @@ Gleitkommazahlen haben in der Nähe von Null die beste Auflösung.</p>
 <a class="fig reference internal image-reference" href="_images/exakt.png"><img alt="exakt" class="fig align-center" src="_images/exakt.png" style="width: 600px;" /></a>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p>Seien <span class="math notranslate nohighlight">\(a\)</span> und <span class="math notranslate nohighlight">\(b\)</span> zwei Gleitkommazahlen, die aus.</p>
+<p>Seien <span class="math notranslate nohighlight">\(a\)</span> und <span class="math notranslate nohighlight">\(b\)</span> zwei Gleitkommazahlen.</p>
 <ul class="simple">
 <li><p><strong>Auslöschung:</strong> Wenn <span class="math notranslate nohighlight">\(a\)</span> und <span class="math notranslate nohighlight">\(b\)</span> etwa gleich gross sind, dann kann das Resultat von <span class="math notranslate nohighlight">\(a-b\)</span> einen grossen relativen Fehler haben.</p></li>
 <li><p><strong>Absorbtion:</strong> Ist <span class="math notranslate nohighlight">\(a\)</span> viel grösser ist <span class="math notranslate nohighlight">\(b\)</span>, so liegt das Ergebnis von <span class="math notranslate nohighlight">\(a+b\)</span> zu nahe an <span class="math notranslate nohighlight">\(a\)</span>.</p></li>

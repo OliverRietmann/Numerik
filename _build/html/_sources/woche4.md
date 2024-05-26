@@ -26,9 +26,6 @@ Lernziele:
 
 Die Bisketion halbiert in jedem Schritt das Interval, welches die Nullstelle der stetigen Funktion $f:\mathbb R\rightarrow\mathbb R$ enthält.
 
-:::{admonition} Aufgabe
-Implementieren Sie die Bisektion.
-:::
 ```{code-cell} ipython3
 def bisection(f, a, b, tol):
     assert(f(a) * f(b) < 0.0)
@@ -46,9 +43,10 @@ def bisection(f, a, b, tol):
 f = lambda x: x**2 - 3.0
 a = 1.0
 b = 2.0
+tol = 1.0e-3
 
 # sqrt(3) = 1.7320508075688772
-print(bisection(f, a, b, 1.0e-3))
+print(bisection(f, a, b, tol))
 ```
 <!---
 def bisection(f, a, b, tol):
@@ -82,31 +80,31 @@ x_{k+1}=\frac{1}{2}\bigg(x_k+\frac{a}{x_k}\bigg)
 $$
 
 und diese konvergiert dann gegen $\sqrt{a}$.
-
-:::{admonition} Aufgabe
-Implementieren Sie das Heronsche Näherungsverfahren.
-:::
 ```{code-cell} ipython3
 def heron(a, x, tol):
-    # Ihr Code kommt hier hin.
-    return x
+  	while(abs(x**2 - a) > tol):
+  	  	x = 0.5 * (x + a / x)
+  	return x
 
 a = 3.0
 x = 2.0
+tol = 1.0e-3
 
 # sqrt(3) = 1.7320508075688772
-print(heron(a, x, 1.0e-3))
+print(heron(a, x, tol))
 ```
 <!---
 def heron(a, x, tol):
-    # Ihr Code kommt hier hin.
-    return x
+  	while(abs(x**2 - a) > tol):
+  	  	x = 0.5 * (x + a / x)
+  	return x
 
 a = 3.0
 x = 2.0
+tol = 1.0e-3
 
 # sqrt(3) = 1.7320508075688772
-print(heron(a, x, 1.0e-3))
+print(heron(a, x, tol))
 -->
 
 Das Newton Verfahren für eine stetig differenzierbare Funktion $f:\mathbb R\rightarrow\mathbb R$ ist definiert durch die Folge
@@ -117,10 +115,6 @@ $$
 
 mit einem geeigneten Startwert $x_0$.
 Dieser sollte nahe bei der tatsächlichen Nullstelle $x^\ast$ liegen.
-
-:::{admonition} Aufgabe
-Implementieren Sie das Newton Verfahren.
-:::
 ```{code-cell} ipython3
 def newton(f, df, x, tol):
     while abs(f(x)) > tol:
@@ -130,9 +124,10 @@ def newton(f, df, x, tol):
 f = lambda x: x**2 - 3.0
 df = lambda x: 2.0 * x
 x = 2.0
+tol = 1.0e-3
 
 # sqrt(3) = 1.7320508075688772
-print(newton(f, df, x, 1.0e-3))
+print(newton(f, df, x, tol))
 ```
 <!---
 def newton(f, df, x, tol):
@@ -143,7 +138,8 @@ def newton(f, df, x, tol):
 f = lambda x: x**2 - 3.0
 df = lambda x: 2.0 * x
 x = 2.0
+tol = 1.0e-3
 
 # sqrt(3) = 1.7320508075688772
-print(newton(f, df, x, 1.0e-3))
+print(newton(f, df, x, tol))
 -->

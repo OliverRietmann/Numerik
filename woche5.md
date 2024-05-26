@@ -42,11 +42,14 @@ for ax in axes:
 plt.show()
 ```
 
+<!--
 :::{admonition} Aufgabe
 Finden Sie das globale Minimum obiger
 Funktion mit dem Newton-Verfahren.
 Ergänzen Sie dazu folgenden Code.
 :::
+-->
+Folgender Code findet einige Extrema der Funktion $f$ mit dem Newton Verfahren, angewandt auf $f'$.
 ```{code-cell} ipython3
 import numpy as np
 
@@ -127,17 +130,27 @@ f_2(x, y)
 \end{pmatrix}.
 $$
 
-Wir wollen folgendes System nicht-linearer Gleichungen lösen
+Wir wollen eine Nullstelle von $f$ finden, das heisst
 
 $$
+f(x, y)=
 \begin{pmatrix}
 0 \\
 0
-\end{pmatrix}
-=f(x, y).
+\end{pmatrix}.
 $$
 
-Das Newton-Verfahren lautet nun
+Die Ableitung der zweidimensionalen Funktion $f(x,y)$ ist nun die Jacobi-Matrix
+
+$$
+J(x, y):=
+\begin{pmatrix}
+2 & 4 \\
+4 & 24y^2
+\end{pmatrix}.
+$$
+
+Das Newton-Verfahren in 2D verwendet die inverse Jacobi-Matrix und lautet
 
 $$
 \begin{pmatrix}
@@ -148,16 +161,9 @@ y_{k+1}
 x_k \\
 y_k
 \end{pmatrix}
--\left(J(x_k, y_k)\right)^{-1}\cdot f(x_k, y_k),
-\qquad
-J(x, y)=
-\begin{pmatrix}
-2 & 4 \\
-4 & 24y^2
-\end{pmatrix}.
+-J^{-1}(x_k, y_k)\cdot f(x_k, y_k).
 $$
 
-Hier bezeichnet $J(x, y)$ die Jacobi-Matrix von $f$ an der Stelle $(x, y)$.
 Die Matrix-Vektor Multiplikation entspricht dem Lösen eines linearen Gleichungssystems (LGS):
 
 $$
@@ -166,9 +172,9 @@ $$
 J(x, y)\cdot\vec{d}=f(x, y).
 $$
 
-:::{admonition} Aufgabe
-Ergänzen Sie folgenden Code zu einem Newton-Verfahren das eine Nullstelle von $f$ berechnet.
-Lösen Sie das LGS mit `numpy.linalg.solve(J(x, y), f(x, y))`.
+:::{admonition} Bemerkung
+Folgender Code implementiert das Newton-Verfahren in 2D.
+Beachten Sie, dass wir hier ein LGS lösen mit `numpy.linalg.solve(J(x, y), f(x, y))`.
 :::
 ```{code-cell} ipython3
 import numpy as np

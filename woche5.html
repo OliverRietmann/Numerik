@@ -476,12 +476,14 @@ document.write(`
 </div>
 </div>
 </div>
-<div class="admonition-aufgabe admonition">
-<p class="admonition-title">Aufgabe</p>
-<p>Finden Sie das globale Minimum obiger
+<!--
+:::{admonition} Aufgabe
+Finden Sie das globale Minimum obiger
 Funktion mit dem Newton-Verfahren.
-Ergänzen Sie dazu folgenden Code.</p>
-</div>
+Ergänzen Sie dazu folgenden Code.
+:::
+-->
+<p>Folgender Code findet einige Extrema der Funktion <span class="math notranslate nohighlight">\(f\)</span> mit dem Newton Verfahren, angewandt auf <span class="math notranslate nohighlight">\(f'\)</span>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -568,16 +570,25 @@ f_2(x, y)
 4x+8y^3
 \end{pmatrix}.
 \end{split}\]</div>
-<p>Wir wollen folgendes System nicht-linearer Gleichungen lösen</p>
+<p>Wir wollen eine Nullstelle von <span class="math notranslate nohighlight">\(f\)</span> finden, das heisst</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
+f(x, y)=
 \begin{pmatrix}
 0 \\
 0
-\end{pmatrix}
-=f(x, y).
+\end{pmatrix}.
 \end{split}\]</div>
-<p>Das Newton-Verfahren lautet nun</p>
+<p>Die Ableitung der zweidimensionalen Funktion <span class="math notranslate nohighlight">\(f(x,y)\)</span> ist nun die Jacobi-Matrix</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+J(x, y):=
+\begin{pmatrix}
+2 &amp; 4 \\
+4 &amp; 24y^2
+\end{pmatrix}.
+\end{split}\]</div>
+<p>Das Newton-Verfahren in 2D verwendet die inverse Jacobi-Matrix und lautet</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
 \begin{pmatrix}
@@ -588,26 +599,19 @@ y_{k+1}
 x_k \\
 y_k
 \end{pmatrix}
--\left(J(x_k, y_k)\right)^{-1}\cdot f(x_k, y_k),
-\qquad
-J(x, y)=
-\begin{pmatrix}
-2 &amp; 4 \\
-4 &amp; 24y^2
-\end{pmatrix}.
+-J^{-1}(x_k, y_k)\cdot f(x_k, y_k).
 \end{split}\]</div>
-<p>Hier bezeichnet <span class="math notranslate nohighlight">\(J(x, y)\)</span> die Jacobi-Matrix von <span class="math notranslate nohighlight">\(f\)</span> an der Stelle <span class="math notranslate nohighlight">\((x, y)\)</span>.
-Die Matrix-Vektor Multiplikation entspricht dem Lösen eines linearen Gleichungssystems (LGS):</p>
+<p>Die Matrix-Vektor Multiplikation entspricht dem Lösen eines linearen Gleichungssystems (LGS):</p>
 <div class="math notranslate nohighlight">
 \[
 \vec{d}=\left(J(x, y)\right)^{-1}\cdot f(x, y)
 \quad\Longleftrightarrow\quad
 J(x, y)\cdot\vec{d}=f(x, y).
 \]</div>
-<div class="admonition-aufgabe admonition">
-<p class="admonition-title">Aufgabe</p>
-<p>Ergänzen Sie folgenden Code zu einem Newton-Verfahren das eine Nullstelle von <span class="math notranslate nohighlight">\(f\)</span> berechnet.
-Lösen Sie das LGS mit <code class="docutils literal notranslate"><span class="pre">numpy.linalg.solve(J(x,</span> <span class="pre">y),</span> <span class="pre">f(x,</span> <span class="pre">y))</span></code>.</p>
+<div class="admonition-bemerkung admonition">
+<p class="admonition-title">Bemerkung</p>
+<p>Folgender Code implementiert das Newton-Verfahren in 2D.
+Beachten Sie, dass wir hier ein LGS lösen mit <code class="docutils literal notranslate"><span class="pre">numpy.linalg.solve(J(x,</span> <span class="pre">y),</span> <span class="pre">f(x,</span> <span class="pre">y))</span></code>.</p>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">

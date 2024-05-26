@@ -456,10 +456,6 @@ document.write(`
 <section id="bisektion">
 <h2>Bisektion<a class="headerlink" href="#bisektion" title="Permalink to this heading">#</a></h2>
 <p>Die Bisketion halbiert in jedem Schritt das Interval, welches die Nullstelle der stetigen Funktion <span class="math notranslate nohighlight">\(f:\mathbb R\rightarrow\mathbb R\)</span> enthält.</p>
-<div class="admonition-aufgabe admonition">
-<p class="admonition-title">Aufgabe</p>
-<p>Implementieren Sie die Bisektion.</p>
-</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">bisection</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">tol</span><span class="p">):</span>
@@ -478,9 +474,10 @@ document.write(`
 <span class="n">f</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">**</span><span class="mi">2</span> <span class="o">-</span> <span class="mf">3.0</span>
 <span class="n">a</span> <span class="o">=</span> <span class="mf">1.0</span>
 <span class="n">b</span> <span class="o">=</span> <span class="mf">2.0</span>
+<span class="n">tol</span> <span class="o">=</span> <span class="mf">1.0e-3</span>
 
 <span class="c1"># sqrt(3) = 1.7320508075688772</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">bisection</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="mf">1.0e-3</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">bisection</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">tol</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
@@ -516,35 +513,35 @@ Es ist definiert durch die Folge</p>
 x_{k+1}=\frac{1}{2}\bigg(x_k+\frac{a}{x_k}\bigg)
 \]</div>
 <p>und diese konvergiert dann gegen <span class="math notranslate nohighlight">\(\sqrt{a}\)</span>.</p>
-<div class="admonition-aufgabe admonition">
-<p class="admonition-title">Aufgabe</p>
-<p>Implementieren Sie das Heronsche Näherungsverfahren.</p>
-</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">heron</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">tol</span><span class="p">):</span>
-    <span class="c1"># Ihr Code kommt hier hin.</span>
-    <span class="k">return</span> <span class="n">x</span>
+  	<span class="k">while</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">x</span><span class="o">**</span><span class="mi">2</span> <span class="o">-</span> <span class="n">a</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">tol</span><span class="p">):</span>
+  	  	<span class="n">x</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="p">(</span><span class="n">x</span> <span class="o">+</span> <span class="n">a</span> <span class="o">/</span> <span class="n">x</span><span class="p">)</span>
+  	<span class="k">return</span> <span class="n">x</span>
 
 <span class="n">a</span> <span class="o">=</span> <span class="mf">3.0</span>
 <span class="n">x</span> <span class="o">=</span> <span class="mf">2.0</span>
+<span class="n">tol</span> <span class="o">=</span> <span class="mf">1.0e-3</span>
 
 <span class="c1"># sqrt(3) = 1.7320508075688772</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">heron</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="mf">1.0e-3</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">heron</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">tol</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
 </div>
 <!---
 def heron(a, x, tol):
-    # Ihr Code kommt hier hin.
-    return x
+  	while(abs(x**2 - a) > tol):
+  	  	x = 0.5 * (x + a / x)
+  	return x
 
 a = 3.0
 x = 2.0
+tol = 1.0e-3
 
 # sqrt(3) = 1.7320508075688772
-print(heron(a, x, 1.0e-3))
+print(heron(a, x, tol))
 -->
 <p>Das Newton Verfahren für eine stetig differenzierbare Funktion <span class="math notranslate nohighlight">\(f:\mathbb R\rightarrow\mathbb R\)</span> ist definiert durch die Folge</p>
 <div class="math notranslate nohighlight">
@@ -553,10 +550,6 @@ x_{k+1}=x_k-\frac{f(x_k)}{f^\prime(x_k)}
 \]</div>
 <p>mit einem geeigneten Startwert <span class="math notranslate nohighlight">\(x_0\)</span>.
 Dieser sollte nahe bei der tatsächlichen Nullstelle <span class="math notranslate nohighlight">\(x^\ast\)</span> liegen.</p>
-<div class="admonition-aufgabe admonition">
-<p class="admonition-title">Aufgabe</p>
-<p>Implementieren Sie das Newton Verfahren.</p>
-</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">newton</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">df</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">tol</span><span class="p">):</span>
@@ -567,9 +560,10 @@ Dieser sollte nahe bei der tatsächlichen Nullstelle <span class="math notransla
 <span class="n">f</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">**</span><span class="mi">2</span> <span class="o">-</span> <span class="mf">3.0</span>
 <span class="n">df</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="mf">2.0</span> <span class="o">*</span> <span class="n">x</span>
 <span class="n">x</span> <span class="o">=</span> <span class="mf">2.0</span>
+<span class="n">tol</span> <span class="o">=</span> <span class="mf">1.0e-3</span>
 
 <span class="c1"># sqrt(3) = 1.7320508075688772</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">newton</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">df</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="mf">1.0e-3</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">newton</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">df</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">tol</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
@@ -583,9 +577,10 @@ def newton(f, df, x, tol):
 f = lambda x: x**2 - 3.0
 df = lambda x: 2.0 * x
 x = 2.0
+tol = 1.0e-3
 
 # sqrt(3) = 1.7320508075688772
-print(newton(f, df, x, 1.0e-3))
+print(newton(f, df, x, tol))
 --></section>
 </section>
 

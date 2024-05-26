@@ -49,6 +49,11 @@ for h in h_list:
 Was beobachten Sie im obigem Code? Finden Sie eine Erklärung.
 :::
 
+:::{admonition} Lösung
+Mit kleiner werdendem $h$ wird die Approximation der Ableitung zuerst besser, aber dann wieder schlechter.
+Dieses Phänomen heisst Auslöschung und ist eine Konsequenz der Darstellungsweise von Gleitkommazahlen auf dem Computer.
+:::
+
 Archmides entwickelte einen Algorithmus zur Berechnung der Kreiszahl $\pi$.
 Dabei approximiert er den Umfang des Einheitskreises (Radius 1),
 welcher genau $2\pi$ entspricht.
@@ -105,7 +110,7 @@ Gleitkommazahlen haben in der Nähe von Null die beste Auflösung.
 ```
 
 :::{warning}
-Seien $a$ und $b$ zwei Gleitkommazahlen, die aus.
+Seien $a$ und $b$ zwei Gleitkommazahlen.
 - **Auslöschung:** Wenn $a$ und $b$ etwa gleich gross sind, dann kann das Resultat von $a-b$ einen grossen relativen Fehler haben.
 - **Absorbtion:** Ist $a$ viel grösser ist $b$, so liegt das Ergebnis von $a+b$ zu nahe an $a$.
 :::

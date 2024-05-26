@@ -54,15 +54,15 @@ def LUdecomposition(A):
     L = np.eye(n)
     U = A.copy()
     for k in range(n):
-        L[k+1:n, k] = U[k+1:n, k] / U[k, k]
         for j in range(k + 1, n):
-            U[j, :] = U[j, :] - L[j, k] * U[k, :]
+            u_jk = U[j, k]
+            U[j, :] -= u_jk * U[k, :] / U[k, k]
+            L[:, k] += u_jk * L[:, j] / U[k, k]
     return L, U
 
 A = np.array([[1.0, -2.0, -1.0],
               [2.0, -1.0,  1.0],
               [3.0, -6.0, -5.0]])
-
 L, U = LUdecomposition(A)
 
 print(L)
@@ -170,13 +170,22 @@ P = np.array([[0.0, 1.0, 0.0],
               [0.0, 0.0, 1.0]])
 b = np.array([1.0, 1000.0, 1.0])
 
+# Führen Sie zuerst die obigen Codes aus damit
+# folgende drei Funktionen definiert sind.
 L, U = LUdecomposition(A) # Ersetze A --> P @ A
 y = forward(L, b)         # Ersetze b --> P @ b
 x = backward(U, y)
+print("x =", x)  # [0, 1, -1]
 ```
 
 :::{admonition} Aufgabe
 Wo liegt das Problem und wie können wir es beheben?
+:::
+
+:::{admonition} Lösung
+Unser Resultat $x=(0, 1, -1)^T$ ist falsch.
+Der Grund ist fehlendes Pivoting.
+Ersetzen Sie die Zeilen gemäss Kommentar im Code.
 :::
 
 Nun lösen wir das LGS mit `numpy.linalg.solve(...)`.
@@ -192,7 +201,7 @@ b = np.array([1.0, 1000.0, 1.0])
 
 x = np.linalg.solve(A, b)
 
-print("x =", x) # [0, 1, 1000]
+print("x =", x)  # [0, 1, 1000]
 ```
 
 ## Konditionszahl

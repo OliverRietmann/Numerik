@@ -150,7 +150,7 @@ J(x, y):=
 \end{pmatrix}.
 $$
 
-Das Newton-Verfahren in 2D verwendet die inverse Jacobi-Matrix und lautet
+Das Newton-Verfahren in 2D verwendet die **inverse** Jacobi-Matrix und lautet
 
 $$
 \begin{pmatrix}

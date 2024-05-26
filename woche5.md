@@ -167,7 +167,7 @@ $$
 Die Matrix-Vektor Multiplikation entspricht dem Lösen eines linearen Gleichungssystems (LGS):
 
 $$
-\vec{d}=\left(J(x, y)\right)^{-1}\cdot f(x, y)
+\vec{d}=J^{-1}(x, y)\cdot f(x, y)
 \quad\Longleftrightarrow\quad
 J(x, y)\cdot\vec{d}=f(x, y).
 $$

@@ -117,21 +117,33 @@ plt.show()
 Wir lösen das Anfangswertproblem
 
 $$
+\begin{cases}
+y_0^\prime(t)&=-0.5\cdot y_0(t) \\
+y_1^\prime(t)&= 0.5\cdot y_0(t)-0.2\cdot y_1(t) \\[10pt]
+y_0(0)&=100 \\
+y_1(0)&=100
+\end{cases}
+$$
+
+mit der expliziten Eulermethode.
+Man kann (muss aber nicht) diese DGL mit einer Matrix schreiben:
+
+$$
 \begin{pmatrix}
-y_1^\prime(t) \\
-y_2^\prime(t)
+y_0^\prime(t) \\
+y_1^\prime(t)
 \end{pmatrix}=
 \begin{pmatrix}
 -0.5 & 0 \\
 0.5 & -0.2
 \end{pmatrix}\cdot
 \begin{pmatrix}
-y_1(t) \\
-y_2(t)
+y_0(t) \\
+y_1(t)
 \end{pmatrix},\qquad 
 \begin{pmatrix}
-y_1(0) \\
-y_2(0)
+y_0(0) \\
+y_1(0)
 \end{pmatrix}=
 \begin{pmatrix}
 100\\
@@ -139,7 +151,6 @@ y_2(0)
 \end{pmatrix}
 $$
 
-mit der expliziten Eulermethode.
 Die Funktion `explicit_euler(...)` bleibt fast unverändert.
 ```{code-cell} ipython3
 import numpy as np
@@ -157,6 +168,7 @@ def explicit_euler(f, t0, y0, h, n):
 
 M = np.array([[-0.5, 0.0], [0.5, -0.2]])
 f = lambda t, y: np.dot(M, y)
+# alternativ: f = lambda t, y: np.array([-0.5 * y[0], 0.5 * y[0] - 0.2 * y[1]])
 t0 = 0.0
 y0 = np.array([100.0, 100.0])
 h = 0.1
@@ -178,20 +190,20 @@ Wir lösen das Anfangswertproblem
 
 $$
 \begin{pmatrix}
-z_1^\prime(t) \\
-z_2^\prime(t)
+z_0^\prime(t) \\
+z_1^\prime(t)
 \end{pmatrix}=
 \begin{pmatrix}
 0 & 1 \\
 -1 & 0
 \end{pmatrix}\cdot
 \begin{pmatrix}
-z_1(t) \\
-z_2(t)
+z_0(t) \\
+z_1(t)
 \end{pmatrix},\qquad 
 \begin{pmatrix}
-z_1(0) \\
-z_2(0)
+z_0(0) \\
+z_1(0)
 \end{pmatrix}=
 \begin{pmatrix}
 1\\

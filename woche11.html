@@ -552,10 +552,10 @@ y^\prime(t)=f(t, y(t)),\qquad y(t_0)=y_0
 <div class="math notranslate nohighlight">
 \[\begin{split}
 \begin{cases}
-y_0^\prime(t)=&amp;-0.5\cdot y_0(t) \\
-y_1^\prime(t)=&amp;\phantom{-}0.5\cdot y_0(t)-0.2\cdot y_1(t) \\[5pt]
-y_0(0)=&amp;100 \\
-y_1(0)=&amp;100
+y_0^\prime(t)&amp;=-0.5\cdot y_0(t) \\
+y_1^\prime(t)&amp;=\phantom{-}0.5\cdot y_0(t)-0.2\cdot y_1(t) \\[5pt]
+y_0(0)&amp;=100 \\
+y_1(0)&amp;=100
 \end{cases}
 \end{split}\]</div>
 <p>mit der expliziten Eulermethode.
@@ -646,7 +646,10 @@ z_1(0)
 0
 \end{pmatrix}
 \end{split}\]</div>
-<p>mit der Funktion <code class="docutils literal notranslate"><span class="pre">numpy.integrate.solve_ivp(...)</span></code> bis zur Endzeit <span class="math notranslate nohighlight">\(T=2\pi\)</span></p>
+<p>mit der Funktion <code class="docutils literal notranslate"><span class="pre">scipy.integrate.solve_ivp(f,</span> <span class="pre">t_span,</span> <span class="pre">y0)</span></code> bis zur Endzeit <span class="math notranslate nohighlight">\(T=2\pi\)</span>.
+Diese Funktion löst das Anfangswertproblem (<strong>i</strong>nitial <strong>v</strong>alue <strong>p</strong>roblem) auf dem Zeitintervall <code class="docutils literal notranslate"><span class="pre">t_span</span></code>, wobei <code class="docutils literal notranslate"><span class="pre">f(t,</span> <span class="pre">y)</span></code> dessen rechte Seite ist.
+Dabei muss <code class="docutils literal notranslate"><span class="pre">y</span></code> (auch im 1D Fall) ein Vektor sein.
+Dasselbe gilt für den Anfangswert <code class="docutils literal notranslate"><span class="pre">y0</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">subprocess</span>
@@ -657,27 +660,24 @@ z_1(0)
 <span class="kn">import</span> <span class="nn">scipy</span> <span class="k">as</span> <span class="nn">sp</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 
-<span class="n">M</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">]])</span>
-<span class="n">f</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">t</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">M</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="n">f</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">t</span><span class="p">,</span> <span class="n">z</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">z</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="o">-</span><span class="n">z</span><span class="p">[</span><span class="mi">0</span><span class="p">]])</span>
 <span class="n">t_span</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">2.0</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">]</span>  <span class="c1"># Start- und Endzeit</span>
 <span class="n">n</span> <span class="o">=</span> <span class="mi">100</span>                      <span class="c1"># Anzahl Zeitschritte</span>
 <span class="n">z0</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">])</span>
 
-<span class="n">t_eval</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">t_span</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">t_span</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">n</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">endpoint</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="n">sol</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">integrate</span><span class="o">.</span><span class="n">solve_ivp</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">t_span</span><span class="p">,</span> <span class="n">z0</span><span class="p">,</span> <span class="n">t_eval</span><span class="o">=</span><span class="n">t_eval</span><span class="p">)</span>
-<span class="n">t</span> <span class="o">=</span> <span class="n">sol</span><span class="o">.</span><span class="n">t</span>
-<span class="n">y</span> <span class="o">=</span> <span class="n">sol</span><span class="o">.</span><span class="n">y</span>
+<span class="n">sol</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">integrate</span><span class="o">.</span><span class="n">solve_ivp</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">t_span</span><span class="p">,</span> <span class="n">z0</span><span class="p">)</span>
+<span class="n">t</span> <span class="o">=</span> <span class="n">sol</span><span class="o">.</span><span class="n">t</span>  <span class="c1"># Das sind die von solve_ivp(...) selbst generierten Zeiten</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">sol</span><span class="o">.</span><span class="n">y</span>  <span class="c1"># Das sind die z(t)-Werte zu diesen Zeiten</span>
+
+<span class="n">t_exact</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">*</span><span class="n">t_span</span><span class="p">)</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Pendulum: Space-Time&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">y</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;position&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">y</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;velocity&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Pendulum: approx vs. exact&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">y</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="s1">&#39;c-&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$z_0(t)$ approx&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t_exact</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">t_exact</span><span class="p">),</span> <span class="s1">&#39;c--&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$z_0(t)$ exact&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">y</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="s1">&#39;b-&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$z_1(t)$ approx&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t_exact</span><span class="p">,</span> <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">t_exact</span><span class="p">),</span> <span class="s1">&#39;b--&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$z_1(t)$ exact&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-
-<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Pendulum: Phasespace&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">y</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">y</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>

@@ -118,10 +118,10 @@ Wir lösen das Anfangswertproblem
 
 $$
 \begin{cases}
-y_0^\prime(t)&=-0.5\cdot y_0(t) \\
-y_1^\prime(t)&=\phantom{-}0.5\cdot y_0(t)-0.2\cdot y_1(t) \\[5pt]
-y_0(0)&=100 \\
-y_1(0)&=100
+y_0^\prime(t)=&-0.5\cdot y_0(t) \\
+y_1^\prime(t)=&\phantom{-}0.5\cdot y_0(t)-0.2\cdot y_1(t) \\[5pt]
+y_0(0)=&100 \\
+y_1(0)=&100
 \end{cases}
 $$
 

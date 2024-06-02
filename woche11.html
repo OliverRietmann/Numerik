@@ -551,29 +551,39 @@ y^\prime(t)=f(t, y(t)),\qquad y(t_0)=y_0
 <p>Wir lösen das Anfangswertproblem</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
+\begin{cases}
+y_0^\prime(t)&amp;=-0.5\cdot y_0(t) \\
+y_1^\prime(t)&amp;= 0.5\cdot y_0(t)-0.2\cdot y_1(t) \\[10pt]
+y_0(0)&amp;=100 \\
+y_1(0)&amp;=100
+\end{cases}
+\end{split}\]</div>
+<p>mit der expliziten Eulermethode.
+Man kann (muss aber nicht) diese DGL mit einer Matrix schreiben:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
 \begin{pmatrix}
-y_1^\prime(t) \\
-y_2^\prime(t)
+y_0^\prime(t) \\
+y_1^\prime(t)
 \end{pmatrix}=
 \begin{pmatrix}
 -0.5 &amp; 0 \\
 0.5 &amp; -0.2
 \end{pmatrix}\cdot
 \begin{pmatrix}
-y_1(t) \\
-y_2(t)
+y_0(t) \\
+y_1(t)
 \end{pmatrix},\qquad 
 \begin{pmatrix}
-y_1(0) \\
-y_2(0)
+y_0(0) \\
+y_1(0)
 \end{pmatrix}=
 \begin{pmatrix}
 100\\
 100
 \end{pmatrix}
 \end{split}\]</div>
-<p>mit der expliziten Eulermethode.
-Die Funktion <code class="docutils literal notranslate"><span class="pre">explicit_euler(...)</span></code> bleibt fast unverändert.</p>
+<p>Die Funktion <code class="docutils literal notranslate"><span class="pre">explicit_euler(...)</span></code> bleibt fast unverändert.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -591,6 +601,7 @@ Die Funktion <code class="docutils literal notranslate"><span class="pre">explic
 
 <span class="n">M</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="o">-</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.5</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.2</span><span class="p">]])</span>
 <span class="n">f</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">t</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">M</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="c1"># alternativ: f = lambda t, y: np.array([-0.5 * y[0], 0.5 * y[0] - 0.2 * y[1]])</span>
 <span class="n">t0</span> <span class="o">=</span> <span class="mf">0.0</span>
 <span class="n">y0</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">100.0</span><span class="p">,</span> <span class="mf">100.0</span><span class="p">])</span>
 <span class="n">h</span> <span class="o">=</span> <span class="mf">0.1</span>
@@ -615,20 +626,20 @@ Die Funktion <code class="docutils literal notranslate"><span class="pre">explic
 <div class="math notranslate nohighlight">
 \[\begin{split}
 \begin{pmatrix}
-z_1^\prime(t) \\
-z_2^\prime(t)
+z_0^\prime(t) \\
+z_1^\prime(t)
 \end{pmatrix}=
 \begin{pmatrix}
 0 &amp; 1 \\
 -1 &amp; 0
 \end{pmatrix}\cdot
 \begin{pmatrix}
-z_1(t) \\
-z_2(t)
+z_0(t) \\
+z_1(t)
 \end{pmatrix},\qquad 
 \begin{pmatrix}
-z_1(0) \\
-z_2(0)
+z_0(0) \\
+z_1(0)
 \end{pmatrix}=
 \begin{pmatrix}
 1\\

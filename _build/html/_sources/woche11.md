@@ -118,10 +118,10 @@ Wir lösen das Anfangswertproblem
 
 $$
 \begin{cases}
-y_0^\prime(t)=&-0.5\cdot y_0(t) \\
-y_1^\prime(t)=&\phantom{-}0.5\cdot y_0(t)-0.2\cdot y_1(t) \\[5pt]
-y_0(0)=&100 \\
-y_1(0)=&100
+y_0^\prime(t)&=-0.5\cdot y_0(t) \\
+y_1^\prime(t)&=\phantom{-}0.5\cdot y_0(t)-0.2\cdot y_1(t) \\[5pt]
+y_0(0)&=100 \\
+y_1(0)&=100
 \end{cases}
 $$
 
@@ -211,7 +211,11 @@ z_1(0)
 \end{pmatrix}
 $$
 
-mit der Funktion `numpy.integrate.solve_ivp(...)` bis zur Endzeit $T=2\pi$
+mit der Funktion `scipy.integrate.solve_ivp(f, t_span, y0)` bis zur Endzeit $T=2\pi$.
+Diese Funktion löst das Anfangswertproblem (**i**nitial **v**alue **p**roblem) auf dem Zeitintervall `t_span`, wobei `f(t, y)` dessen rechte Seite ist.
+Dabei muss `y` (auch im 1D Fall) ein Vektor sein.
+Dasselbe gilt für den Anfangswert `y0`.
+
 ```{code-cell} ipython3
 import subprocess
 import sys
@@ -221,26 +225,23 @@ import numpy as np
 import scipy as sp
 import matplotlib.pyplot as plt
 
-M = np.array([[0.0, 1.0], [-1.0, 0.0]])
-f = lambda t, y: np.dot(M, y)
+f = lambda t, z: np.array([z[1], -z[0]])
 t_span = [0.0, 2.0 * np.pi]  # Start- und Endzeit
 n = 100                      # Anzahl Zeitschritte
 z0 = np.array([1.0, 0.0])
 
-t_eval = np.linspace(t_span[0], t_span[1], n + 1, endpoint=True)
-sol = sp.integrate.solve_ivp(f, t_span, z0, t_eval=t_eval)
-t = sol.t
-y = sol.y
+sol = sp.integrate.solve_ivp(f, t_span, z0)
+t = sol.t  # Das sind die von solve_ivp(...) selbst generierten Zeiten
+y = sol.y  # Das sind die z(t)-Werte zu diesen Zeiten
+
+t_exact = np.linspace(*t_span)
 
 plt.figure()
-plt.title('Pendulum: Space-Time')
-plt.plot(t, y[0], label='position')
-plt.plot(t, y[1], label='velocity')
+plt.title('Pendulum: approx vs. exact')
+plt.plot(t, y[0], 'c-', label=r'$z_0(t)$ approx')
+plt.plot(t_exact, np.cos(t_exact), 'c--', label=r'$z_0(t)$ exact')
+plt.plot(t, y[1], 'b-', label=r'$z_1(t)$ approx')
+plt.plot(t_exact, -np.sin(t_exact), 'b--', label=r'$z_1(t)$ exact')
 plt.legend()
-plt.show()
-
-plt.figure()
-plt.title('Pendulum: Phasespace')
-plt.plot(y[0], y[1])
 plt.show()
 ```

@@ -19,8 +19,7 @@ Lernziele:
 
 1. Ich kann zu gegeben Knoten und Gewichten die zugerhörige Quadraturregel implementieren.
 2. Ich kann mit `numpy.trapz(...)` eine zusammengesetzte Trapezregel anwenden.
-3. Ich kann `scipy.integrate.simpson(...)` eine zusammengesetzte Simpsonregel anwenden.
-4. Ich kann `scipy.integrate.quad(...)` eine gegebene Funktion numerisch integrieren.
+3. Ich kann mit `scipy.integrate.simpson(...)` eine zusammengesetzte Simpsonregel anwenden.
 
 ## Allgemeine Quadraturregel
 
@@ -43,13 +42,19 @@ f(x_0)\cdot w_0+f(x_1)\cdot w_1+\ldots+f(x_n)\cdot w_n=
 \end{pmatrix}
 $$
 
-So kann man die Quadratur in Python implementieren.
+Als Beispiel approximieren wir das Integral
+
+$$
+\int_0^3\sin(x)dx
+$$
+
+mit den Gewichten der $3/8$ Regel aus der Vorlesung.
 
 ```{code-cell} ipython3
 import numpy as np
 
-a = 0
-b = np.pi
+a = 0.0
+b = 3.0
 
 # Gewichte der 3/8 Regel (siehe Handout der Vorlesung)
 w = (b - a) / 8.0 * np.array([1.0, 3.0, 3.0, 1.0])
@@ -61,20 +66,18 @@ x = np.linspace(a, b, n + 1)
 print(np.dot(np.sin(x), w))
 ```
 
-## Trapezregel
+## Zusammengesetzte Trapezregel
 
-Mit der aus $n$ Knoten zusammengesetzten Trapezregel
-
-$$
-\frac{h}{2}\cdot\big(f(a)+2f(a+h)+\ldots+2f(a+h(n-1))+f(b)\big),\quad
-h=\frac{b-a}{n}
-$$
-
-auf dem Intervall $[a,b]$ approximieren wir das Integral
+Wir approximieren das Integral
 
 $$
-\int_0^\pi\sin(x)dx.
+\int_0^3\sin(x)dx.
 $$
+
+mit der aus $n=3$ Teilintervallen zusammengesetzten Trapezregel.
+Allgemein braucht die aus $n$ Teilintervallen zusammengesetzte Trapezregel genau $n+1$ Quadraturpunkte.
+
+![trapez](images/trapez.png)
 
 In Python geht das mit der Funktion `numpy.trapz(...)`.
 
@@ -82,18 +85,25 @@ In Python geht das mit der Funktion `numpy.trapz(...)`.
 import numpy as np
 
 a = 0.0
-b = np.pi
-n = 100
+b = 3.0
+n = 3
 
-x = np.linspace(a, b, n + 1)
+x = np.linspace(a, b, n + 1, endpoint=True)
 y = np.sin(x)
 
 print(np.trapz(y, x))
 ```
 
-Man beachte dass `numpy.trapz(...)` diskrete Werte (`numpy.array`) entgegennimmt.
-Falls man eine auswertbare Funktion integrieren will,
-muss man `scipy.integrate.quad(...)` verwenden.
+## Zusammengesetzte Simpsonregel
+
+Als Beispiel approximieren wir folgendes Integral mit der aus $n=2$ Teilintervallen zusammengesetzten Simpsonregel:
+
+$$
+\int_0^3\sin(x)dx
+$$
+
+Allgemein braucht die aus $n$ Teilintervallen zusammengesetzte Simpsonregel genau $2n+1$ Quadraturknoten.
+In Python geht das mit der Funktion `scipy.integrate.simpson(...)`.
 
 ```{code-cell} ipython3
 import subprocess
@@ -104,44 +114,11 @@ import numpy as np
 import scipy as sp
 
 a = 0.0
-b = np.pi
+b = 3.0
+n = 2
 
-# np.sin wird direkt übergeben
-y, _ = sp.integrate.quad(np.sin, a, b)
+x = np.linspace(a, b, 2 * n + 1, endpoint=True)
+y = np.sin(x)
 
-print(y)
-```
-
-## Zusammengesetzte Quadraturregel
-
-Wir können die Gewichte der zusammengesetzten Quadraturregeln wie folgt bauen.
-
-```{code-cell} ipython3
-import numpy as np
-
-# Gewichte der Trapezregel auf [0, 1]
-w = 0.5 * np.array([1.0, 1.0])
-
-# Gewichte der Simpsonregel auf [0, 1]
-# w = 1.0 / 6.0 * np.array([1.0, 4.0, 1.0])
-
-def composite_rule(w, N):
-  m = len(w) - 1
-  n = N * (m + 1) - (N - 1)
-  v = np.zeros(n)
-  for i in range(N):
-    a = i * m
-    b = (i + 1) * m
-    v[a:b + 1] += w
-  return v
-
-v = composite_rule(w, 100)
-n = len(v)
-
-a = 0.0
-b = np.pi
-x = np.linspace(a, b, n)
-h = (b - a) / (n - 1)
-
-print(np.dot(np.sin(x), h * v))
+print(sp.integrate.simpson(y, x=x))
 ```

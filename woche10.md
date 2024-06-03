@@ -75,7 +75,7 @@ $$
 $$
 
 mit der aus $n=3$ Teilintervallen zusammengesetzten Trapezregel.
-Allgemein braucht die aus $n$ Teilintervallen zusammengesetzte Trapezregel genau $n+1$ Quadraturpunkte.
+Allgemein braucht die aus $n$ Teilintervallen zusammengesetzte Trapezregel genau $n+1$ Quadraturknoten.
 
 ![trapez](images/trapez.png)
 
@@ -96,12 +96,13 @@ print(np.trapz(y, x))
 
 ## Zusammengesetzte Simpsonregel
 
-Als Beispiel approximieren wir folgendes Integral mit der aus $n=2$ Teilintervallen zusammengesetzten Simpsonregel:
+Wir approximieren das Integral
 
 $$
 \int_0^3\sin(x)dx
 $$
 
+mit der aus $n=2$ Teilintervallen zusammengesetzten Simpsonregel.
 Allgemein braucht die aus $n$ Teilintervallen zusammengesetzte Simpsonregel genau $2n+1$ Quadraturknoten.
 In Python geht das mit der Funktion `scipy.integrate.simpson(...)`.
 

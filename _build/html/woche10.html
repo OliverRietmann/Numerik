@@ -507,7 +507,7 @@ f(x_0)\cdot w_0+f(x_1)\cdot w_1+\ldots+f(x_n)\cdot w_n=
 \int_0^3\sin(x)dx.
 \]</div>
 <p>mit der aus <span class="math notranslate nohighlight">\(n=3\)</span> Teilintervallen zusammengesetzten Trapezregel.
-Allgemein braucht die aus <span class="math notranslate nohighlight">\(n\)</span> Teilintervallen zusammengesetzte Trapezregel genau <span class="math notranslate nohighlight">\(n+1\)</span> Quadraturpunkte.</p>
+Allgemein braucht die aus <span class="math notranslate nohighlight">\(n\)</span> Teilintervallen zusammengesetzte Trapezregel genau <span class="math notranslate nohighlight">\(n+1\)</span> Quadraturknoten.</p>
 <p><img alt="trapez" src="_images/trapez.png" /></p>
 <p>In Python geht das mit der Funktion <code class="docutils literal notranslate"><span class="pre">numpy.trapz(...)</span></code>.</p>
 <div class="cell docutils container">
@@ -529,12 +529,13 @@ Allgemein braucht die aus <span class="math notranslate nohighlight">\(n\)</span
 </section>
 <section id="zusammengesetzte-simpsonregel">
 <h2>Zusammengesetzte Simpsonregel<a class="headerlink" href="#zusammengesetzte-simpsonregel" title="Permalink to this heading">#</a></h2>
-<p>Als Beispiel approximieren wir folgendes Integral mit der aus <span class="math notranslate nohighlight">\(n=2\)</span> Teilintervallen zusammengesetzten Simpsonregel:</p>
+<p>Wir approximieren das Integral</p>
 <div class="math notranslate nohighlight">
 \[
 \int_0^3\sin(x)dx
 \]</div>
-<p>Allgemein braucht die aus <span class="math notranslate nohighlight">\(n\)</span> Teilintervallen zusammengesetzte Simpsonregel genau <span class="math notranslate nohighlight">\(2n+1\)</span> Quadraturknoten.
+<p>mit der aus <span class="math notranslate nohighlight">\(n=2\)</span> Teilintervallen zusammengesetzten Simpsonregel.
+Allgemein braucht die aus <span class="math notranslate nohighlight">\(n\)</span> Teilintervallen zusammengesetzte Simpsonregel genau <span class="math notranslate nohighlight">\(2n+1\)</span> Quadraturknoten.
 In Python geht das mit der Funktion <code class="docutils literal notranslate"><span class="pre">scipy.integrate.simpson(...)</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">

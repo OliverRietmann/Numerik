@@ -432,8 +432,8 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#allgemeine-quadraturregel">Allgemeine Quadraturregel</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#trapezregel">Trapezregel</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#zusammengesetzte-quadraturregel">Zusammengesetzte Quadraturregel</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#zusammengesetzte-trapezregel">Zusammengesetzte Trapezregel</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#zusammengesetzte-simpsonregel">Zusammengesetzte Simpsonregel</a></li>
 </ul>
             </nav>
         </div>
@@ -451,8 +451,7 @@ document.write(`
 <ol class="arabic simple">
 <li><p>Ich kann zu gegeben Knoten und Gewichten die zugerhörige Quadraturregel implementieren.</p></li>
 <li><p>Ich kann mit <code class="docutils literal notranslate"><span class="pre">numpy.trapz(...)</span></code> eine zusammengesetzte Trapezregel anwenden.</p></li>
-<li><p>Ich kann <code class="docutils literal notranslate"><span class="pre">scipy.integrate.simpson(...)</span></code> eine zusammengesetzte Simpsonregel anwenden.</p></li>
-<li><p>Ich kann <code class="docutils literal notranslate"><span class="pre">scipy.integrate.quad(...)</span></code> eine gegebene Funktion numerisch integrieren.</p></li>
+<li><p>Ich kann mit <code class="docutils literal notranslate"><span class="pre">scipy.integrate.simpson(...)</span></code> eine zusammengesetzte Simpsonregel anwenden.</p></li>
 </ol>
 <section id="allgemeine-quadraturregel">
 <h2>Allgemeine Quadraturregel<a class="headerlink" href="#allgemeine-quadraturregel" title="Permalink to this heading">#</a></h2>
@@ -474,13 +473,18 @@ f(x_0)\cdot w_0+f(x_1)\cdot w_1+\ldots+f(x_n)\cdot w_n=
     w_n \\
 \end{pmatrix}
 \end{split}\]</div>
-<p>So kann man die Quadratur in Python implementieren.</p>
+<p>Als Beispiel approximieren wir das Integral</p>
+<div class="math notranslate nohighlight">
+\[
+\int_0^3\sin(x)dx
+\]</div>
+<p>mit den Gewichten der <span class="math notranslate nohighlight">\(3/8\)</span> Regel aus der Vorlesung.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 
-<span class="n">a</span> <span class="o">=</span> <span class="mi">0</span>
-<span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span>
+<span class="n">a</span> <span class="o">=</span> <span class="mf">0.0</span>
+<span class="n">b</span> <span class="o">=</span> <span class="mf">3.0</span>
 
 <span class="c1"># Gewichte der 3/8 Regel (siehe Handout der Vorlesung)</span>
 <span class="n">w</span> <span class="o">=</span> <span class="p">(</span><span class="n">b</span> <span class="o">-</span> <span class="n">a</span><span class="p">)</span> <span class="o">/</span> <span class="mf">8.0</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">3.0</span><span class="p">,</span> <span class="mf">3.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">])</span>
@@ -495,29 +499,26 @@ f(x_0)\cdot w_0+f(x_1)\cdot w_1+\ldots+f(x_n)\cdot w_n=
 </div>
 </div>
 </section>
-<section id="trapezregel">
-<h2>Trapezregel<a class="headerlink" href="#trapezregel" title="Permalink to this heading">#</a></h2>
-<p>Mit der aus <span class="math notranslate nohighlight">\(n\)</span> Knoten zusammengesetzten Trapezregel</p>
+<section id="zusammengesetzte-trapezregel">
+<h2>Zusammengesetzte Trapezregel<a class="headerlink" href="#zusammengesetzte-trapezregel" title="Permalink to this heading">#</a></h2>
+<p>Wir approximieren das Integral</p>
 <div class="math notranslate nohighlight">
 \[
-\frac{h}{2}\cdot\big(f(a)+2f(a+h)+\ldots+2f(a+h(n-1))+f(b)\big),\quad
-h=\frac{b-a}{n}
+\int_0^3\sin(x)dx.
 \]</div>
-<p>auf dem Intervall <span class="math notranslate nohighlight">\([a,b]\)</span> approximieren wir das Integral</p>
-<div class="math notranslate nohighlight">
-\[
-\int_0^\pi\sin(x)dx.
-\]</div>
+<p>mit der aus <span class="math notranslate nohighlight">\(n=3\)</span> Teilintervallen zusammengesetzten Trapezregel.
+Allgemein braucht die aus <span class="math notranslate nohighlight">\(n\)</span> Teilintervallen zusammengesetzte Trapezregel genau <span class="math notranslate nohighlight">\(n+1\)</span> Quadraturpunkte.</p>
+<p><img alt="trapez" src="_images/trapez.png" /></p>
 <p>In Python geht das mit der Funktion <code class="docutils literal notranslate"><span class="pre">numpy.trapz(...)</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 
 <span class="n">a</span> <span class="o">=</span> <span class="mf">0.0</span>
-<span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span>
-<span class="n">n</span> <span class="o">=</span> <span class="mi">100</span>
+<span class="n">b</span> <span class="o">=</span> <span class="mf">3.0</span>
+<span class="n">n</span> <span class="o">=</span> <span class="mi">3</span>
 
-<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">n</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">n</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">endpoint</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">trapz</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">x</span><span class="p">))</span>
@@ -525,9 +526,16 @@ h=\frac{b-a}{n}
 </div>
 </div>
 </div>
-<p>Man beachte dass <code class="docutils literal notranslate"><span class="pre">numpy.trapz(...)</span></code> diskrete Werte (<code class="docutils literal notranslate"><span class="pre">numpy.array</span></code>) entgegennimmt.
-Falls man eine auswertbare Funktion integrieren will,
-muss man <code class="docutils literal notranslate"><span class="pre">scipy.integrate.quad(...)</span></code> verwenden.</p>
+</section>
+<section id="zusammengesetzte-simpsonregel">
+<h2>Zusammengesetzte Simpsonregel<a class="headerlink" href="#zusammengesetzte-simpsonregel" title="Permalink to this heading">#</a></h2>
+<p>Als Beispiel approximieren wir folgendes Integral mit der aus <span class="math notranslate nohighlight">\(n=2\)</span> Teilintervallen zusammengesetzten Simpsonregel:</p>
+<div class="math notranslate nohighlight">
+\[
+\int_0^3\sin(x)dx
+\]</div>
+<p>Allgemein braucht die aus <span class="math notranslate nohighlight">\(n\)</span> Teilintervallen zusammengesetzte Simpsonregel genau <span class="math notranslate nohighlight">\(2n+1\)</span> Quadraturknoten.
+In Python geht das mit der Funktion <code class="docutils literal notranslate"><span class="pre">scipy.integrate.simpson(...)</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">subprocess</span>
@@ -538,49 +546,13 @@ muss man <code class="docutils literal notranslate"><span class="pre">scipy.inte
 <span class="kn">import</span> <span class="nn">scipy</span> <span class="k">as</span> <span class="nn">sp</span>
 
 <span class="n">a</span> <span class="o">=</span> <span class="mf">0.0</span>
-<span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span>
+<span class="n">b</span> <span class="o">=</span> <span class="mf">3.0</span>
+<span class="n">n</span> <span class="o">=</span> <span class="mi">2</span>
 
-<span class="c1"># np.sin wird direkt übergeben</span>
-<span class="n">y</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">integrate</span><span class="o">.</span><span class="n">quad</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">n</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">endpoint</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-</section>
-<section id="zusammengesetzte-quadraturregel">
-<h2>Zusammengesetzte Quadraturregel<a class="headerlink" href="#zusammengesetzte-quadraturregel" title="Permalink to this heading">#</a></h2>
-<p>Wir können die Gewichte der zusammengesetzten Quadraturregeln wie folgt bauen.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-
-<span class="c1"># Gewichte der Trapezregel auf [0, 1]</span>
-<span class="n">w</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">])</span>
-
-<span class="c1"># Gewichte der Simpsonregel auf [0, 1]</span>
-<span class="c1"># w = 1.0 / 6.0 * np.array([1.0, 4.0, 1.0])</span>
-
-<span class="k">def</span> <span class="nf">composite_rule</span><span class="p">(</span><span class="n">w</span><span class="p">,</span> <span class="n">N</span><span class="p">):</span>
-  <span class="n">m</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">w</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span>
-  <span class="n">n</span> <span class="o">=</span> <span class="n">N</span> <span class="o">*</span> <span class="p">(</span><span class="n">m</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">-</span> <span class="p">(</span><span class="n">N</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
-  <span class="n">v</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
-  <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">N</span><span class="p">):</span>
-    <span class="n">a</span> <span class="o">=</span> <span class="n">i</span> <span class="o">*</span> <span class="n">m</span>
-    <span class="n">b</span> <span class="o">=</span> <span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">m</span>
-    <span class="n">v</span><span class="p">[</span><span class="n">a</span><span class="p">:</span><span class="n">b</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span> <span class="o">+=</span> <span class="n">w</span>
-  <span class="k">return</span> <span class="n">v</span>
-
-<span class="n">v</span> <span class="o">=</span> <span class="n">composite_rule</span><span class="p">(</span><span class="n">w</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
-<span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
-
-<span class="n">a</span> <span class="o">=</span> <span class="mf">0.0</span>
-<span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span>
-<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>
-<span class="n">h</span> <span class="o">=</span> <span class="p">(</span><span class="n">b</span> <span class="o">-</span> <span class="n">a</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="n">h</span> <span class="o">*</span> <span class="n">v</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">sp</span><span class="o">.</span><span class="n">integrate</span><span class="o">.</span><span class="n">simpson</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="n">x</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
@@ -653,8 +625,8 @@ muss man <code class="docutils literal notranslate"><span class="pre">scipy.inte
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#allgemeine-quadraturregel">Allgemeine Quadraturregel</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#trapezregel">Trapezregel</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#zusammengesetzte-quadraturregel">Zusammengesetzte Quadraturregel</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#zusammengesetzte-trapezregel">Zusammengesetzte Trapezregel</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#zusammengesetzte-simpsonregel">Zusammengesetzte Simpsonregel</a></li>
 </ul>
   </nav></div>
 

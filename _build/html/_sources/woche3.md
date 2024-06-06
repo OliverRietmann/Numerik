@@ -45,36 +45,42 @@ plt.show()
 
 ## Taylor Polynome
 
-Nun approximieren wir die Funktion $f(x)=\cos(x)$ an der Stelle $x_0$ mit einem Taylor Polynom $t_n(x)$ vom Grad $n$, also
+Nun approximieren wir die Funktion $f(x)=\cos(x)$ an der Stelle $x_0=1$ mit einem Taylor Polynom $t_n(x)$ vom Grad $n$, also
 
 $$
-t_n(x)=\sum\limits_{k=0}^n\frac{f^{(k)}}{k!}(x-x_0)^k.
+t_n(x)=\sum\limits_{k=0}^n c_k\cdot (x-x_0)^k,\qquad c_k=\frac{f^{(k)}}{k!}.
 $$
+
 
 ```{code-cell} ipython3
 import math
 import numpy as np
 import matplotlib.pyplot as plt
 
-def taylor(x, x0, fk_list):
-    n = len(fk_list) - 1
+def taylor_coefficients(x0, fk_list):
     derivatives = np.array([fk(x0) for fk in fk_list])
+    n = len(fk_list) - 1
     factorials = np.array([math.factorial(k) for k in range(n + 1)])
-    a = derivatives / factorials
-    return np.sum([a[k] * (x - x0)**k for k in range(n + 1)], axis=0)
+    return derivatives / factorials
+
+def taylor_evaluation(x, x0, c):
+    n = len(fk_list) - 1
+    return sum([c[k] * (x - x0)**k for k in range(n + 1)])
 
 f0 = lambda x: np.cos(x)
 f1 = lambda x: -np.sin(x)
 f2 = lambda x: -np.cos(x)
 f3 = lambda x: np.sin(x)
 
-fk_list = [f0, f1, f2, f3]
-
 x0 = 1.0
+fk_list = [f0, f1, f2, f3]
+c = taylor_coefficients(x0, fk_list)
+print("Taylor-Koeffizienten: ", c)
+
 x = np.linspace(-np.pi, np.pi, 100)
 
 plt.figure()
-plt.plot(x, taylor(x, x0, fk_list), label='$t_3(x)$')
+plt.plot(x, taylor_evaluation(x, x0, c), label='$t_3(x)$')
 plt.plot(x, f0(x), '--', label="$f(x)$")
 plt.legend()
 plt.show()

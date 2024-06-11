@@ -70,6 +70,10 @@ AT = np.transpose(A)
 b, m = np.linalg.solve(AT @ A, np.dot(AT, y))
 print(m, b)
 
+p = np.array([b, m])
+r = np.dot(A, p) - y  # Residuum
+print('Fehlerquadratsumme:', np.linalg.norm(r)**2)
+
 plt.figure()
 plt.plot(x, y, 'bo')
 plt.plot(x, m * x + b, 'r-')
@@ -117,6 +121,9 @@ A = np.column_stack((np.ones(n), x, x**2, x**3))
 AT = np.transpose(A)
 p = np.linalg.solve(AT @ A, np.dot(AT, y))
 print(p)
+
+r = np.dot(A, p) - y  # Residuum
+print('Fehlerquadratsumme:', np.linalg.norm(r)**2)
 
 plt.figure()
 plt.plot(x, y, 'bo')
@@ -187,6 +194,9 @@ A = np.column_stack((np.sin(x), x))
 AT = np.transpose(A)
 p = np.linalg.solve(AT @ A, np.dot(AT, y))
 print(p)
+
+r = np.dot(A, p) - y  # Residuum
+print('Fehlerquadratsumme:', np.linalg.norm(r)**2)
 
 plt.figure()
 plt.plot(x, y, 'bo')

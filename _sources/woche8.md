@@ -71,7 +71,7 @@ b, m = np.linalg.solve(AT @ A, np.dot(AT, y))
 print(m, b)
 
 p = np.array([b, m])
-r = np.dot(A, p) - y  # Residuum
+r = y - np.dot(A, p)  # Residuum
 print('Fehlerquadratsumme:', np.linalg.norm(r)**2)
 
 plt.figure()
@@ -122,7 +122,7 @@ AT = np.transpose(A)
 p = np.linalg.solve(AT @ A, np.dot(AT, y))
 print(p)
 
-r = np.dot(A, p) - y  # Residuum
+r = y - np.dot(A, p)  # Residuum
 print('Fehlerquadratsumme:', np.linalg.norm(r)**2)
 
 plt.figure()
@@ -195,7 +195,7 @@ AT = np.transpose(A)
 p = np.linalg.solve(AT @ A, np.dot(AT, y))
 print(p)
 
-r = np.dot(A, p) - y  # Residuum
+r = y - np.dot(A, p)  # Residuum
 print('Fehlerquadratsumme:', np.linalg.norm(r)**2)
 
 plt.figure()
